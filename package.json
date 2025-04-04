@@ -1,0 +1,29 @@
+{
+  "name": "pouso-obras-sociais",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thurflecks/pouso-obras-sociais.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thurflecks/pouso-obras-sociais/issues"
+  },
+  "homepage": "https://github.com/Thurflecks/pouso-obras-sociais",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
+    "mysql2": "^3.14.0",
+    "nodemon": "^3.1.9",
+    "sequelize": "^6.37.7"
+  }
+}
