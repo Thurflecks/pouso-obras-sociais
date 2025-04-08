@@ -1,0 +1,174 @@
+<form id="formulario" action="/home" method="post">
+
+    <!-- Seção 1 -->
+    <div class="secao" id="secao1">
+        <h2>Ficha Socioeconômica</h2>
+        <div class="form-section">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome">
+        </div>
+        <div class="form-section">
+            <label for="dataNascimento">Data de Nascimento:</label>
+            <input type="date" id="dataNascimento" name="dataNascimento">
+        </div>
+        <div class="form-section">
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone">
+        </div>
+        <div class="form-section">
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf">
+        </div>
+        <div class="form-section">
+            <label for="identidade">Carteira de Identidade:</label>
+            <input type="text" id="identidade" name="identidade">
+        </div>
+        <div class="botoes">
+            <button type="button" onclick="voltarSecao()">Voltar</button>
+            <button type="button" onclick="proximaSecao()">Prosseguir</button>
+        </div>
+    </div>
+
+    <!-- Seção 2 -->
+    <div class="secao" id="secao2">
+        <h2>Ficha Socioeconômica</h2>
+        <label>1 - Qual a faixa etária?</label>
+        <div class="opcoes">
+            <label><input type="radio" name="faixa_etaria" value="18_29"> 18 a 29 anos</label>
+            <label><input type="radio" name="faixa_etaria" value="30_49"> 30 a 49 anos</label>
+            <label><input type="radio" name="faixa_etaria" value="50_60"> 50 a 60 anos</label>
+            <label><input type="radio" name="faixa_etaria" value="60+"> 60 ou mais</label>
+        </div>
+
+        <label>2 - Qual o seu grau de instrução?</label>
+        <div class="opcoes">
+            <label><input type="radio" name="grau_instrucao" value="analfabeto"> Analfabeto</label>
+            <label><input type="radio" name="grau_instrucao" value="fundamental"> Fundamental</label>
+            <label><input type="radio" name="grau_instrucao" value="medio"> 2° Grau</label>
+            <label><input type="radio" name="grau_instrucao" value="superior"> Superior</label>
+        </div>
+
+        <div class="botoes">
+            <button type="button" onclick="voltarSecao()">Voltar</button>
+            <button type="button" onclick="proximaSecao()">Prosseguir</button>
+        </div>
+    </div>
+
+    <!-- Seção 3 -->
+    <div class="secao" id="secao3">
+        <h2>Ficha Socioeconômica</h2>
+        <label>Você tem alguma formação técnica?<input type="text" name="formacao_tecnica"></label>
+        <label>Quantos membros da sua família moram com você?<input type="number" name="membros_familia"></label>
+        <label>Quantos são menores de idade?<input type="number" name="menores_idade"></label>
+        <label>Como você se considera?</label>
+        <div class="opcoes">
+            <label><input type="radio" name="etnia" value="branco"> Branco(a)</label>
+            <label><input type="radio" name="etnia" value="negro"> Negro(a)</label>
+            <label><input type="radio" name="etnia" value="pardo"> Pardo(a)/Mulato(a)</label>
+            <label><input type="radio" name="etnia" value="amarelo"> Amarelo(a)</label>
+            <label><input type="radio" name="etnia" value="indigena"> Indígena</label>
+        </div>
+        <div class="botoes">
+            <button type="button" onclick="voltarSecao()">Voltar</button>
+            <button type="button" onclick="proximaSecao()">Prosseguir</button>
+        </div>
+    </div>
+
+    <!-- Seção 4 -->
+    <div class="secao" id="secao4">
+        <h2>Moradia e Trabalho</h2>
+
+        <label>Tipo de moradia:</label>
+        <div class="opcoes">
+            <label><input type="checkbox" name="tipo_moradia" value="tijolo_revestido"> Tijolo revestido</label>
+            <label><input type="checkbox" name="tipo_moradia" value="tijolo_sem_revestimento"> Tijolo sem
+                revestimento</label>
+            <label><input type="checkbox" name="tipo_moradia" value="taipa"> Taipa</label>
+            <label><input type="checkbox" name="tipo_moradia" value="palha"> Palha</label>
+            <label><input type="checkbox" name="tipo_moradia" value="madeira"> Madeira</label>
+            <label><input type="checkbox" name="tipo_moradia" value="outros"> Outros</label>
+        </div>
+
+        <label>Situação atual de moradia:</label>
+        <div class="opcoes">
+            <label><input type="radio" name="situacao_moradia" value="propria"> Casa própria</label>
+            <label><input type="radio" name="situacao_moradia" value="financiada"> Casa financiada</label>
+            <label><input type="radio" name="situacao_moradia" value="alugada"> Casa alugada</label>
+            <label><input type="radio" name="situacao_moradia" value="cedida"> Casa cedida</label>
+            <label><input type="radio" name="situacao_moradia" value="mantida"> Mantida por entidade</label>
+            <label><input type="radio" name="situacao_moradia" value="outros"> Outros</label>
+        </div>
+
+        <label>Possui meio de transporte?</label>
+        <div class="opcoes">
+            <label><input type="radio" name="meio_transporte" value="sim"> Sim</label>
+            <label><input type="radio" name="meio_transporte" value="nao"> Não</label>
+        </div>
+
+        <label>Situação trabalhista atual:</label>
+        <div class="opcoes">
+            <label><input type="radio" name="situacao_trabalhista" value="agricultor"> Lavrador/Agricultor</label>
+            <label><input type="radio" name="situacao_trabalhista" value="servidor"> Servidor Público</label>
+            <label><input type="radio" name="situacao_trabalhista" value="diarista"> Doméstica/Diarista</label>
+            <label><input type="radio" name="situacao_trabalhista" value="privada"> Empresa privada</label>
+            <label><input type="radio" name="situacao_trabalhista" value="autonomo"> Autônomo ou informal</label>
+            <label><input type="radio" name="situacao_trabalhista" value="negocio"> Pequeno negócio</label>
+            <label><input type="radio" name="situacao_trabalhista" value="desempregado"> Desempregado</label>
+            <label><input type="radio" name="situacao_trabalhista" value="aposentado"> Aposentado</label>
+            <label><input type="radio" name="situacao_trabalhista" value="nunca_trabalhou"> Nunca trabalhou</label>
+        </div>
+
+        <label>Renda per-capta da família:</label>
+        <div class="opcoes">
+            <label><input type="radio" name="renda_percapta" value="ate_meio"> até ½ salário mínimo</label>
+            <label><input type="radio" name="renda_percapta" value="ate_um_meio"> até 1 ½ salário mínimo</label>
+            <label><input type="radio" name="renda_percapta" value="um_a_tres"> de 1 a 3 salários mínimos</label>
+            <label><input type="radio" name="renda_percapta" value="mais_de_tres"> mais de 3 salários mínimos</label>
+        </div>
+
+        <div class="botoes">
+            <button type="button" onclick="voltarSecao()">Voltar</button>
+            <button type="button" onclick="proximaSecao()">Prosseguir</button>
+        </div>
+    </div>
+
+    <!-- Seção 5 -->
+    <div class="secao" id="secao5">
+        <h2>Benefícios e Necessidades Especiais</h2>
+
+        <label>Recebe benefício social?</label>
+        <div class="opcoes">
+            <label><input type="radio" name="beneficio_social" value="sim"> Sim</label>
+            <label><input type="radio" name="beneficio_social" value="nao"> Não</label>
+        </div>
+        <label>Se sim, qual? <input type="text" name="qual_beneficio"></label>
+
+        <label>Tem Cadastro Único?</label>
+        <select name="cadastro_unico">
+            <option value="">Selecione</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+
+        <label>Pessoas com necessidades especiais na residência?</label>
+        <div class="opcoes">
+            <label><input type="radio" name="necessidades_especiais" value="sim"> Sim</label>
+            <label><input type="radio" name="necessidades_especiais" value="nao"> Não</label>
+        </div>
+        <label>Se sim, qual a necessidade? <input type="text" name="descricao_necessidade"></label>
+
+        <label>Necessita de medicação contínua?</label>
+        <div class="opcoes">
+            <label><input type="radio" name="medicacao_continua" value="sim"> Sim</label>
+            <label><input type="radio" name="medicacao_continua" value="nao"> Não</label>
+        </div>
+
+        <div class="botoes">
+            <button type="button" onclick="voltarSecao()">Voltar</button>
+            <button type="submit">Finalizar</button>
+        </div>
+    </div>
+
+</form>
+
+<script src="./js/app.js"></script>

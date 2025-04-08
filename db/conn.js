@@ -8,7 +8,7 @@ const sequelize = new Sequelize("pouso-db", "root", "", {
 
 sequelize.authenticate().then(() => {
     console.log("banco de dados conectado")
-}).catch( err=> {
+}).catch( err => {
     console.log(`erro ao conectar ao banco de dados. Erro: ${err}`)
 })
 

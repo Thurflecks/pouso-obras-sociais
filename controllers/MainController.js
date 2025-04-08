@@ -2,9 +2,9 @@
 
 module.exports = class MainController {
     static home(req, res) {
-        res.render('home');
+        res.send('Hello World');
     }
     static base(req, res) {
-        res.send('site em construção');
+        res.render('cadastro');
     }
 }

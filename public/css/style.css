@@ -1,5 +1,139 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2793ff;
+    padding: 40px 0;
+    color: #333;
+}
+
+form {
+    max-width: 720px;
+    margin: auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eaecef;
+    padding-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: #34495e;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #00ff0d;
+    outline: none;
+}
+
+.opcoes label {
+    display: block;
+    margin: 6px 0;
+    font-weight: 400;
+    color: #555;
+}
+
+.botoes {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.botoes button {
+    background-color: #00ff0d;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.botoes button:hover {
+    background-color: #00cc0a;
+}
+
+/* Esconde todas as seções por padrão */
+.secao {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Seção ativa visível */
+.secao.ativa {
+    display: block;
+    opacity: 1;
+}
+
+/* Animação de fade-in suave */
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Torna a primeira seção visível por padrão antes do JS rodar */
+#secao1,
+#section1 {
+    display: block;
+    opacity: 1;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 600px) {
+    form {
+        padding: 25px 20px;
+    }
+
+    .botoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .botoes button {
+        width: 100%;
+    }
 }
