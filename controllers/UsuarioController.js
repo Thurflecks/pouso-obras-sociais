@@ -1,7 +1,10 @@
 const UsuarioModel = require('../models/Usuario');
 
 module.exports = class UsuarioController {
-    static ola(req, res) {
-        res.send('Olá, mundo!');
-    }
+   static cadastro(req, res) {
+      res.render('usuarios/cadastro');
+   }
+   static add_cadastro(req, res) {
+      res.send('Cadastro realizado com sucesso!');
+   }
 }
