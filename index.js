@@ -4,7 +4,8 @@ const { engine } = require("express-handlebars")
 const app = express()
 const session = require("express-session")
 const port = process.env.PORT | 8080;
-const router = require("./routes/routerMain")
+const routerMain = require("./routes/routerMain")
+const routerUser = require("./routes/usuariosRoutes")
 
 app.engine("handlebars", engine({
     defaultLayout: "main",
@@ -29,7 +30,9 @@ app.use(session({
 }));
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")))
-app.use(router)
+
+app.use("/", routerMain)
+app.use("/user",routerUser)
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta http://localhost:${port}`)
