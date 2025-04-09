@@ -28,11 +28,13 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")))
 
-app.use("/", routerMain)
 app.use("/user", routerUser)
+app.use("/", routerMain)
+
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta http://localhost:${port}`)

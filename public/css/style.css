@@ -7,32 +7,45 @@
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	background-color: #2793ff;
-	padding: 40px 0;
 	color: #333;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	scroll-behavior: smooth;
 }
 
 form {
-	max-width: 600px; /* Ajuste aqui para o tamanho ideal */
-	margin: 10px auto; /* Centraliza e dá espaço acima/abaixo */
+	width: 100%;
+	max-width: 800px;
+	margin: 40px 20px;
 	background-color: #fff;
-	padding: 20px;
+	padding: 40px 30px;
 	border-radius: 16px;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 h2 {
-	font-size: 0.9rem; /* menor fonte */
+	font-size: clamp(1.2rem, 1.8vw, 1.6rem);
 	color: #2c3e50;
-	margin-bottom: 20px; /* era 20px */
-	border-bottom: 1px solid #eaecef; /* linha mais fina */
-	padding-bottom: 6px; /* era 10px */
+	margin-bottom: 30px;
+	border-bottom: 2px solid #2793ff;
+	display: inline-block;
+	padding-bottom: 10px;
+	width: 100%;
+	letter-spacing: -0.5px;
+}
+
+.form-section {
+	margin-bottom: 25px;
 }
 
 label {
 	display: block;
-	margin-bottom: 2px;
+	margin-bottom: 12px;
 	font-weight: 500;
 	color: #34495e;
+	font-size: 0.95rem;
 }
 
 input[type="text"],
@@ -41,64 +54,71 @@ input[type="date"],
 input[type="number"],
 select {
 	width: 100%;
-	padding: 12px;
-	margin-top: 10px;
-	border: 1px solid #cccccc;
+	padding: 14px;
+	margin-top: 8px;
+	border: 1px solid #e0e0e0;
 	border-radius: 8px;
 	font-size: 1rem;
-	transition: border-color 0.3s;
+	transition: all 0.3s ease;
+	background-color: #f8f9fa;
 }
 
 input:focus,
 select:focus {
-	border-color: #00ff0d;
+	border-color: #2793ff;
 	outline: none;
+	box-shadow: 0 0 0 3px rgba(39, 147, 255, 0.2);
+	background-color: #fff;
 }
 
 .opcoes label {
-	display: fleex;
-	margin: 6px 0;
+	display: flex;
+	margin: 12px 0;
 	font-weight: 400;
 	color: #555;
+	align-items: center;
+	gap: 8px;
 }
 
 .botoes {
-	margin-top: 30px;
+	margin-top: 40px;
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	gap: 10px;
+	gap: 15px;
 }
 
 .botoes button {
-	background-color: #00ff0d;
+	background-color: #1a6bbf;
 	color: #fff;
 	border: none;
-	padding: 12px 24px;
+	padding: 14px 28px;
 	border-radius: 8px;
 	cursor: pointer;
 	font-size: 1rem;
-	transition: background-color 0.3s ease;
+	transition: all 0.3s ease;
+	font-weight: 600;
+	letter-spacing: 0.5px;
 }
 
 .botoes button:hover {
-	background-color: #00cc0a;
+	background-color: #144d8c;
+	transform: translateY(-1px);
 }
 
-/* Esconde todas as seções por padrão */
 .secao {
 	display: none;
 	opacity: 0;
 	transition: opacity 0.4s ease-in-out;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
 }
 
-/* Seção ativa visível */
 .secao.ativa {
 	display: block;
 	opacity: 1;
 }
 
-/* Animação de fade-in suave */
 .fade-in {
 	animation: fadeIn 0.4s ease-in-out;
 }
@@ -108,20 +128,18 @@ select:focus {
 		opacity: 0;
 		transform: translateY(10px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
 	}
 }
 
-/* Torna a primeira seção visível por padrão antes do JS rodar */
-#secao1,
-#section1 {
+#secao1 {
 	display: block;
 	opacity: 1;
 }
 
-/* Responsivo para telas menores */
 @media (max-width: 500px) {
 	form {
 		padding: 25px 20px;
@@ -129,10 +147,16 @@ select:focus {
 
 	.botoes {
 		flex-direction: column;
-		align-items: stretch;
 	}
 
 	.botoes button {
 		width: 100%;
+	}
+}
+
+@media (min-width: 501px) and (max-width: 1024px) {
+	form {
+		max-width: 90%;
+		padding: 30px;
 	}
 }

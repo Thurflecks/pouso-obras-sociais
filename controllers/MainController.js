@@ -2,6 +2,6 @@
 
 module.exports = class MainController {
     static base(req, res) {
-        console.log('base');
+        res.send('base');
     }
 }
