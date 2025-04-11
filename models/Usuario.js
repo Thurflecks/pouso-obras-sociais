@@ -15,7 +15,7 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: false,
     },
     telefone: {
-        type: Sequelize.STRING(11),
+        type: Sequelize.STRING,
         allowNull: false,
     },
     endereco: {
@@ -27,7 +27,7 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: false,
     },
     cep: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     cidade: {
@@ -55,7 +55,7 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: false,
     },
     faixa_etaria: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING,
         allowNull: false,
     },
     escolaridade: {
@@ -67,11 +67,11 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: true,
     },
     qnt_membros_familia: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     qnt_menor_idade: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     etnia: {
@@ -87,8 +87,12 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: false,
     },
     transporte: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
         allowNull: false,
+    },
+    part_economica: {
+        type: Sequelize.TEXT,
+        allowNull: false
     },
     situacao_trabalho: {
         type: Sequelize.STRING,
@@ -99,7 +103,7 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: false,
     },
     beneficio: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     tipo_beneficio: {
@@ -107,11 +111,11 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: true,
     },
     cad_unico: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     nec_especial: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     tipo_necessidade: {
@@ -119,11 +123,11 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: true,
     },
     medi_continua: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
         allowNull: false,
     }
 }, {
-    tableName: 'usuario',
+    tableName: 'usuarios',
     timestamps: false
 });
 module.exports = UsuarioModel;

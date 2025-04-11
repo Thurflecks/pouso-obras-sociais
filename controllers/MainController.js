@@ -1,7 +1,7 @@
 //import models
 
 module.exports = class MainController {
-    static base(req, res) {
-        res.send('base');
+    static home(req, res) {
+        res.render('main/home')
     }
 }
