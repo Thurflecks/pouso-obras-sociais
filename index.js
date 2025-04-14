@@ -6,6 +6,7 @@ const session = require("express-session")
 const port = process.env.PORT | 8080;
 const routerMain = require("./routes/routerMain")
 const routerUser = require("./routes/usuariosRoutes")
+const routerAlimentos = require("./routes/alimentosRoutes")
 
 app.engine("handlebars", engine({
     defaultLayout: "main",
@@ -33,6 +34,7 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")))
 
 app.use("/user", routerUser)
+app.use("/alimentos", routerAlimentos)
 app.use("/", routerMain)
 
 
