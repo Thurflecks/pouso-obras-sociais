@@ -1,0 +1,39 @@
+<div class="container">
+    <h1>Lista De Usuários</h1>
+    <section>
+        {{#each usuarios}}
+        <p><strong>Nome:</strong> {{nome}}</p>
+        <p><strong>CPF:</strong> {{cpf}}</p>
+        <p><strong>Telefone:</strong> {{telefone}}</p>
+        <p><strong>Endereço:</strong> {{endereco}}</p>
+        <p><strong>Bairro:</strong> {{bairro}}</p>
+        <p><strong>CEP:</strong> {{cep}}</p>
+        <p><strong>Cidade:</strong> {{cidade}}</p>
+        <p><strong>UF:</strong> {{UF}}</p>
+        <p><strong>Profissão:</strong> {{trabalho}}</p>
+        <p><strong>Local de Trabalho:</strong> {{local_trabalho}}</p>
+        <p><strong>Data de Nascimento:</strong> {{data_nasc}}</p>
+        <p><strong>Identidade (RG):</strong> {{rg}}</p>
+        <p><strong>Faixa Etária:</strong> {{faixa_etaria}}</p>
+        <p><strong>Escolaridade:</strong> {{escolaridade}}</p>
+        <p><strong>Formação Técnica:</strong> {{form_tecnica}}</p>
+        <p><strong>Quantidade de Membros na Família:</strong> {{qnt_membros_familia}}</p>
+        <p><strong>Crianças Menores de Idade:</strong> {{qnt_menor_idade}}</p>
+        <p><strong>Etnia:</strong> {{etnia}}</p>
+        <p><strong>Tipo de Moradia:</strong> {{tipo_moradia}}</p>
+        <p><strong>Situação da Moradia:</strong> {{situacao_moradia}}</p>
+        <p><strong>Possui Meio de Transporte:</strong> {{#if transporte}}Sim{{else}}Não{{/if}}</p>
+        <p><strong>Participação Econômica:</strong> {{part_economica}}</p>
+        <p><strong>Situação Trabalhista:</strong> {{situacao_trabalho}}</p>
+        <p><strong>Renda Familiar:</strong> {{renda_familia}}</p>
+        <p><strong>Recebe Benefício Social:</strong> {{#if beneficio}}Sim{{else}}Não{{/if}}</p>
+        <p><strong>Tipo de Benefício:</strong> {{tipo_beneficio}}</p>
+        <p><strong>Possui Cadastro Único:</strong> {{#if cad_unico}}Sim{{else}}Não{{/if}}</p>
+        <p><strong>Necessidades Especiais:</strong> {{#if nec_especial}}Sim{{else}}Não{{/if}}</p>
+        <p><strong>Tipo de Necessidade:</strong> {{tipo_necessidade}}</p>
+        <p><strong>Medicação Contínua:</strong> {{#if medi_continua}}Sim{{else}}Não{{/if}}</p>
+        </p>
+        <span>--------------------------------------------</span>
+        {{/each}}
+    </section>
+</div>

@@ -32,22 +32,27 @@ module.exports = class UsuarioController {
             qnt_membros_familia: num_pessoas,
             qnt_menor_idade: num_criancas,
             etnia: etnia,
-            tipo_moradia: tipo_moradia,
+            tipo_moradia: Array.isArray(tipo_moradia) ? tipo_moradia.join(', ') : tipo_moradia,
             situacao_moradia: situacao_moradia,
-            transporte: meio_transporte,
+            transporte: meio_transporte === 'sim' ? 1 : 0,
             part_economica: participacao_economica,
             situacao_trabalho: situacao_trabalhista,
             renda_familia: renda_percapta,
-            beneficio: beneficio_social,
+            beneficio: beneficio_social === 'sim' ? 1 : 0,
             tipo_beneficio: qual_beneficio,
-            cad_unico: cadastro_unico,
-            nec_especial: necessidades_especiais,
+            cad_unico: cadastro_unico === 'sim' ? 1 : 0,
+            nec_especial: necessidades_especiais === 'sim' ? 1 : 0,
             tipo_necessidade: descricao_necessidade,
-            medi_continua: medicacao_continua
+            medi_continua: medicacao_continua === 'sim' ? 1 : 0
          })
-         res.redirect('/')
+         res.redirect('/user/')
       } catch (error) {
          console.log(error)
       }
+   }
+   static async index(req, res) {
+      const usuarios = await UsuarioModel.findAll()
+      console.log(usuarios)
+      res.render('usuarios/index', { usuarios })
    }
 }

@@ -79,7 +79,7 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: false,
     },
     tipo_moradia: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
     },
     situacao_moradia: {
@@ -87,7 +87,7 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: false,
     },
     transporte: {
-        type: Sequelize.STRING,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
     },
     part_economica: {
@@ -103,7 +103,7 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: false,
     },
     beneficio: {
-        type: Sequelize.STRING,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
     },
     tipo_beneficio: {
@@ -111,11 +111,11 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: true,
     },
     cad_unico: {
-        type: Sequelize.STRING,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
     },
     nec_especial: {
-        type: Sequelize.STRING,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
     },
     tipo_necessidade: {
@@ -123,7 +123,7 @@ const UsuarioModel = sequelize.define("usuario", {
         allowNull: true,
     },
     medi_continua: {
-        type: Sequelize.STRING,
+        type: Sequelize.BOOLEAN,
         allowNull: false,
     }
 }, {
