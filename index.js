@@ -4,7 +4,7 @@ const { engine } = require("express-handlebars")
 const app = express()
 const session = require("express-session")
 const port = process.env.PORT | 8080;
-const routerMain = require("./routes/routerMain")
+const routerBase = require("./routes/baseRoutes")
 const routerUser = require("./routes/usuariosRoutes")
 const routerAlimentos = require("./routes/alimentosRoutes")
 
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, "public")))
 
 app.use("/user", routerUser)
 app.use("/alimentos", routerAlimentos)
-app.use("/", routerMain)
+app.use("/", routerBase)
 
 
 app.listen(port, () => {
