@@ -1,6 +1,6 @@
 const { Sequelize, sequelize } = require('../db/conn');
 
-const AlimentosModel = sequelize.define("alimentos", {
+const MantimentosModel = sequelize.define("mantimentos", {
     id_alimento: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -24,8 +24,8 @@ const AlimentosModel = sequelize.define("alimentos", {
         allowNull: false
     }
 }, {
-    tableName: 'alimentos',
+    tableName: 'mantimentos',
     timestamps: false
 });
 
-module.exports = AlimentosModel;
+module.exports = MantimentosModel;

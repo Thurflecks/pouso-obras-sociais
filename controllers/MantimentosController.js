@@ -1,13 +1,13 @@
-const AlimentosModel = require('../models/Alimentos');
+const MantimentosModel = require('../models/Mantimentos');
 
-module.exports = class AlimentosController {
+module.exports = class MantimentosController {
     static cadastro(req, res) {
-        res.render('alimentos/cadastro')
+        res.render('mantimentos/cadastro')
     }
     static async add_cadastro(req, res) {
         try {
             const {nome, quantidade, doador, data} = req.body;
-            await AlimentosModel.create({
+            await MantimentosModel.create({
                 produto: nome, 
                 quantidade, 
                 doador, 
