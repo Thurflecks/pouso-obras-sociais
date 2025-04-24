@@ -1,5 +1,6 @@
 const MantimentosModel = require('../models/Mantimentos');
 
+
 module.exports = class MantimentosController {
 
     static async mostrar(req, res) {
@@ -18,7 +19,8 @@ module.exports = class MantimentosController {
                     id: mantimento.id_mantimento
                 };
             });
-            res.render('mantimentos/all', { mantimentosAjeitados });
+            const emailUser = req.session.user.email;
+            res.render('mantimentos/all', { mantimentosAjeitados, emailUser });
         } catch (error) {
             console.log(error, 'erro ao mostrar o estoque');
         }
@@ -38,9 +40,10 @@ module.exports = class MantimentosController {
         try {
             const { id } = req.params;
             const mantimento = await MantimentosModel.findOne({ where: { id_mantimento: id } });
-            res.render('mantimentos/edit', { mantimento });
+            const emailUser = req.session.user.email;
+            res.render('mantimentos/edit', { mantimento, emailUser });
         } catch (error) {
-            console.log(error, 'erro ao exibir a pagina de editar o mantimento');
+            console.log(error, 'erro ao exibir a pagina de editar o mantimento', );
         }
     }
 
@@ -63,7 +66,8 @@ module.exports = class MantimentosController {
     }
 
     static adicionar(req, res) {
-        res.render('mantimentos/add')
+        const emailUser = req.session.user.email;
+        res.render('mantimentos/add', { emailUser });
     }
     static async adicionando(req, res) {
         try {

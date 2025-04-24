@@ -3,21 +3,23 @@ const router = express.Router();
 const MantimentosController = require('../controllers/MantimentosController');
 const AdminController = require('../controllers/AdminController');
 const FarmaciaController = require('../controllers/FarmaciaController');
+const authenticate = require('../middlewares/authenticate');
+const verifyLogin = require("../middlewares/verifyLogin");
 
 //admin
-router.get('/login', AdminController.login);
-router.post('/login/acess', AdminController.loginAcess);
+router.get('/login', verifyLogin, AdminController.login);
+router.post('/login/acess', verifyLogin, AdminController.loginAcess);
 
 //mantimentos
-router.get('/mantimentos/all', MantimentosController.mostrar );
+router.get('/mantimentos/all', authenticate, MantimentosController.mostrar );
 
-router.get('/mantimentos/edit/:id', MantimentosController.editar);
-router.post('/mantimentos/edit/:id', MantimentosController.editando);
+router.get('/mantimentos/edit/:id', authenticate, MantimentosController.editar);
+router.post('/mantimentos/edit/:id', authenticate, MantimentosController.editando);
 
-router.get('/mantimentos/delete/:id', MantimentosController.deletar);
+router.get('/mantimentos/delete/:id', authenticate, MantimentosController.deletar);
 
-router.get('/mantimentos/add', MantimentosController.adicionar);
-router.post('/mantimentos/add', MantimentosController.adicionando);
+router.get('/mantimentos/add', authenticate, MantimentosController.adicionar);
+router.post('/mantimentos/add', authenticate, MantimentosController.adicionando);
 
 
 //farmacia
