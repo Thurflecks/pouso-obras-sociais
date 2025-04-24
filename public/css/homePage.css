@@ -148,6 +148,7 @@ main {
     transition: var(--transicao);
     border: 2px solid transparent;
     text-decoration: none;
+    font-weight: 700;
 }
 
 .cta-doacao:hover {

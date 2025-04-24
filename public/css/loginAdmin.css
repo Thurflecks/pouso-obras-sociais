@@ -1,0 +1,328 @@
+/* Reset geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f2f2f2;
+    background-image: url('/assets/img/azul2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* <-- Aqui trava o scroll */
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 3%;
+    /* Diminui o padding para ajustar o espaçamento */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    width: 120px;
+    height: auto;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #2793ff;
+    font-size: 22px;
+    border-radius: 8px;
+}
+
+/* Navbar conteúdo */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    /* Diminui o gap entre os itens à esquerda */
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    /* Diminui o gap entre os itens à direita */
+}
+
+/* Botão de Login */
+.login-btn {
+    width: 140px;
+    height: 40px;
+    background-color: #2793ff;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #1a3a4d;
+}
+
+/* Menu hambúrguer (mobile) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 30px;
+    height: 4px;
+    background-color: #1A3A4D;
+    border-radius: 10px;
+}
+
+/* Formulário */
+.form-content {
+    max-width: 900px;
+    margin: 50px auto;
+    /* Margens superior e inferior iguais */
+    background: white;
+    border-radius: 30px;
+    display: flex;
+    padding: 25px;
+    /* Padding interno igual acima, abaixo, esquerda e direita */
+    gap: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-left,
+.form-right {
+    flex: 1;
+    padding: 20px;
+}
+
+.form-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1A3A4D;
+    margin-bottom: 30px;
+    text-decoration: underline;
+    text-decoration-color: #2793ff;
+}
+
+.input-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.inputformLogin {
+    width: 100%;
+    height: 50px;
+    font-style: italic;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid #A3A3A3;
+    font-size: 14px;
+    outline: none;
+}
+
+.labelFormLogin {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 16px;
+    color: #1A3A4D;
+    margin-bottom: 5px;
+}
+
+.forgot-password {
+    text-align: left;
+    color: #1A3A4D;
+    font-size: 14px;
+    margin: 10px 0 20px;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    color: #2793ff;
+}
+
+.next-btn {
+    width: 130px;
+    height: 45px;
+    background-color: #2793ff;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 200;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: block;
+    margin-top: 15px;
+    font-weight: 800;
+}
+
+.next-btn:hover {
+    background-color: #007dc5;
+}
+
+/* Imagem lateral */
+.form-right img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
+.image-with-caption {
+    text-align: left;
+}
+
+.caption {
+    font-size: 12px;
+    color: #555;
+}
+
+/* Link PGI */
+.pgi-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #1A3A4D;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 30px;
+    transition: color 0.3s ease;
+}
+
+.pgi-link:hover {
+    color: #2793ff;
+}
+
+.mobile-back-button {
+    display: none;
+}
+
+/* Mobile Responsivo */
+@media (max-width: 768px) {
+    .logo {
+        width: 100px;
+        font-size: 18px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        padding: 10px 5%;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
+
+    .navbar-right {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 0 0 30px 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        z-index: 999;
+    }
+
+    .navbar-right.active {
+        display: flex;
+    }
+
+    .form-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        width: 90%;
+        margin-top: 80px;
+    }
+
+    .form-right {
+        display: none;
+    }
+
+    .form-left {
+        width: 100%;
+        max-width: 500px;
+        padding: 10px;
+    }
+
+    .next-btn,
+    .forgot-password {
+        width: 90%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        text-align: center;
+    }
+
+    .mobile-back-button {
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .back-btn {
+        padding: 12px 30px;
+        background-color: #ffffffb6;
+        color: rgb(0, 48, 87);
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+        background-color: #2793ff;
+        color: #ffffff;
+    }
+}
+
+
+.erroLogin {
+    color: red;
+    font-size: 15px;
+    text-align: center;
+    padding: 20px;
+    font-weight: 800;
+}

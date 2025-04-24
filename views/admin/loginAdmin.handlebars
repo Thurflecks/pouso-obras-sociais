@@ -1,0 +1,59 @@
+<head>
+    <link rel="stylesheet" href="/css/loginAdmin.css">
+</head>
+<section class="navbar">
+    <div class="navbar-left">
+        <!-- Logo -->
+        <img src="/assets/logos/logo.svg" alt="Logo" class="logo">
+    </div>
+
+    <div class="navbar-right">
+        <!-- Link para voltar à página inicial -->
+        <a href="/" class="pgi-link">
+            <span class="pgi-text">Volte à página inicial</span>
+        </a>
+    </div>
+</section>
+
+<!-- Formulário de Login -->
+<section class="login-form">
+    <div class="form-content">
+        <div class="form-left">
+            <h2 class="form-title">Login</h2>
+            <form action="/admin/login/acess" method="post">
+                <div class="input-group">
+                    <label class="labelFormLogin" for="email">E-mail</label>
+                    <input class="inputformLogin" name="email" type="text" id="email" placeholder="Digite seu E-mail"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label class="labelFormLogin" for="senha">Senha</label>
+                    <input class="inputformLogin" name="senha" type="password" id="senha" maxlength="8" placeholder="Digite sua senha"
+                        required>
+                </div>
+
+                <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+                <button type="submit" class="next-btn">Login</button>
+                <div class="erroLogin">
+                    <span >{{error}}</span>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-right">
+            <figure class="image-with-caption">
+                <img src="/assets/img/login4.jpg" alt="Ilustração Login" class="login-image">
+                <figcaption class="caption">Página de uso exclusivo para colaboradores</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- Botão de Voltar (apenas mobile) -->
+<section class="mobile-back-button">
+    <a href="/" class="back-btn">Voltar à Página Inicial</a>
+</section>
+
+<!-- Link para o arquivo JS -->
+<script src="/js/loginAdmin/login.js"></script>
