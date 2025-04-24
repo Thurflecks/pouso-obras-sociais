@@ -1,0 +1,64 @@
+<head>
+    <link rel="stylesheet" href="/css/mantimentos.css">
+</head>
+
+<header class="header-estoque">
+    <h1><i class="fas fa-box-open"></i> Controle de Estoque</h1>
+    <div class="usuario-info">
+        <span>Nome do Funcionário</span>
+        <i class="fas fa-user-circle"></i>
+    </div>
+</header>
+
+<main class="container-estoque">
+    <!-- Botão de voltar para a página do funcionário -->
+    <a href="/admin/mantimentos/all" class="voltar-inicio">
+        <i class="fa-solid fa-left-long"></i> Voltar para a Página de Estoque de Mantimentos
+    </a>
+    <!-- Formulário de Cadastro -->
+    <section class="secao-formulario">
+        <h2><i class="bx bx-edit-alt"></i>Editar Item</h2>
+        <form id="form-produto" action="/admin/mantimentos/edit/{{mantimento.id_mantimento}}" method="POST">
+            <div class="grupo-input">
+                <label>Nome do Produto:</label>
+                <input type="text" id="nome-produto" name="nome" value="{{mantimento.produto}}" required>
+            </div>
+
+            <div class="grupo-input">
+                <label>Descrição:</label>
+                <textarea id="descricao-produto" name="descricao">{{mantimento.descricao}}</textarea>
+            </div>
+
+            <div class="grupo-input">
+                <label>Categoria:</label>
+                <select name="categoria" id="categoria-produto" selected="{{mantimento.categoria}}">
+                    <option value="alimentos" {{#if (eq mantimento.categoria "alimentos" )}}selected{{/if}}>Alimentos</option>
+                    <option value="bebidas" {{#if (eq mantimento.categoria "bebidas" )}}selected{{/if}}>Bebidas</option>
+                    <option value="pereciveis" {{#if (eq mantimento.categoria "pereciveis" )}}selected{{/if}}>Perecíveis</option>
+                </select>
+            </div>
+            <div class="grupo-input">
+                <label>Data de entrada:</label>
+                <input type="date" id="data-produto" name="data" value="{{mantimento.data}}" required>
+            </div>
+
+            <div class="grupo-input-duplo">
+                <div>
+                    <label>Quantidade:</label>
+                    <input type="number" name="quantidade" id="quantidade-produto" value="{{mantimento.quantidade}}"
+                        required>
+                </div>
+                <div>
+                    <label>Doador:</label>
+                    <input type="text" name="doador" value="{{mantimento.doador}}" required>
+                </div>
+            </div>
+
+            <div class="botoes-acao">
+                <button type="submit" class="btn-primario">
+                    <i class="fas fa-save"></i> Atualizar
+                </button>
+            </div>
+        </form>
+    </section>
+</main>

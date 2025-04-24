@@ -1,7 +1,7 @@
 const { Sequelize, sequelize } = require('../db/conn');
 
 const MantimentosModel = sequelize.define("mantimentos", {
-    id_alimento: {
+    id_mantimento: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -11,7 +11,15 @@ const MantimentosModel = sequelize.define("mantimentos", {
         type: Sequelize.STRING,
         allowNull: false
     },
+    descricao: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     doador: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    categoria: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -20,7 +28,7 @@ const MantimentosModel = sequelize.define("mantimentos", {
         allowNull: false
     },
     data: {
-        type: Sequelize.DATEONLY,
+        type: Sequelize.DATE,
         allowNull: false
     }
 }, {

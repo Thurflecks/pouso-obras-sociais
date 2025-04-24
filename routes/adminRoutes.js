@@ -9,8 +9,16 @@ router.get('/login', AdminController.login);
 router.post('/login/acess', AdminController.loginAcess);
 
 //mantimentos
-router.get('/mantimentos/cadastro', MantimentosController.cadastro);
-router.post('/mantimentos/add_cadastro', MantimentosController.add_cadastro);
+router.get('/mantimentos/all', MantimentosController.mostrar );
+
+router.get('/mantimentos/edit/:id', MantimentosController.editar);
+router.post('/mantimentos/edit/:id', MantimentosController.editando);
+
+router.get('/mantimentos/delete/:id', MantimentosController.deletar);
+
+router.get('/mantimentos/add', MantimentosController.adicionar);
+router.post('/mantimentos/add', MantimentosController.adicionando);
+
 
 //farmacia
 
