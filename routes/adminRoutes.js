@@ -7,8 +7,11 @@ const authenticate = require('../middlewares/authenticate');
 const verifyLogin = require("../middlewares/verifyLogin");
 
 //admin
+router.get('/', authenticate, AdminController.homeAdmin);
+
 router.get('/login', verifyLogin, AdminController.login);
 router.post('/login/acess', verifyLogin, AdminController.loginAcess);
+router.get('/logout', authenticate, AdminController.logout);
 
 //mantimentos
 router.get('/mantimentos/all', authenticate, MantimentosController.mostrar );

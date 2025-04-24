@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --azul-principal: #4a90e2;
+    --azul-escuro: #357abd;
+    --vermelho-destaque: #dc3545;
+    --cinza-claro: #f5f5f5;
+    --branco: #ffffff;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --transicao: all 0.3s ease;
+}
+
+/* Estrutura Base */
+body {
+    background-color: var(--cinza-claro);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header - Estilo Farmácia */
+.header-estoque {
+    background: var(--azul-principal);
+    color: var(--branco);
+    padding: 15px 30px;
+    box-shadow: var(--sombra);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.container-header {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-estoque h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.usuario-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.usuario-info span {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.btn-logout {
+    color: var(--branco);
+    background: var(--vermelho-destaque);
+    padding: 0.8rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicao);
+}
+
+.btn-logout:hover {
+    background: #bb2d3b;
+    transform: translateY(-2px);
+}
+
+.container-admin {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.controle-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.voltar-inicio {
+    color: var(--azul-principal);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transicao);
+    font-size: 1.1rem;
+}
+
+.voltar-inicio:hover {
+    color: var(--azul-escuro);
+    transform: translateX(-5px);
+}
+
+.status-sistema {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.online-indicator {
+    width: 12px;
+    height: 12px;
+    background: #4CAF50;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Grid de Funcionalidades */
+.grid-funcionalidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.card-admin {
+    background: var(--branco);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--sombra);
+    border-left: 4px solid var(--azul-principal);
+    transition: var(--transicao);
+    cursor: pointer;
+}
+
+.card-admin:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--cinza-claro);
+}
+
+.card-header i {
+    font-size: 1.8rem;
+    color: var(--azul-principal);
+}
+
+.card-header h2 {
+    font-size: 1.3rem;
+    color: var(--azul-escuro);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-content p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.btn-acao {
+    background: var(--azul-principal);
+    color: var(--branco);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: var(--transicao);
+    width: fit-content;
+    font-size: 0.95rem;
+    text-decoration: none;
+}
+
+.btn-acao:hover {
+    background: var(--azul-escuro);
+    transform: translateY(-2px);
+}
+
+/* Ações Rápidas */
+.acoes-rapidas {
+    background: var(--branco);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+}
+
+.acoes-rapidas h3 {
+    color: var(--azul-escuro);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.grid-acoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.btn-rapido {
+    background: var(--branco);
+    color: var(--azul-escuro);
+    border: 2px solid #e0e0e0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    transition: var(--transicao);
+    text-align: center;
+}
+
+.btn-rapido:hover {
+    border-color: var(--azul-principal);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.1);
+}
+
+.btn-rapido i {
+    font-size: 1.5rem;
+    color: var(--azul-principal);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .container-admin {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .grid-funcionalidades {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card-admin {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-estoque h1 {
+        font-size: 1.3rem;
+    }
+
+    .usuario-info span {
+        display: none;
+    }
+
+    .btn-logout {
+        width: 35px;
+        height: 35px;
+    }
+
+    .grid-acoes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .controle-superior {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .btn-rapido {
+        padding: 1rem;
+    }
+
+    .grid-funcionalidades,
+    .grid-acoes {
+        grid-template-columns: 1fr;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-estoque {
+        padding: 15px;
+    }
+
+    .container-admin {
+        padding: 1.5rem 1rem;
+    }
+
+    .btn-acao {
+        width: 100%;
+        justify-content: center;
+    }
+}
