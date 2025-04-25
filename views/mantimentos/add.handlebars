@@ -3,64 +3,64 @@
 </head>
 
 <header class="header-estoque">
-        <h1><i class="fas fa-box-open"></i> Controle de Estoque</h1>
-        <div class="usuario-info">
-            <span class="emailUser">{{emailUser}}</span>
-            <i class="fas fa-user-circle iconUser"></i>
-        </div>
-    </header>
+    <h1><i class="fas fa-box-open"></i> Controle de Estoque</h1>
+    <div class="usuario-info">
+        <span class="emailUser">{{emailUser}}</span>
+        <i class="fas fa-user-circle iconUser"></i>
+    </div>
+</header>
 
-    <main class="container-estoque">
-        <!-- Botão de voltar para a página do funcionário -->
-        <a href="/admin/mantimentos/all" class="voltar-inicio">
-            <i class="fa-solid fa-left-long"></i> Voltar para a Página de Estoque de Mantimentos
-        </a>
-        <!-- Formulário de Cadastro -->
-        <section class="secao-formulario">
-            <h2><i class="fas fa-plus-circle"></i> Cadastrar Novo Item</h2>
-            <form id="form-produto" action="/admin/mantimentos/add" method="POST">
-                <div class="grupo-input">
-                    <label>Nome do Produto:</label>
-                    <input type="text" id="nome-produto" name="nome" required>
-                </div>
+<main class="container-estoque">
+    <!-- Botão de voltar para a página do funcionário -->
+    <a href="/admin/mantimentos/all" class="voltar-inicio">
+        <i class="fa-solid fa-left-long"></i> Voltar para a Página de Estoque de Mantimentos
+    </a>
+    <!-- Formulário de Cadastro -->
+    <section class="secao-formulario">
+        <h2><i class="fas fa-plus-circle"></i> Cadastrar Novo Item</h2>
+        <form id="form-produto" action="/admin/mantimentos/add" method="POST">
+            <div class="grupo-input">
+                <label>Nome do Produto:</label>
+                <input type="text" id="nome-produto" name="nome" required>
+            </div>
 
-                <div class="grupo-input">
-                    <label>Descrição:</label>
-                    <textarea id="descricao-produto" name="descricao"></textarea>
-                </div>
+            <div class="grupo-input">
+                <label>Descrição:</label>
+                <textarea id="descricao-produto" name="descricao"></textarea>
+            </div>
 
-                <div class="grupo-input">
-                    <label>Categoria:</label>
-                    <select name="categoria" id="categoria-produto">
-                        <option value="alimentos">Alimentos</option>
-                        <option value="bebidas">Bebidas</option>
-                        <option value="pereciveis">Perecíveis</option>
-                    </select>
-                </div>
-                <div class="grupo-input">
-                    <label>Data de entrada:</label>
-                    <input type="date" id="data-produto" name="data" required>
-                </div>
+            <div class="grupo-input">
+                <label>Categoria:</label>
+                <select name="categoria" id="categoria-produto">
+                    <option value="alimentos">Alimentos</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="pereciveis">Perecíveis</option>
+                </select>
+            </div>
+            <div class="grupo-input">
+                <label>Data de entrada:</label>
+                <input type="date" id="data-produto" name="data" required>
+            </div>
 
-                <div class="grupo-input-duplo">
-                    <div>
-                        <label>Quantidade:</label>
-                        <input type="number" name="quantidade" id="quantidade-produto" value="0" min="0" required>
-                    </div>
-                    <div>
-                        <label>Doador:</label>
-                        <input type="text" name="doador" required>
-                    </div>
+            <div class="grupo-input-duplo">
+                <div>
+                    <label>Quantidade:</label>
+                    <input type="number" name="quantidade" id="quantidade-produto" value="0" min="0" required>
                 </div>
+                <div>
+                    <label>Doador:</label>
+                    <input type="text" name="doador" required>
+                </div>
+            </div>
 
-                <div class="botoes-acao">
-                    <button type="submit" class="btn-primario">
-                        <i class="fas fa-save"></i> Cadastrar
-                    </button>
-                    <button type="button" onclick="limparFormulario()" class="btn-secundario">
-                        <i class="fas fa-eraser"></i> Limpar
-                    </button>
-                </div>
-            </form>
-        </section>
-    </main>
+            <div class="botoes-acao">
+                <button type="submit" class="btn-primario">
+                    <i class="fas fa-save"></i> Cadastrar
+                </button>
+                <button type="button" onclick="limparFormulario()" class="btn-secundario">
+                    <i class="fas fa-eraser"></i> Limpar
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
