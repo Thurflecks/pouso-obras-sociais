@@ -45,12 +45,16 @@
             <div class="grupo-input-duplo">
                 <div>
                     <label>Quantidade:</label>
-                    <input type="number" name="quantidade" id="quantidade-produto" value="{{mantimento.quantidade}}"
+                    <input type="number" name="quantidade" id="quantidade-produto" min="1" value="{{mantimento.quantidade}}"
                         required>
                 </div>
                 <div>
                     <label>Doador:</label>
                     <input type="text" name="doador" value="{{mantimento.doador}}" required>
+                </div>
+                <div>
+                    <label>Telefone:</label>
+                    <input type="tel" name="telefoneDoador" id="telefoneDoador" value="{{mantimento.telefoneDoador}}" required>
                 </div>
             </div>
 

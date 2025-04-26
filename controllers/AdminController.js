@@ -3,8 +3,8 @@ const AdminModel = require('../models/Admin');
 module.exports = class AdminController {
     static async homeAdmin(req, res) {
         try {
-            const emailUser = req.session.user.email;
-            res.render('admin/admin', { emailUser });
+            const cpfUser = req.session.user.cpf;
+            res.render('admin/admin', { cpfUser });
         } catch (error) {
             console.log(error, 'erro ao renderizar a página inicial');
         }
@@ -19,22 +19,22 @@ module.exports = class AdminController {
 
     static async loginAcess(req, res) {
         try {
-            const { email, senha } = req.body;
+            const { cpf, senha } = req.body;
             await AdminModel.findOne({
-                where: { email: email, senha: senha }
+                where: { cpf: cpf, senha: senha }
             }).then((admin) => {
                 req.session.user = {
                     id: admin.id_admin,
-                    email: admin.email,
+                    cpf: admin.cpf,
                 }
                 res.redirect("/admin")
             }).catch(erro => {
                 console.log(erro, 'erro ao realizar o login')
-                res.render('admin/loginAdmin', { error: 'Email ou senha incorretos' });
+                res.render('admin/loginAdmin', { error: 'CPF ou senha incorretos' });
             })
         } catch (error) {
             console.log(error, 'erro ao realizar o login');
-            res.render('admin/loginAdmin', { error: 'Email ou senha incorretos' });
+            res.render('admin/loginAdmin', { error: 'CPF ou senha incorretos' });
         }
     }
     static logout(req, res) {

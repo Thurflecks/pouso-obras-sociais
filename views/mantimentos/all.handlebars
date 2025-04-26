@@ -24,9 +24,13 @@
                         <th>Produto</th>
                         <th>Quantidade</th>
                         <th>Doador</th>
+                        <th>Telefone</th>
                         <th>Data</th>
                         <th>Descrição</th>
                         <th>Categoria</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                        <th>Saída</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,12 +39,19 @@
                         <td>{{nome}}</td>
                         <td>{{quantidade}}</td>
                         <td>{{doador}}</td>
+                        <td>{{telefoneDoador}}</td>
                         <td>{{data}}</td>
                         <td>{{descricao}}</td>
                         <td>{{categoria}}</td>
                         <td><a class="actions" href="/admin/mantimentos/edit/{{id}}"><i class='bx bx-edit-alt'></i></a>
                         </td>
                         <td><a class="actions" href="/admin/mantimentos/delete/{{id}}"><i class='bx bx-trash'></i></a>
+                        </td>
+                        <td>
+                            <form action="/admin/mantimentos/saida/{{id}}" method="post" class="formSaida">
+                                <input type="number" name="saida" class="inputSaida" placeholder="Saída" min="1" max={{quantidade}} required>
+                                <button class="buttonSaida" type="submit">RETIRAR</button>
+                            </form>
                         </td>
                     </tr>
                     {{/each}}

@@ -19,6 +19,10 @@ const MantimentosModel = sequelize.define("mantimentos", {
         type: Sequelize.STRING,
         allowNull: false
     },
+    telefoneDoador: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     categoria: {
         type: Sequelize.STRING,
         allowNull: false

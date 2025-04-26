@@ -7,12 +7,16 @@ const AdminModel = sequelize.define("admin", {
         autoIncrement: true,
         allowNull: false
     },
-    email: {
+    cpf: {
         type: Sequelize.STRING,
         allowNull: false
     },
     senha: {
         type: Sequelize.STRING,
+        allowNull: false
+    },
+    nivel: {
+        type: Sequelize.INTEGER,
         allowNull: false
     }
 }, {

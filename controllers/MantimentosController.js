@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const MantimentosModel = require('../models/Mantimentos');
 
 
@@ -16,11 +17,12 @@ module.exports = class MantimentosController {
                     quantidade: mantimento.quantidade,
                     data: dataFormatada,
                     doador: mantimento.doador,
+                    telefoneDoador: mantimento.telefoneDoador,
                     id: mantimento.id_mantimento
                 };
             });
-            const emailUser = req.session.user.email;
-            res.render('mantimentos/all', { mantimentosAjeitados, emailUser });
+            const cpfUser = req.session.user.cpf;
+            res.render('mantimentos/all', { mantimentosAjeitados, cpfUser });
         } catch (error) {
             console.log(error, 'erro ao mostrar o estoque');
         }
@@ -36,29 +38,56 @@ module.exports = class MantimentosController {
         }
     }
 
+    static async saida(req, res) {
+        try {
+            const { id } = req.params;
+            const saida = req.body.saida;
+            const mantimento = await MantimentosModel.findOne({ where: { id_mantimento: id } });
+            await mantimento.update({ quantidade: mantimento.quantidade - saida });
+            try {
+                if (mantimento.quantidade <= 0) {
+                    await mantimento.destroy();
+                }
+            } catch (error) {
+                console.log(error, 'erro ao deletar o mantimento');
+            }                                                                                                                                       
+            res.redirect(`/admin/mantimentos/all`);
+        } catch (error) {
+            console.log(error, 'erro ao atualizar quantidade');
+        }
+    }
+
     static async editar(req, res) {
         try {
             const { id } = req.params;
             const mantimento = await MantimentosModel.findOne({ where: { id_mantimento: id } });
-            const emailUser = req.session.user.email;
-            res.render('mantimentos/edit', { mantimento, emailUser });
+            const cpfUser = req.session.user.cpf;
+            res.render('mantimentos/edit', { mantimento, cpfUser });
         } catch (error) {
-            console.log(error, 'erro ao exibir a pagina de editar o mantimento', );
+            console.log(error, 'erro ao exibir a pagina de editar o mantimento',);
         }
     }
 
     static async editando(req, res) {
         try {
             const { id } = req.params;
-            const { nome, quantidade, doador, data, categoria, descricao } = req.body;
-            await MantimentosModel.update({
+            const { nome, quantidade, doador, data, categoria, descricao, telefoneDoador } = req.body;
+            const mantimento = await MantimentosModel.update({
                 produto: nome,
                 quantidade,
                 doador,
+                telefoneDoador,
                 data,
                 categoria,
                 descricao
             }, { where: { id_mantimento: id } });
+            try {
+                if (mantimento.quantidade === 0) {
+                    mantimento.destroy();
+                }
+            } catch (error) {
+                console.log(error, 'erro ao editar o mantimento');
+            }
             res.redirect('/admin/mantimentos/all');
         } catch (error) {
             console.log(error, 'erro ao editar o mantimento');
@@ -66,21 +95,22 @@ module.exports = class MantimentosController {
     }
 
     static adicionar(req, res) {
-        const emailUser = req.session.user.email;
-        res.render('mantimentos/add', { emailUser });
+        const cpfUser = req.session.user.cpf;
+        res.render('mantimentos/add', { cpfUser });
     }
     static async adicionando(req, res) {
         try {
-            const { nome, quantidade, doador, data, categoria, descricao } = req.body;
+            const { nome, quantidade, doador, data, categoria, descricao, telefoneDoador } = req.body;
             await MantimentosModel.create({
                 produto: nome,
                 quantidade,
                 doador,
+                telefoneDoador,
                 data,
                 categoria,
                 descricao
             });
-            res.redirect('/');
+            res.redirect('/admin/mantimentos/all');
 
         } catch (error) {
             console.log(error);

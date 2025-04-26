@@ -60,7 +60,7 @@ body {
 /* ------------ Container do estoque -------------- */
 
 .container-estoque {
-    max-width: 1000px;
+    max-width: 90%;
     margin: 20px auto;
     padding: 0 20px;
 }
@@ -156,6 +156,31 @@ body {
     color: white;
     background: #dc3545;
     border-radius: 50%;
+}
+.formSaida{
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+}
+.inputSaida{
+    width: 40%;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+.buttonSaida{
+    width: 33%;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    padding: 7px 12px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+    text-decoration: none;
 }
 
 /* ------------ Formulário de Cadastro -------------- */
