@@ -3,7 +3,8 @@ const { Sequelize } = require("sequelize")
 
 const sequelize = new Sequelize("pouso-db", "root", "", {
     host: "localhost",
-    dialect: "mysql"
+    dialect: "mysql",
+    timezone: '-03:00', 
 })
 
 sequelize.authenticate().then(() => {

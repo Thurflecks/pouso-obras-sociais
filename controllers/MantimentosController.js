@@ -50,7 +50,7 @@ module.exports = class MantimentosController {
                 }
             } catch (error) {
                 console.log(error, 'erro ao deletar o mantimento');
-            }                                                                                                                                       
+            }                                                                                                                                    
             res.redirect(`/admin/mantimentos/all`);
         } catch (error) {
             console.log(error, 'erro ao atualizar quantidade');

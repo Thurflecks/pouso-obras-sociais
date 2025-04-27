@@ -1,4 +1,5 @@
 const AdminModel = require('../models/Admin');
+const AdminLoginModel = require('../models/AdminLogins');
 
 module.exports = class AdminController {
     static async homeAdmin(req, res) {
@@ -27,9 +28,13 @@ module.exports = class AdminController {
                     id: admin.id_admin,
                     cpf: admin.cpf,
                 }
+                AdminLoginModel.create({
+                    cpf_admin: cpf,
+                    ip_address: req.ip
+                })
                 res.redirect("/admin")
             }).catch(erro => {
-                console.log(erro, 'erro ao realizar o login')
+                console.log(erro, 'erro')
                 res.render('admin/loginAdmin', { error: 'CPF ou senha incorretos' });
             })
         } catch (error) {
