@@ -1,6 +1,7 @@
 const AdminModel = require('../models/Admin');
 const AdminLoginModel = require('../models/AdminLogins');
 
+
 module.exports = class AdminController {
     static async homeAdmin(req, res) {
         try {

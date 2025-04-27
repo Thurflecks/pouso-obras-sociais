@@ -6,7 +6,7 @@ const FarmaciaController = require('../controllers/FarmaciaController');
 const authenticate = require('../middlewares/authenticate');
 const verifyLogin = require("../middlewares/verifyLogin");
 const AdminLoginsController = require('../controllers/AdminLoginsController');
-
+const ControleMantiController = require('../controllers/ControleMantiController');
 
 //admin
 router.get('/', authenticate, AdminController.homeAdmin);
@@ -33,5 +33,6 @@ router.post('/mantimentos/add', authenticate, MantimentosController.adicionando)
 
 //relatorio 
 router.get('/relatorio/login', authenticate, AdminLoginsController.relatorioLogin);
+router.get('/relatorio/mantimentos', authenticate, ControleMantiController.relatorioControle);
 
 module.exports = router 

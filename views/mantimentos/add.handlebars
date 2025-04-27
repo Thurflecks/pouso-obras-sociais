@@ -39,7 +39,7 @@
             </div>
             <div class="grupo-input">
                 <label>Data de entrada:</label>
-                <input type="date" id="data-produto" name="data" required>
+                <input type="date" id="data-produto" name="data"  max="{{data}}" required>
             </div>
 
             <div class="grupo-input-duplo">
@@ -60,9 +60,6 @@
             <div class="botoes-acao">
                 <button type="submit" class="btn-primario">
                     <i class="fas fa-save"></i> Cadastrar
-                </button>
-                <button type="button" onclick="limparFormulario()" class="btn-secundario">
-                    <i class="fas fa-eraser"></i> Limpar
                 </button>
             </div>
         </form>

@@ -1,6 +1,8 @@
 const { where } = require('sequelize');
 const MantimentosModel = require('../models/Mantimentos');
-
+const ControleMantimentosModel = require('../models/ControleMantimentos');
+const data = new Date().toISOString().slice(0, 10);
+console.log(data)
 
 module.exports = class MantimentosController {
 
@@ -50,7 +52,16 @@ module.exports = class MantimentosController {
                 }
             } catch (error) {
                 console.log(error, 'erro ao deletar o mantimento');
-            }                                                                                                                                    
+            } 
+            await ControleMantimentosModel.create({
+                nome: mantimento.produto,
+                quantidade: saida,
+                doador: mantimento.doador,
+                telefoneDoador: mantimento.telefoneDoador,
+                categoria: mantimento.categoria,
+                descricao: mantimento.descricao,
+                movimentacao: 'Saída'
+            });                                                                                                                                   
             res.redirect(`/admin/mantimentos/all`);
         } catch (error) {
             console.log(error, 'erro ao atualizar quantidade');
@@ -62,7 +73,7 @@ module.exports = class MantimentosController {
             const { id } = req.params;
             const mantimento = await MantimentosModel.findOne({ where: { id_mantimento: id } });
             const cpfUser = req.session.user.cpf;
-            res.render('mantimentos/edit', { mantimento, cpfUser });
+            res.render('mantimentos/edit', { mantimento, cpfUser, data });
         } catch (error) {
             console.log(error, 'erro ao exibir a pagina de editar o mantimento',);
         }
@@ -88,6 +99,15 @@ module.exports = class MantimentosController {
             } catch (error) {
                 console.log(error, 'erro ao editar o mantimento');
             }
+            await ControleMantimentosModel.create({
+                nome,
+                quantidade,
+                doador,
+                telefoneDoador,
+                categoria,
+                descricao,
+                movimentacao: 'Edicão'
+            });
             res.redirect('/admin/mantimentos/all');
         } catch (error) {
             console.log(error, 'erro ao editar o mantimento');
@@ -96,7 +116,7 @@ module.exports = class MantimentosController {
 
     static adicionar(req, res) {
         const cpfUser = req.session.user.cpf;
-        res.render('mantimentos/add', { cpfUser });
+        res.render('mantimentos/add', { cpfUser, data });
     }
     static async adicionando(req, res) {
         try {
@@ -109,6 +129,15 @@ module.exports = class MantimentosController {
                 data,
                 categoria,
                 descricao
+            });
+            await ControleMantimentosModel.create({
+                nome,
+                quantidade,
+                doador,
+                telefoneDoador,
+                categoria,
+                descricao,
+                movimentacao: 'Entrada'
             });
             res.redirect('/admin/mantimentos/all');
 
