@@ -5,6 +5,8 @@ const AdminController = require('../controllers/AdminController');
 const FarmaciaController = require('../controllers/FarmaciaController');
 const authenticate = require('../middlewares/authenticate');
 const verifyLogin = require("../middlewares/verifyLogin");
+const AdminLoginsController = require('../controllers/AdminLoginsController');
+
 
 //admin
 router.get('/', authenticate, AdminController.homeAdmin);
@@ -28,5 +30,8 @@ router.post('/mantimentos/add', authenticate, MantimentosController.adicionando)
 
 
 //farmacia
+
+//relatorio 
+router.get('/relatorio/login', authenticate, AdminLoginsController.relatorioLogin);
 
 module.exports = router 
