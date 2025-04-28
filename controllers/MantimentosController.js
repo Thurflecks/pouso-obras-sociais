@@ -1,8 +1,11 @@
 const { where } = require('sequelize');
 const MantimentosModel = require('../models/Mantimentos');
 const ControleMantimentosModel = require('../models/ControleMantimentos');
-const data = new Date().toISOString().slice(0, 10);
-console.log(data)
+const data = new Date().toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+    .split('/')
+    .reverse()
+    .join('-');
+
 
 module.exports = class MantimentosController {
 

@@ -1,6 +1,4 @@
 const PDFDocument = require('pdfkit');
-const fs = require('fs');
-const path = require('path');
 const AdminLogins = require('../models/AdminLogins');
 
 module.exports = class AdminLoginsController {
@@ -8,9 +6,9 @@ module.exports = class AdminLoginsController {
         try {
             const logins = await AdminLogins.findAll();
             const doc = new PDFDocument({ margin: 50 });
-            const filename = path.join(__dirname, '..', 'temp', 'relatorios', 'relatorio_admin_logins.pdf');
-            const stream = fs.createWriteStream(filename);
-            doc.pipe(stream);
+            res.setHeader('Content-Type', 'application/pdf');
+            res.setHeader('Content-Disposition', 'attachment; filename=relatorio_admin_logins.pdf');
+            doc.pipe(res);
 
             doc.fontSize(22).text('Relatório de Admin Logins', {
                 align: 'center',
@@ -33,11 +31,7 @@ module.exports = class AdminLoginsController {
 
                 doc.moveDown(1.5);
             });
-
             doc.end();
-            stream.on('finish', function () {
-                res.download(filename);
-            });
         } catch (error) {
             console.log(error, 'erro ao gerar o relatório de admin logins');
         }

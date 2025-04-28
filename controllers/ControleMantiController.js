@@ -1,16 +1,15 @@
-const fs = require('fs');
 const PDFDocument = require('pdfkit');
 const ControleMantimentosModel = require('../models/ControleMantimentos');
-const path = require('path')
+
 
 module.exports = class ControleMantimentosController {
     static async relatorioControle(req, res) {
         try {
             const controles = await ControleMantimentosModel.findAll();
             const doc = new PDFDocument({ margin: 50 });
-            const filename = path.join(__dirname, '..', 'temp', 'relatorios', 'relatorio_controle_mantimentos.pdf');
-            const stream = fs.createWriteStream(filename);
-            doc.pipe(stream);
+            res.setHeader('Content-Type', 'application/pdf');
+            res.setHeader('Content-Disposition', 'attachment; filename=relatorio_admin_logins.pdf');
+            doc.pipe(res);
 
             doc.fontSize(22).text('Relatório de Controle de Mantimentos', {
                 align: 'center',
@@ -32,17 +31,14 @@ module.exports = class ControleMantimentosController {
                 doc.text(`Telefone do Doador: `, { continued: true }).font('Helvetica-Bold').text(`${controle.telefoneDoador}`).font('Helvetica');
 
                 doc.moveDown(1);
-                doc.moveTo(doc.x, doc.y) // posição atual
-                    .lineTo(550, doc.y)   // linha até a direita
-                    .stroke();            // desenha a linha
+                doc.moveTo(doc.x, doc.y) 
+                    .lineTo(550, doc.y)  
+                    .stroke();            
 
-                doc.moveDown(1.5); // espaço extra depois de cada registro
+                doc.moveDown(1.5); 
             });
 
             doc.end();
-            stream.on('finish', function () {
-                res.download(filename);
-            });
         } catch (error) {
             console.log(error, 'erro ao gerar o relatório de controle de mantimentos');
         }
