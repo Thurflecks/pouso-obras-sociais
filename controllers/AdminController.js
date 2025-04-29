@@ -28,6 +28,7 @@ module.exports = class AdminController {
                 req.session.user = {
                     id: admin.id_admin,
                     cpf: admin.cpf,
+                    nivel: admin.nivel
                 }
                 AdminLoginModel.create({
                     cpf_admin: cpf,

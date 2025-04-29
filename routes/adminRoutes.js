@@ -7,6 +7,7 @@ const authenticate = require('../middlewares/authenticate');
 const verifyLogin = require("../middlewares/verifyLogin");
 const AdminLoginsController = require('../controllers/AdminLoginsController');
 const ControleMantiController = require('../controllers/ControleMantiController');
+const verifyNivel = require('../middlewares/verifyNivel');
 
 //admin
 router.get('/', authenticate, AdminController.homeAdmin);
@@ -16,7 +17,7 @@ router.post('/login/acess', verifyLogin, AdminController.loginAcess);
 router.get('/logout', authenticate, AdminController.logout);
 
 //mantimentos
-router.get('/mantimentos/all', authenticate, MantimentosController.mostrar );
+router.get('/mantimentos/all', authenticate, verifyNivel, MantimentosController.mostrar );
 
 router.post('/mantimentos/saida/:id', authenticate, MantimentosController.saida);
 
