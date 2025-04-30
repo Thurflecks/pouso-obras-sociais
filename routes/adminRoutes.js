@@ -17,9 +17,9 @@ router.post('/login/acess', verifyLogin, AdminController.loginAcess);
 router.get('/logout', authenticate, AdminController.logout);
 
 //mantimentos
-router.get('/mantimentos/all', authenticate, verifyNivel, MantimentosController.mostrar );
+router.get('/mantimentos/all', authenticate, MantimentosController.mostrar );
 
-router.post('/mantimentos/saida/:id', authenticate, MantimentosController.saida);
+router.post('/mantimentos/saida/:id', authenticate, verifyNivel([3, 4]), MantimentosController.saida);
 
 router.get('/mantimentos/edit/:id', authenticate, MantimentosController.editar);
 router.post('/mantimentos/edit/:id', authenticate, MantimentosController.editando);
