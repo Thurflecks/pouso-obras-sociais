@@ -7,6 +7,10 @@ const ControleMantimentosModel = sequelize.define("controle_mantimentos", {
         autoIncrement: true,
         allowNull: false
     },
+    cpf_admin: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     nome: {
         type: Sequelize.STRING,
         allowNull: false

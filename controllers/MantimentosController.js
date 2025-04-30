@@ -58,6 +58,7 @@ module.exports = class MantimentosController {
             } 
             await ControleMantimentosModel.create({
                 nome: mantimento.produto,
+                cpf_admin: req.session.user.cpf,
                 quantidade: saida,
                 doador: mantimento.doador,
                 telefoneDoador: mantimento.telefoneDoador,
@@ -104,6 +105,7 @@ module.exports = class MantimentosController {
             }
             await ControleMantimentosModel.create({
                 nome,
+                cpf_admin: req.session.user.cpf,
                 quantidade,
                 doador,
                 telefoneDoador,
@@ -135,6 +137,7 @@ module.exports = class MantimentosController {
             });
             await ControleMantimentosModel.create({
                 nome,
+                cpf_admin: req.session.user.cpf,
                 quantidade,
                 doador,
                 telefoneDoador,
