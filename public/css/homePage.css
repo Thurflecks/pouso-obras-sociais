@@ -138,23 +138,25 @@ main {
     width: 100%;
 }
 
-.cta-doacao {
-    background-color: #2793ff;
-    font-size: .88em;
-    color: var(--branco);
-    padding: .45em;
-    border-radius: 1em;
-    font-weight: 500;
-    transition: var(--transicao);
-    border: 2px solid transparent;
+.button-doar {
+    width: 135px;
+    height: 47px;
+    background: #2793FF;
+    color: #fff !important;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
     text-decoration: none;
-    font-weight: 700;
 }
 
-.cta-doacao:hover {
-    background-color: #043c68;
-    color: var(--branco);
-
+.button-doar:hover {
+    background-color: #1A6ED8;
 }
 
 /* Menu Mobile */
@@ -240,7 +242,7 @@ main {
 
 .hero-carousel .splide__arrows {
     position: absolute;
-    min-width:100vw ;
+    min-width: 100vw;
     top: 50%;
     transform: translateX(-50% -50%);
     z-index: 3;
@@ -261,9 +263,11 @@ main {
     font-size: 1.5rem;
     transition: var(--transicao);
 }
-.hero-carousel .splide__arrow svg{
+
+.hero-carousel .splide__arrow svg {
     fill: white;
 }
+
 .hero-carousel .splide__arrow:hover {
     background-color: var(--azul-principal);
 }
@@ -761,11 +765,13 @@ main {
     border: var(--borda);
     box-shadow: var(--sombra);
 }
-.section-title{
+
+.section-title {
     color: var(--azul-escuro);
     font-weight: 800;
     font-size: 1.8em;
 }
+
 .contato-grid {
     display: grid;
     grid-template-columns: 30% 70%;
@@ -777,9 +783,9 @@ main {
     color: var(--azul-principal);
     font-weight: 800;
     padding: 3rem;
-    border:1px solid #003f6372;
+    border: 1px solid #003f6372;
     border-radius: 15px;
-    
+
 }
 
 .info-item {
@@ -824,7 +830,7 @@ main {
     background-color: var(--branco);
     padding: 3rem;
     border-radius: 15px;
-    border:1px solid #003f6372;
+    border: 1px solid #003f6372;
 }
 
 .form-group {
@@ -835,7 +841,7 @@ main {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border:1px solid #003f6372;
+    border: 1px solid #003f6372;
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
@@ -874,7 +880,7 @@ main {
 
 /* Seção Parceiros */
 .parceiros-section {
-    background-color: var(--branco);    
+    background-color: var(--branco);
     margin: 2rem 0;
     padding: 20px;
     background-color: var(--branco);
