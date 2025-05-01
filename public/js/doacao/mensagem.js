@@ -12,10 +12,16 @@ function enviarMensagem(event) {
 
 
     const numero = "5598981212573";
-    const texto = `Nome: ${nome}, Mensagem: ${mensagem}, telefone: ${telefoneOutrasDoacoes}, endereço: ${endereco}, data e hora de disponibilidade: ${dataFormatada}`;
+    const texto =
+        `Olá! Meu nome é ${nome} e gostaria de fazer uma doação para o Pouso.\n\n` +
+        `Data da doação: ${dataFormatada}\n` +
+        `Endereço: ${endereco}\n` +
+        `Telefone: ${telefoneOutrasDoacoes}\n` +
+        `Mensagem: ${mensagem || "Nenhuma mensagem adicional."}`;
 
-    const msgFormatada = encodeURIComponent(texto)
+    const msgFormatada = encodeURIComponent(texto);
     const url = `https://wa.me/${numero}?text=${msgFormatada}`;
+
     console.log(url);
     window.open(url, '_blank');
 

@@ -3,10 +3,10 @@ const SolicitacaoDoacao = require('../models/SolicitacaoDoacao')
 module.exports = class SolicitacaoDoacaoController {
     static async solicitacao(req, res) {
         try {
-            const { nome, telefone, dataDisponibilidade, mensagem, endereco } = req.body;
+            const { nomeOutrasDoacoes, telefoneOutrasDoacoes, dataDisponibilidade, mensagem, endereco } = req.body;
             await SolicitacaoDoacao.create({
-                nome,
-                telefone,
+                nome: nomeOutrasDoacoes,
+                telefone: telefoneOutrasDoacoes,
                 endereco,
                 dataDisponibilidade,
                 mensagem

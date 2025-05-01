@@ -7,12 +7,12 @@
         <a href="/" class="linkLogo"><img src="/assets/logos/logo.png" alt="Logo" class="logo" /></a>
     </div>
     <div class="navbar-right">
-        <a href="index.html">Início</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="servicos.html">Serviços</a>
-        <a href="horarios.html">Horários</a>
-        <a href="contato.html">Contato</a>
-        <a href="eventos.html">Eventos</a>
+        <a href="/">Início</a>
+        <a href="/#sobre">Sobre</a>
+        <a href="/#servicos">Serviços</a>
+        <a href="/#horarios">Horários</a>
+        <a href="/#contato">Contato</a>
+        <a href="/#eventos">Eventos</a>
         <a href="#" class="pgi-link button-doar">Doar agora</a>
     </div>
 </section>
@@ -43,6 +43,13 @@
                 placeholder="Informe o valor da doação" required />
             <button type="submit" class="btn-gerar">Gerar QR Code</button>
         </form>
+        <div id="overlay" onclick="fecharPopup()" style="display:none;"></div>
+        <div id="popup" style="display:none;">
+            <div class="popup-class">
+                <button onclick="fecharPopup()" class="iconClose">x</button>
+            </div>
+            <img src="/assets/img/qrcode.svg" alt="Imagem" class="imgQrcode"><br>
+        </div>
 
         <div class="img-doacao-wrapper">
             <img src="/assets/img/doacao.avif" alt="Doação" class="img-doacao" />
@@ -59,13 +66,13 @@
                 <div class="input-row">
                     <div class="form-group-name">
                         <label for="nome" class="form-label">Nome Completo:</label>
-                        <input type="text" name="nome" placeholder="Informe o seu nome completo" id="nomeOutrasDoacoes"
-                            class="form-input-outras-doacoes " required />
+                        <input type="text" name="nomeOutrasDoacoes" placeholder="Informe o seu nome completo"
+                            id="nomeOutrasDoacoes" class="form-input-outras-doacoes " required />
                     </div>
                     <div class="form-group-wpp">
                         <label for="telefone" class="form-label">WhatsApp:</label>
-                        <input type="text" name="telefone" placeholder="Informe seu WhatsApp" id="telefoneOutrasDoacoes"
-                            class="form-input-outras-doacoes " required />
+                        <input type="text" name="telefoneOutrasDoacoes" placeholder="Informe seu WhatsApp"
+                            id="telefoneOutrasDoacoes" class="form-input-outras-doacoes " required />
                     </div>
                 </div>
 
@@ -149,3 +156,4 @@
     </div>
 </footer>
 <script src="/js/doacao/mensagem.js"></script>
+<script src="/js/doacao/qrcode.js"></script>
