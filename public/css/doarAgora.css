@@ -74,6 +74,9 @@ body {
 .logo {
   width: 120px;
 }
+.linkLogo{
+  text-decoration: none;
+}
 
 /* BOTÃO DOAR */
 .button-doar {
@@ -126,12 +129,12 @@ body {
 }
 
 .pix-image {
-  width: 300px;
+  width: 15.625vw;
   height: 300px;
 }
 
 .img-doacao {
-  width: 400px;
+  width: 20.833vw;
   height: 300px;
   border-radius: 8px;
 }
@@ -177,6 +180,14 @@ body {
   margin-top: 10px;
 }
 
+.btn-gerar:hover {
+  background: #2DAF9A;
+}
+
+.btn-gerar:active {
+  transform: scale(0.95);
+}
+
 .form-section-outras-doacoes {
   width: 100%;
   background-color: var(--branco);
@@ -210,7 +221,7 @@ body {
 }
 
 .btn-enviar-red {
-  width: 100%;
+  width: 40%;
   background: #d93025;
   color: #fff;
   font-size: 18px;
@@ -219,7 +230,19 @@ body {
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 2px #ccc;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-enviar-red:hover {
+  background: #c62828;
+}
+
+.btn-enviar-red:active {
+  transform: scale(0.95);
 }
 
 .input-row {
@@ -297,4 +320,98 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2em;
+}
+
+.return-button-class {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.return-button {
+  width: 90%;
+  height: 50px;
+  background: #32BCAD;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px #ccc;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.return-button:hover {
+  background: #2DAF9A;
+}
+
+.return-button:active {
+  transform: scale(0.95);
+}
+
+/* =================== RESPONSIVIDADE =================== */
+
+@media (max-width: 999px) {
+  .footer {
+    display: none;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .pix-image {
+    display: none;
+  }
+
+  .img-doacao {
+    display: none;
+  }
+
+  .form-card {
+    width: 100%;
+  }
+
+  .section-title {
+    font-size: 24px;
+    text-align: justify;
+    margin-bottom: 10px;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .form-group-name {
+    width: 100%;
+  }
+
+  .form-group-wpp {
+    width: 100%;
+  }
+
+  .btn-enviar-red {
+    width: 100%;
+  }
+
+  .form-note {
+    font-size: 12px;
+    text-align: justify;
+  }
+
+  .return-button-class {
+    display: flex;
+  }
+
 }

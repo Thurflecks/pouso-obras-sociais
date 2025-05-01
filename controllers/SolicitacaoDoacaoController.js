@@ -3,13 +3,12 @@ const SolicitacaoDoacao = require('../models/SolicitacaoDoacao')
 module.exports = class SolicitacaoDoacaoController {
     static async solicitacao(req, res) {
         try {
-            const { nome, email, telefone, data, mensagem, endereco } = req.body;
+            const { nome, telefone, dataDisponibilidade, mensagem, endereco } = req.body;
             await SolicitacaoDoacao.create({
                 nome,
-                email,
                 telefone,
                 endereco,
-                dataDisponibilidade: data,
+                dataDisponibilidade,
                 mensagem
             });
             res.redirect('/doacao');
