@@ -11,12 +11,15 @@ const SolicitacaoDoacaoModel = sequelize.define("solicitacaoDoacao", {
         type: Sequelize.STRING,
         allowNull: false
     },
-    date: {
+    telefone: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    dataDisponibilidade	: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
     },
-    telefone: {
+    endereco: {
         type: Sequelize.STRING,
         allowNull: false
     },

@@ -1,106 +1,120 @@
 <head>
     <link rel="stylesheet" href="/css/doarAgora.css">
 </head>
+
+<!-- Navbar -->
 <section class="navbar">
     <div class="navbar-left">
-        <!-- Logo -->
-        <img src="/assets/img/pouso.jpg" alt="Logo" class="logo">
+        <img src="/assets/logos/logo.png" alt="Logo" class="logo" />
     </div>
-
     <div class="navbar-right">
-        <!-- Links de navegação -->
-        <a href="/">Início</a>
-        <a href="/#sobre">Sobre</a>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
         <a href="servicos.html">Serviços</a>
         <a href="horarios.html">Horários</a>
         <a href="contato.html">Contato</a>
         <a href="eventos.html">Eventos</a>
-
-        <!-- Link para voltar à página inicial -->
-        <a href="/doacao" class="pgi-link button-doar">
-            Doar agora
-        </a>
-    </div>
-
-</section>
-
-<!-- Seção principal -->
-<section class="form-section">
-    <div class="white-box">
-
-        <!-- Imagem do Pix -->
-        <div class="pix-image-wrapper">
-            <img src="/assets/img/pix.png" alt="Pix" class="pix-image">
-        </div>
-
-
-        <!-- Formulário -->
-        <div class="form-card">
-            <label for="nome" class="form-label">Nome completo</label>
-            <input type="text" id="nome" class="form-input">
-
-            <label for="email" class="form-label">E-mail</label>
-            <input type="email" id="email" class="form-input">
-
-            <label for="whatsapp" class="form-label">Número de WhatsApp</label>
-            <input type="text" id="whatsapp" class="form-input">
-
-            <button class="btn-gerar">Gerar QR Code</button>
-        </div>
-
-        <!-- Caixa Azul com Mensagem -->
-        <div class="quote-box">
-            <img src="/assets/img/hero_bg.jpg" alt="Mensagem" class="quote-image">
-        </div>
+        <a href="#" class="pgi-link button-doar">Doar agora</a>
     </div>
 </section>
 
-<!-- Seção de outras formas de doar -->
-
-<section class="form-section">
-    <form class="white-background">
-        <h3 class="section-title">Há outras formas de ajudar! Preencha seus dados abaixo e faça a diferença.</h3>
-
-        <!-- Linha com nome, e-mail e WhatsApp -->
-        <div class="input-row">
-            <input type="text" placeholder="Informe o seu nome completo" class="form-input">
-            <input type="tel" placeholder="Informe seu WhatsApp" class="form-input">
-        </div>
-
-
-        <!-- Campo para Data e Horário de Disponibilidade -->
-        <div class="datetime-wrapper">
-            <div class="form-group">
-                <label for="dataDisponibilidade" class="form-label">Escolha a data e hora que você pretende comparecer
-                    no Pouso para realizar a doação:</label>
-                <input type="datetime-local" id="dataDisponibilidade" class="form-input">
-            </div>
-        </div>
-
-        <!-- Caixa para informações adicionais -->
-        <textarea placeholder="Envie uma mensagem ou informação adicional" class="form-textarea"></textarea>
-
-        <!-- Legenda explicativa abaixo do campo -->
-        <p class="form-note">*Sua solicitação com os dados informados será redirecionada para uma mensagem no WhatsApp
+<section class="container">
+    <!-- Introdução -->
+    <section class="intro">
+        <h2 class="section-title">Faça uma doação</h2>
+        <p class="elegant-text">Sua generosidade transforma vidas. Escolha a forma de doar e contribua com nossa missão.
         </p>
+    </section>
+    <!-- Formulário Pix -->
+    <section class="form-section">
 
-        <!-- Botão vermelho -->
-        <button class="btn-enviar red">Enviar solicitação de Doação</button>
-    </form>
-</div>
+        <!-- Imagem do lado esquerdo (Pix) -->
+        <div class="pix-image-wrapper-left">
+            <img src="/assets/img/pix.png" alt="Pix" class="pix-image" />
+        </div>
+
+        <!-- Formulário centralizado com campos empilhados -->
+        <form id="formulario-pix" method="POST" action="/doacao/add" class="form-card">
+            <label for="nome" class="form-label">Nome completo:</label>
+            <input name="nome" type="text" id="nome" class="form-input" placeholder="Informe o seu nome completo" required />
+
+            <label for="telefone" class="form-label">WhatsApp:</label>
+            <input name="telefone" type="telefone" id="telefone" class="form-input" placeholder="Informe seu WhatsApp" required />
+
+            <label for="valor" class="form-label">Valor da doação:</label>
+            <input name="valor" type="number" id="valor" class="form-input" min="1" placeholder="Informe o valor da doação" required />
+            <button type="submit" class="btn-gerar">Gerar QR Code</button>
+        </form>
+
+        <!-- Imagem do lado direito (Doação) -->
+        <div class="img-doacao-wrapper">
+            <img src="/assets/img/doacao.avif" alt="Doação" class="img-doacao" />
+        </div>
+
+    </section>
+
+    <!-- Outras Formas de Doar -->
+    <section class="form-section-outras-doacoes">
+        <div class="form-card-wrapper">
+            <h3 class="section-title">Mas também há outras formas de doar:</h3>
+
+            <form id="formulario-outras-doacoes" method="POST" action="/doacao/solicitacao">
+                <!-- Nome e WhatsApp -->
+                <div class="input-row">
+                    <div class="form-group-name">
+                        <label for="nome" class="form-label">Nome Completo:</label>
+                        <input type="text" name="nome" placeholder="Informe o seu nome completo"
+                            class="form-input-outras-doacoes " required />
+                    </div>
+                    <div class="form-group-wpp">
+                        <label for="telefone" class="form-label">WhatsApp:</label>
+                        <input type="text" name="telefone" placeholder="Informe seu WhatsApp"
+                            class="form-input-outras-doacoes " required />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="endereco" class="form-label">Endereço:</label>
+                    <input type="text" name="endereco" placeholder="Informe seu Endereço"
+                        class="form-input-outras-doacoes" required />
+                </div>
+
+                <!-- Campo para Data e Hora de Disponibilidade -->
+                <div class="datetime-wrapper">
+                    <div class="form-group">
+                        <label for="dataDisponibilidade" class="form-label">Escolha a data e hora que você pretende
+                            comparecer no
+                            Pouso
+                            para realizar a doação:</label>
+                        <input type="datetime-local" id="data" name="data"
+                            class="form-input-outras-doacoes " min="{{data}}" required />
+                    </div>
+                </div>
+
+                <!-- Caixa para informações adicionais -->
+                <div>
+                    <label for="mensagem" class="form-label">Envie uma mensagem personalizada(opcional):</label>
+                    <textarea name="mensagem" placeholder="Envie uma mensagem ou informação adicional"
+                        class="form-textarea"></textarea>
+                </div>
+                <!-- Legenda explicativa abaixo do campo -->
+                <p class="form-note">*Sua solicitação com os dados informados será redirecionada para uma mensagem no
+                    WhatsApp
+                </p>
+
+                <!-- Botão de envio -->
+                <button type="submit" class="btn-enviar-red">Enviar solicitação de Doação</button>
+            </form>
+        </div>
+    </section>
 </section>
-
-<div>
-    <a href="/" class="btn-voltar-inicio">⬅ Voltar para a Página Inicial</a>
-</div>
-
 
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-columns">
             <div class="footer-col">
-                <img src="/assets/img/pouso.jpg" alt="Logo Pouso" class="footer-logo">
+                <img src="/assets/logos/logo.png" alt="Logo Pouso" class="footer-logo">
                 <div class="footer-info">
                     <p>CNPJ: 00.000.000/0001-00</p>
                     <p>Certificado de Entidade Beneficente</p>
@@ -136,6 +150,8 @@
         </div>
         <div class="footer-bottom">
             <p>© 2025 Pouso: Obras Sociais. Todos direitos reservados.</p>
+            <p>Desenvolvido com ❤️.</p>
         </div>
+
     </div>
 </footer>
