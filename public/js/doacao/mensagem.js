@@ -24,7 +24,7 @@ function enviarMensagem(event) {
 
     console.log(url);
     window.open(url, '_blank');
-
-    document.getElementById('formulario-outras-doacoes').submit();
-
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
 }

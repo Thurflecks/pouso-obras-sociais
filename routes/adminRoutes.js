@@ -35,5 +35,6 @@ router.post('/mantimentos/add', authenticate, MantimentosController.adicionando)
 //relatorio 
 router.get('/relatorio/login', authenticate, AdminLoginsController.relatorioLogin);
 router.get('/relatorio/mantimentos', authenticate, ControleMantiController.relatorioControle);
+router.get('/relatorio/doadores', authenticate, ControleMantiController.relatorioDoadoresMantimentos);
 
 module.exports = router 
