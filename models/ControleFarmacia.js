@@ -1,17 +1,17 @@
 const { Sequelize, sequelize } = require('../db/conn');
 
-const FarmaciaModel = sequelize.define("farmacia", {
-    id_remedio: {
+const ControleFarmaciaModel = sequelize.define("controle_farmacia", {
+    id_controle: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
-    nome: {
+    cpf_admin: {
         type: Sequelize.STRING(255),
         allowNull: false
     },
-    lote: {
+    nome_medicamento: {
         type: Sequelize.STRING(255),
         allowNull: false
     },
@@ -19,37 +19,21 @@ const FarmaciaModel = sequelize.define("farmacia", {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    tipo: {
+    movimentacao: {
         type: Sequelize.STRING(255),
         allowNull: false
     },
-    descricao: {
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    categoria: {
+    lote: {
         type: Sequelize.STRING(255),
         allowNull: false
     },
-    classe_terapeutica: {
-        type: Sequelize.STRING(255),
-        allowNull: false
-    },
-    controleEspecial: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
-    },
-    data_fabricacao: {
-        type: Sequelize.DATEONLY,
-        allowNull: false
-    },
-    data_validade: {
-        type: Sequelize.DATEONLY,
+    data: {
+        type: Sequelize.DATE,
         allowNull: false
     }
 }, {
-    tableName: 'farmacia',
+    tableName: 'controle_farmacia',
     timestamps: false
 });
 
-module.exports = FarmaciaModel;
+module.exports = ControleFarmaciaModel;
