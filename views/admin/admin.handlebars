@@ -5,7 +5,7 @@
     <div class="container-estoque">
         <h1><i class="fas fa-user-shield"></i> Painel Administrativo</h1>
         <div class="usuario-info">
-            <span>{{cpfUser}}</span>
+            <span>{{session.user.cpf}}</span>
             <i class="fas fa-user-circle"></i>
             <a href="/admin/logout" class="btn-logout">
                 <i class="fas fa-sign-out-alt"></i>

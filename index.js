@@ -26,15 +26,27 @@ app.use(
     })
 )
 app.use(session({
+    name: 'session',
     secret: 'pouso9090',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { 
+        secure: false,
+        maxAge: 1000 * 60 * 30,
+        httpOnly: true
+    }
 }));
 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")))
 app.use(flash())
+
+app.use((req, res, next) => {
+    if (req.session.user) {
+        res.locals.session = req.session
+    }
+    next()
+})
 
 app.use("/user", routerUser)
 app.use("/admin", routerAdmin)

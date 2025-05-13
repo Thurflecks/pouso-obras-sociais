@@ -1,12 +1,12 @@
 const AdminModel = require('../models/Admin');
 const AdminLoginModel = require('../models/AdminLogins');
+const bcrypt = require('bcryptjs');
 
 
 module.exports = class AdminController {
     static async homeAdmin(req, res) {
         try {
-            const cpfUser = req.session.user.cpf;
-            res.render('admin/admin', { cpfUser });
+            res.render('admin/admin');
         } catch (error) {
             console.log(error, 'erro ao renderizar a página inicial');
             res.redirect('/admin/login');
@@ -21,29 +21,32 @@ module.exports = class AdminController {
         }
     }
 
-    static async loginAccess(req, res) {
+    static async loginPost(req, res) {
         try {
             const { cpf, senha } = req.body;
-            await AdminModel.findOne({
-                where: { cpf: cpf, senha: senha }
-            }).then((admin) => {
-                req.session.user = {
-                    id: admin.id_admin,
-                    cpf: admin.cpf,
-                    nivel: admin.nivel
-                }
-                AdminLoginModel.create({
-                    cpf_admin: cpf,
-                    ip_address: req.ip
-                })
-                res.redirect("/admin")
-            }).catch(erro => {
-                console.log(erro, 'erro')
+            const admin = await AdminModel.findOne({ where: { cpf: cpf } });
+            if (!admin) {
                 req.flash('message', 'CPF ou senha incorretos');
-                res.render('admin/loginAdmin');
+                return res.render('admin/loginAdmin');
+            }
+            const senhaCorreta = await bcrypt.compare(senha, admin.senha);
 
-                return;
-            })
+            if (!senhaCorreta) {
+                req.flash('message', 'CPF ou senha incorretos');
+                return res.render('admin/loginAdmin');
+            }
+            req.session.user = {
+                id: admin.id_admin,
+                cpf: admin.cpf,
+                nivel: admin.nivel
+            };
+            await AdminLoginModel.create({
+                cpf_admin: cpf,
+                ip_address: req.ip
+            });
+
+            res.redirect("/admin");
+
         } catch (error) {
             console.log(error, 'erro ao realizar o login');
             res.redirect('/admin');
@@ -57,7 +60,7 @@ module.exports = class AdminController {
             res.redirect('/admin/login');
         }
     }
-    static async registerAccess(req, res) {
+    static async registerPost(req, res) {
         try {
             const { cpf, senha, confirmeSenha, nivel } = req.body;
             if (senha !== confirmeSenha) {
@@ -65,13 +68,16 @@ module.exports = class AdminController {
                 return res.render('admin/register');
             }
             const admin = await AdminModel.findOne({ where: { cpf: cpf } });
-    
+
             if (admin) {
                 req.flash('message', 'CPF já cadastrado');
                 return res.render('admin/register');
             }
-            await AdminModel.create({ cpf, senha, nivel });
-    
+            const salt = bcrypt.genSaltSync(10);
+            const senhaHash = bcrypt.hashSync(senha, salt);
+
+            await AdminModel.create({ cpf, senha: senhaHash, nivel });
+
             res.redirect('/admin/login');
         } catch (error) {
             console.log(error, 'Erro ao cadastrar o admin');
@@ -79,7 +85,7 @@ module.exports = class AdminController {
             res.render('admin/register');
         }
     }
-    
+
     static logout(req, res) {
         req.session.destroy();
         res.redirect('/admin/login');

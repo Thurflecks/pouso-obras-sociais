@@ -50,11 +50,13 @@ body {
 .usuario-info {
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
+    gap: 1.5rem;
+    position: relative;
 }
 
 .usuario-info span {
-    margin-right: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 /* ------------ Container do estoque -------------- */

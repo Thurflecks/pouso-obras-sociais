@@ -26,8 +26,7 @@ module.exports = class MantimentosController {
                     id: mantimento.id_mantimento
                 };
             });
-            const cpfUser = req.session.user.cpf;
-            res.render('mantimentos/all', { mantimentosAjeitados, cpfUser });
+            res.render('mantimentos/all', { mantimentosAjeitados });
         } catch (error) {
             console.log(error, 'erro ao mostrar o estoque');
         }
@@ -76,8 +75,7 @@ module.exports = class MantimentosController {
         try {
             const { id } = req.params;
             const mantimento = await MantimentosModel.findOne({ where: { id_mantimento: id } });
-            const cpfUser = req.session.user.cpf;
-            res.render('mantimentos/edit', { mantimento, cpfUser, data });
+            res.render('mantimentos/edit', { mantimento,  data });
         } catch (error) {
             console.log(error, 'erro ao exibir a pagina de editar o mantimento',);
         }
@@ -120,8 +118,7 @@ module.exports = class MantimentosController {
     }
 
     static adicionar(req, res) {
-        const cpfUser = req.session.user.cpf;
-        res.render('mantimentos/add', { cpfUser, data });
+        res.render('mantimentos/add', { data });
     }
     static async adicionando(req, res) {
         try {

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Thurflecks/pouso-obras-sociais",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "connect-flash": "^0.1.1",
     "express": "^5.1.0",
     "express-flash": "^0.0.2",
