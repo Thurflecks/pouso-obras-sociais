@@ -1,0 +1,81 @@
+<head>
+    <link rel="stylesheet" href="/css/AuthAdmin.css" />
+</head>
+
+<section class="navbar">
+    <div class="navbar-left">
+        <img src="/assets/logos/logo.svg" alt="Logo" class="logo" />
+    </div>
+
+    <div class="navbar-right">
+        <a href="/admin" class="pgi-link">
+            <span class="pgi-text">Volte à página de administrador</span>
+        </a>
+    </div>
+</section>
+{{#if messages.message}}
+<div class="erroCpf">
+    <span>{{messages.message}}</span>
+</div>
+{{/if}}
+
+<!-- Formulário de Registro -->
+<section class="login-form">
+    <div class="form-content">
+        <div class="form-left">
+            <h2 class="form-title">Cadastro</h2>
+            <form action="/admin/register" method="post">
+                <div class="input-group">
+                    <label class="labelFormLogin" for="cpf">CPF</label>
+                    <input class="inputformLogin" name="cpf" type="text" id="cpf" placeholder="Digite seu CPF"
+                        required />
+                </div>
+
+                <div class="input-group">
+                    <label class="labelFormLogin" for="senha">Senha</label>
+                    <input class="inputformLogin" name="senha" type="password" id="senha" placeholder="Digite sua senha"
+                        required />
+                </div>
+
+                <div class="input-group">
+                    <label class="labelFormLogin" for="confirmeSenha">Confirmar senha</label>
+                    <input class="inputformLogin" name="confirmeSenha" type="password" id="confirmarSenha"
+                        placeholder="Confirme sua senha" required />
+                </div>
+                <div class="input-group">
+                    <fieldset class="opcoes">
+                        <legend class="legendFormLogin">Nível do admin:</legend>
+                        <label class="radioLabel">
+                            <input type="radio" name="nivel" value="1" class="radioInput">
+                            1
+                        </label>
+                        <label class="radioLabel">
+                            <input type="radio" name="nivel" value="2" class="radioInput">
+                            2
+                        </label>
+                        <label class="radioLabel">
+                            <input type="radio" name="nivel" value="3" class="radioInput">
+                            3
+                        </label>
+                        <label class="radioLabel">
+                            <input type="radio" name="nivel" value="4" class="radioInput">
+                            4
+                        </label>
+                    </fieldset>
+                </div>
+                <button type="submit" class="next-btn">Cadastrar</button>
+            </form>
+        </div>
+
+        <div class="form-right">
+            <figure class="image-with-caption">
+                <img src="/assets/img/login4.jpg" alt="Ilustração Registro" class="login-image" />
+                <figcaption class="caption">Cadastre-se para acessar o sistema</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section class="mobile-back-button">
+    <a href="/" class="back-btn">Voltar à Página Inicial</a>
+</section>

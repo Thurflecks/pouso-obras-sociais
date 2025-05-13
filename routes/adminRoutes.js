@@ -13,7 +13,9 @@ const verifyNivel = require('../middlewares/verifyNivel');
 router.get('/', authenticate, AdminController.homeAdmin);
 
 router.get('/login', verifyLogin, AdminController.login);
-router.post('/login/acess', verifyLogin, AdminController.loginAcess);
+router.post('/login/acess', verifyLogin, AdminController.loginAccess);
+router.get('/register', AdminController.register);
+router.post('/register', AdminController.registerAccess);
 router.get('/logout', authenticate, AdminController.logout);
 
 //mantimentos

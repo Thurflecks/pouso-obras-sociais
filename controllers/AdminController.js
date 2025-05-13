@@ -21,7 +21,7 @@ module.exports = class AdminController {
         }
     }
 
-    static async loginAcess(req, res) {
+    static async loginAccess(req, res) {
         try {
             const { cpf, senha } = req.body;
             await AdminModel.findOne({
@@ -49,6 +49,37 @@ module.exports = class AdminController {
             res.redirect('/admin');
         }
     }
+    static register(req, res) {
+        try {
+            res.render('admin/register');
+        } catch (error) {
+            console.log(error, 'erro ao renderizar a página de registro');
+            res.redirect('/admin/login');
+        }
+    }
+    static async registerAccess(req, res) {
+        try {
+            const { cpf, senha, confirmeSenha, nivel } = req.body;
+            if (senha !== confirmeSenha) {
+                req.flash('message', 'As senhas não coincidem');
+                return res.render('admin/register');
+            }
+            const admin = await AdminModel.findOne({ where: { cpf: cpf } });
+    
+            if (admin) {
+                req.flash('message', 'CPF já cadastrado');
+                return res.render('admin/register');
+            }
+            await AdminModel.create({ cpf, senha, nivel });
+    
+            res.redirect('/admin/login');
+        } catch (error) {
+            console.log(error, 'Erro ao cadastrar o admin');
+            req.flash('message', 'Erro inesperado! Tente novamente.');
+            res.render('admin/register');
+        }
+    }
+    
     static logout(req, res) {
         req.session.destroy();
         res.redirect('/admin/login');

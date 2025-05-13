@@ -326,3 +326,57 @@ body {
     font-weight: 800;
     background-color: aqua;
 }
+.erroCpf{
+    display: flex;
+    justify-content: center;
+}
+.erroCpf span {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    padding: 20px;
+    font-weight: 800;
+    background-color: #357abd;
+    width: 40%;
+    margin-top: 1rem;
+}
+.opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #A3A3A3;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #f8f8f8;
+}
+
+.opcoes .legendFormLogin {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1A3A4D;
+    margin-bottom: 15px;
+    text-decoration: underline;
+    text-decoration-color: #2793ff;
+}
+
+.radioLabel {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #1A3A4D;
+}
+
+.radioInput {
+    margin-right: 10px;
+    transform: scale(1.2);
+    margin-top: -2px;
+}
+
+.radioLabel:hover {
+    color: #2793ff;
+}
+
+.radioLabel input:checked + span {
+    color: #2793ff;
+}

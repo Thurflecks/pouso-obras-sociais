@@ -74,6 +74,9 @@ body {
     justify-content: center;
     transition: var(--transicao);
 }
+a{
+    text-decoration: none;
+}
 
 .btn-logout:hover {
     background: #bb2d3b;
