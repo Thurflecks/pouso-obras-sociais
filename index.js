@@ -8,6 +8,7 @@ const routerBase = require("./routes/baseRoutes")
 const routerUser = require("./routes/usuariosRoutes")
 const routerAdmin = require("./routes/adminRoutes")
 const routerDoacao = require("./routes/doacaoRoutes")
+const flash =  require('express-flash')
 
 app.engine("handlebars", engine({
     defaultLayout: "main",
@@ -33,6 +34,7 @@ app.use(session({
 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")))
+app.use(flash())
 
 app.use("/user", routerUser)
 app.use("/admin", routerAdmin)

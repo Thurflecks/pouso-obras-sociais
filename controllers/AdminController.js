@@ -9,6 +9,7 @@ module.exports = class AdminController {
             res.render('admin/admin', { cpfUser });
         } catch (error) {
             console.log(error, 'erro ao renderizar a página inicial');
+            res.redirect('/admin/login');
         }
     }
     static login(req, res) {
@@ -16,6 +17,7 @@ module.exports = class AdminController {
             res.render('admin/loginAdmin');
         } catch (error) {
             console.log(error, 'erro ao renderizar a página de login');
+            res.redirect('/');
         }
     }
 
@@ -37,11 +39,14 @@ module.exports = class AdminController {
                 res.redirect("/admin")
             }).catch(erro => {
                 console.log(erro, 'erro')
-                res.render('admin/loginAdmin', { error: 'CPF ou senha incorretos' });
+                req.flash('message', 'CPF ou senha incorretos');
+                res.render('admin/loginAdmin');
+
+                return;
             })
         } catch (error) {
             console.log(error, 'erro ao realizar o login');
-            res.render('admin/loginAdmin', { error: 'CPF ou senha incorretos' });
+            res.redirect('/admin');
         }
     }
     static logout(req, res) {

@@ -23,21 +23,22 @@
             <form action="/admin/login/acess" method="post">
                 <div class="input-group">
                     <label class="labelFormLogin" for="cpf">CPF</label>
-                    <input class="inputformLogin" name="cpf" type="cpf" id="cpf" placeholder="Digite seu CPF"
-                        required>
+                    <input class="inputformLogin" name="cpf" type="cpf" id="cpf" placeholder="Digite seu CPF" required>
                 </div>
 
                 <div class="input-group">
                     <label class="labelFormLogin" for="senha">Senha</label>
-                    <input class="inputformLogin" name="senha" type="password" id="senha" maxlength="8" placeholder="Digite sua senha"
-                        required>
+                    <input class="inputformLogin" name="senha" type="password" id="senha" maxlength="8"
+                        placeholder="Digite sua senha" required>
                 </div>
 
                 <a href="#" class="forgot-password">Esqueceu sua senha?</a>
                 <button type="submit" class="next-btn">Login</button>
+                {{#if messages.message}}
                 <div class="erroLogin">
-                    <span >{{error}}</span>
+                    <span>{{messages.message}}</span>
                 </div>
+                {{/if}}
             </form>
         </div>
 

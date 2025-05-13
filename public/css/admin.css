@@ -323,3 +323,17 @@ body {
         justify-content: center;
     }
 }
+.erroNivel{
+    display: flex;
+    justify-content: center;
+}
+.erroNivel span {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    padding: 20px;
+    font-weight: 800;
+    background-color: #357abd;
+    width: 40%;
+    margin-top: 1rem;
+}

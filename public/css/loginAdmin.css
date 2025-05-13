@@ -319,9 +319,10 @@ body {
 
 
 .erroLogin {
-    color: red;
+    color: #fff;
     font-size: 15px;
     text-align: center;
     padding: 20px;
     font-weight: 800;
+    background-color: aqua;
 }
