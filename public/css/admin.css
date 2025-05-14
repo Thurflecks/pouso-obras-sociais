@@ -1,3 +1,15 @@
+:root {
+    --azul-principal: #4a90e2;
+    --azul-escuro: #357abd;
+    --vermelho-destaque: #dc3545;
+    --texto-escuro: #1A3A4D;
+    --cinza-claro: #f5f5f5;
+    --branco: #ffffff;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --transicao: all 0.3s ease;
+
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,33 +17,47 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-:root {
-    --azul-principal: #4a90e2;
-    --azul-escuro: #357abd;
-    --vermelho-destaque: #dc3545;
-    --cinza-claro: #f5f5f5;
-    --branco: #ffffff;
-    --sombra: 0 4px 6px rgba(0, 0, 0, 0.05);
-    --transicao: all 0.3s ease;
+body {
+    background-color: #C8E3FF;
 }
 
 /* Estrutura Base */
-body {
+.admin-body {
     background-color: var(--cinza-claro);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Header - Estilo Farmácia */
-.header-estoque {
-    background: var(--azul-principal);
-    color: var(--branco);
-    padding: 15px 30px;
-    box-shadow: var(--sombra);
+/* Navbar */
+.navbar-admin {
+    background: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1800px;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.nav-logo {
+    width: 80px;
+    height: auto;
+}
+
+.nav-direita {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
 }
 
 .container-header {
@@ -50,11 +76,57 @@ body {
     gap: 0.8rem;
 }
 
-.usuario-info {
+.logo-container {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    position: relative;
+}
+
+.logo-container .nav-logo {
+    width: 120px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+.logo-text h1 {
+    color: var(--texto-escuro);
+    font-size: 1.25rem;
+    margin: 0;
+    font-weight: 800;
+}
+
+.logo-text span {
+    color: var(--cor-secundaria);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Informações do usuário */
+.dados-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.usuario-cpf {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--texto-escuro);
+}
+
+.usuario-cargo {
+    font-size: 0.85rem;
+    color: var(--cor-secundaria);
+}
+
+.usuario-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
 .usuario-info span {
@@ -62,25 +134,23 @@ body {
     font-size: 0.9rem;
 }
 
-.btn-logout {
-    color: var(--branco);
-    background: var(--vermelho-destaque);
-    padding: 0.8rem;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+.nav-voltar-btn {
+    background: var(--cor-terciaria);
+    color: rgb(255, 0, 0);
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: var(--transicao);
-}
-a{
+    gap: 0.5rem;
+    transition: all 0.3s ease;
     text-decoration: none;
 }
 
-.btn-logout:hover {
-    background: #bb2d3b;
+.nav-voltar-btn:hover {
+    background: #d9302d;
+    color: white;
     transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(243, 66, 63, 0.2);
 }
 
 .container-admin {
@@ -89,6 +159,14 @@ a{
     max-width: 1600px;
     margin: 0 auto;
     width: 100%;
+}
+
+/* Controles Principais */
+.controles-principais {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
 }
 
 .controle-superior {
@@ -135,6 +213,7 @@ a{
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
+    grid-auto-rows: 1fr;
 }
 
 .card-admin {
@@ -145,6 +224,8 @@ a{
     border-left: 4px solid var(--azul-principal);
     transition: var(--transicao);
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-admin:hover {
@@ -172,9 +253,10 @@ a{
 }
 
 .card-content {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    justify-content: space-between;
 }
 
 .card-content p {
@@ -187,21 +269,114 @@ a{
     background: var(--azul-principal);
     color: var(--branco);
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 0.8rem !important;
     border-radius: 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.8rem;
     transition: var(--transicao);
-    width: fit-content;
+    width: 100%;
     font-size: 0.95rem;
     text-decoration: none;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* Ajustar ícones nos botões */
+.btn-acao i {
+    font-size: 1.1rem;
 }
 
 .btn-acao:hover {
     background: var(--azul-escuro);
     transform: translateY(-2px);
+}
+
+/* Destaques Específicos */
+.destaque-perfil {
+    border-left-color: var(--azul-principal);
+}
+
+.destaque-perfil .btn-acao {
+    background: #e74c3c;
+}
+
+.destaque-perfil .btn-acao i {
+    color: white;
+}
+
+.destaque-perfil .btn-acao:hover {
+    background: #c0392b;
+}
+
+.botoes-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-excluir {
+    background: #e74c3c
+}
+
+.btn-excluir:hover {
+    background: #c0392b
+}
+
+.btn-excluir i {
+    color: #ffffff;
+}
+
+.btn-alterar-senha {
+    background: #3498db !important;
+}
+
+.btn-alterar-senha:hover {
+    background: #2980b9 !important;
+}
+
+.destaque-deposito {
+    border-left-color: #2ECC71 !important;
+}
+
+.destaque-deposito i,
+.destaque-deposito h2 {
+    color: #2ECC71;
+}
+
+.destaque-deposito .btn-acao {
+    background: #2ECC71;
+}
+
+.destaque-deposito .btn-acao i {
+    color: #ffffff;
+}
+
+.destaque-deposito .btn-acao:hover {
+    background: #27ae60;
+}
+
+.destaque-farmacia {
+    border-left-color: #e74c3c !important;
+}
+
+.destaque-farmacia i,
+.destaque-farmacia h2 {
+    color: #e74c3c;
+}
+
+.destaque-farmacia .btn-acao {
+    background: #e74c3c;
+}
+
+.destaque-farmacia .btn-acao i {
+    color: #ffffff;
+}
+
+.destaque-farmacia .btn-acao:hover {
+    background: #c0392b;
 }
 
 /* Ações Rápidas */
@@ -253,90 +428,264 @@ a{
     color: var(--azul-principal);
 }
 
-/* Responsividade */
-@media (max-width: 1200px) {
-    .container-admin {
-        padding: 2rem 1.5rem;
-    }
-}
-
-@media (max-width: 992px) {
-    .grid-funcionalidades {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .card-admin {
-        padding: 1.2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .header-estoque h1 {
-        font-size: 1.3rem;
-    }
-
-    .usuario-info span {
-        display: none;
-    }
-
-    .btn-logout {
-        width: 35px;
-        height: 35px;
-    }
-
-    .grid-acoes {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 576px) {
-    .controle-superior {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
-
-    .btn-rapido {
-        padding: 1rem;
-    }
-
-    .grid-funcionalidades,
-    .grid-acoes {
-        grid-template-columns: 1fr;
-    }
-
-    .card-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .header-estoque {
-        padding: 15px;
-    }
-
-    .container-admin {
-        padding: 1.5rem 1rem;
-    }
-
-    .btn-acao {
-        width: 100%;
-        justify-content: center;
-    }
-}
-.erroNivel{
+/* ===== NOVO ADMIN ===== */
+.nav-voltar-btn-novo {
+    position: relative;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--texto-escuro);
+    text-decoration: none;
+    padding-bottom: .25rem;
 }
-.erroNivel span {
-    color: #fff;
-    font-size: 15px;
-    text-align: center;
-    padding: 20px;
-    font-weight: 800;
-    background-color: #357abd;
-    width: 40%;
+
+.nav-voltar-btn-novo::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--azul-principal);
+    transition: width 0.3s ease-out;
+}
+
+.nav-voltar-btn-novo:hover::after {
+    width: 100%;
+}
+
+.nav-voltar-btn-novo span {
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: -0.75px;
+}
+
+.formulario-admin {
+    background: var(--branco);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 4px 7px 6px rgba(0, 0, 0, 0.05);
+    border-top: #3498db 2px solid;
+    border-left: #3498db 2px solid;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.titulo-formulario {
+    color: var(--azul-escuro);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 2px solid var(--cinza-claro);
+    padding-bottom: 1rem;
+}
+
+.grupo-formulario {
+    margin-bottom: 1.8rem;
+}
+
+.grupo-formulario label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--texto-escuro);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.grupo-formulario input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--cinza-claro);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transicao);
+}
+
+.grupo-formulario input:focus {
+    border-color: var(--azul-principal);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.btn-cadastro-admin {
+    background: var(--azul-principal);
+    color: var(--branco);
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicao);
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-cadastro-admin:hover {
+    background: var(--azul-escuro);
+    transform: translateY(-2px);
+}
+
+/* Estilos específicos para alteração de senha */
+.titulo-formulario .fa-key {
+    color: var(--azul-principal);
+    font-size: 1.8rem;
+    background: rgba(74, 144, 226, 0.1);
+    padding: 0.25rem;
+    border-radius: 50%;
+}
+
+/* Força de senha*/
+.nivel-seguranca {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.nivel-seguranca span {
+    flex: 1;
+    height: 4px;
+    background: var(--cinza-claro);
+    border-radius: 2px;
+    transition: var(--transicao);
+}
+
+.requisitos-senha {
+    color: #ff0000;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+    margin-top: -1rem;
+}
+
+/* ================= RESPONSIVIDADE COMPLETA - NAVBAR ================= */
+@media (max-width: 992px) {
+    .navbar-admin {
+        padding: 1rem !important;
+        min-height: 160px;
+        /* Limite de 20% da tela */
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 1.5rem !important;
+        align-items: center;
+    }
+
+    /* Linha 1 - Logo + Texto */
+    .logo-container {
+        flex-direction: row;
+        gap: 1.5rem;
+        justify-content: center;
+        text-align: center;
+        order: 1;
+    }
+
+    .nav-logo {
+        width: 120px !important;
+        /* Tamanho aumentado */
+        height: auto;
+    }
+
+    .logo-text h1 {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.3rem;
+    }
+
+    .logo-text span {
+        font-size: 0.9rem !important;
+    }
+
+    /* Linha 2 - Dados do Usuário */
+    .dados-usuario {
+        order: 2;
+        flex-direction: row !important;
+        gap: 2rem;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .usuario-cpf,
+    .usuario-cargo {
+        font-size: 0.95rem !important;
+        white-space: nowrap;
+    }
+
+    /* Linha 3 - Botão */
+    .nav-direita {
+        order: 3;
+        width: 100%;
+        justify-content: center !important;
+        margin-top: 0.5rem;
+    }
+
+    .nav-voltar-btn,
+    .nav-voltar-btn-novo {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        padding: 0.8rem !important;
+        font-size: 1rem !important;
+        margin: 0 auto;
+    }
+}
+
+/* Ajustes para celulares médios (ex: Galaxy S20, iPhone 12) */
+@media (max-width: 576px) {
+    .logo-container {
+        gap: 1rem;
+    }
+
+    .nav-logo {
+        width: 100px !important;
+    }
+
+    .logo-text h1 {
+        font-size: 1.2rem !important;
+    }
+
+    .dados-usuario {
+        gap: 1rem !important;
+        flex-wrap: wrap;
+    }
+
+    .usuario-cpf,
+    .usuario-cargo {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Ajustes para celulares pequenos (ex: iPhone 5/SE) */
+@media (max-width: 400px) {
+    .logo-text h1 {
+        font-size: 1.1rem !important;
+    }
+
+    .logo-text span {
+        font-size: 0.8rem !important;
+    }
+
+    .dados-usuario {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        text-align: center;
+    }
+
+    .nav-voltar-btn,
+    .nav-voltar-btn-novo {
+        max-width: 100%;
+        font-size: 0.9rem !important;
+        padding: 0.7rem !important;
+    }
+
+    .nav-voltar-btn-novo span {
+        font-size: 0.9rem !important;
+    }
 }

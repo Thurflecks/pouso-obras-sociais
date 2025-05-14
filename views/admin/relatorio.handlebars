@@ -1,0 +1,56 @@
+<head>
+    <link rel="stylesheet" href="/css/relatorio.css">
+</head>
+<nav class="navbar-admin">
+    <div class="nav-container">
+        <div class="logo-container">
+            <img src="/assets/logos/logo.svg" alt="Pouso Obras Sociais" class="nav-logo">
+        </div>
+        <div class="nav-direita">
+            <a href="/admin" class="nav-voltar-btn">
+                <i class="fas fa-arrow-left"></i>
+                Voltar ao Painel Administrativo
+            </a>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <section class="lista-itens">
+        <div class="relatorio-box">
+            <h2 class="titulo-relatorio"><i class="fas fa-file-alt"></i> Gerar Relatórios</h2>
+            <div class="relatorios-container">
+                <div class="coluna-relatorios">
+
+                    <!-- Card 1 - Logins -->
+                    <a href="/admin/relatorio/login" class="card-relatorio">
+                        <i class="fas fa-user-lock"></i>
+                        <h2>Relatório de Acessos</h2>
+                        <p>Registro de acesso dos administradores</p>
+                    </a>
+
+                    <!-- Relatório de Estoque -->
+                    <a href="/admin/relatorio/mantimentos" class="card-relatorio destaque-estoque">
+                        <i class="fas fa-boxes"></i>
+                        <h2>Movimentação de Estoque</h2>
+                        <p>Entrada e saída de itens do depósito</p>
+                    </a>
+                    <a href="/admin/relatorio/doadores" class="card-relatorio destaque-farmacia">
+                        <i class="fas fa-heart"></i>
+                        <h2>Controle Doadores</h2>
+                        <p>Controle de Doadores de Mantimentos</p>
+                    </a>
+
+                    <!-- Relatório Farmácia -->
+                    <a href="#" class="card-relatorio destaque-farmacia">
+                        <i class="fas fa-prescription-bottle"></i>
+                        <h2>Controle Farmacêutico</h2>
+                        <p>Controle de medicamentos e insumos</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>

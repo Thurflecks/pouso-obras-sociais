@@ -1,0 +1,100 @@
+<head>
+    <link rel="stylesheet" href="/css/mantimento.css">
+</head>
+<nav class="navbar-admin">
+    <div class="nav-container">
+        <!-- Logo à Esquerda -->
+        <div class="logo-container">
+            <img src="/assets/logos/logo.svg" alt="Pouso Obras Sociais" class="nav-logo">
+        </div>
+
+        <!-- Botões à direita -->
+        <div class="nav-direita">
+            <a href="/admin" class="nav-voltar-btn">
+                <i class="fas fa-arrow-left"></i>
+                Voltar ao Painel Administrativo
+            </a>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+
+    <!-- Card de DoaçÕes-->
+    <div class="lateral-direita">
+
+        <!-- Card de Estoque -->
+        <div class="card-quantidade">
+            <div class="quantidade-header">
+                <i class="fas fa-boxes"></i>
+                <div>
+                    <h3>Itens cadastrados</h3>
+                    <span class="quantidade-valor">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lista de Itens -->
+    <section class="lista-itens">
+        <div class="items-box">
+
+            <!-- Barra de pesquisar e botão de adicionar-->
+            <div class="controle-superior">
+                <div class="barra-pesquisa">
+                    <input type="text" placeholder="Pesquisar item..." class="input-pesquisa">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                </div>
+                <div class="voltar-inicio">
+                    <a href="/admin/mantimentos/add" class="btn-adicionar">
+                        Adicionar Item
+                    </a>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-list-ul"></i> Últimas Entradas</h2>
+            <div class="itens-container">
+
+
+                <div class="item-lista">
+                    {{#each mantimentosAjeitados}}
+                    <div class="item-cabecalho">
+                        <div class="item-info-principal">
+                            <div class="item-meta">
+                                <span class="item-nome">{{nome}}</span>
+                                <span class="item-categoria">{{categoria}}</span>
+                            </div>
+                            <div class="item-descricao">
+                                {{descricao}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-detalhes">
+                        <div class="item-info">
+                            <p><i class="fas fa-user"></i> Doador: {{doador}}</p>
+                            <p><i class="fas fa-calendar"></i> Data: {{data}}</p>
+                            <p><i class="fas fa-phone"></i> Contato: {{telefoneDoador}}</p>
+                            <p><i class="fas fa-box"></i> Quantidade: {{quantidade}}</p>
+                        </div>
+
+                        <div class="item-acoes">
+                            <div class="btn-group">
+                                <a href="/admin/mantimentos/edit/{{id}}" class="btn-editar"><i class="fas fa-edit"></i>
+                                    Editar</a>
+                                <a href="/admin/mantimentos/delete/{{id}}" class="btn-deletar"><i
+                                        class="fas fa-trash"></i> Deletar</a>
+                            </div>
+                            <form action="/admin/mantimentos/saida/{{id}}" method="post" class="saida-group">
+                                <input type="number" name="saida" class="item-saida" placeholder="Saída" min="1"
+                                    max={{quantidade}} required>
+                                <button class="btn-saida" type="submit">RETIRAR</button>
+                            </form>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

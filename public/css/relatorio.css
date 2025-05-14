@@ -1,0 +1,194 @@
+:root {
+    --cor-primaria: #2793ff;
+    --cor-secundaria: #0773FF;
+    --cor-terciaria: #F3423F;
+    --fundo-claro: #f9f9f9;
+    --texto-escuro: #1A3A4D;
+    --borda: #ecf0f1;
+}
+
+/* Reset e Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background: var(--fundo-claro);
+    color: var(--texto-escuro);
+    line-height: 1.6;
+}
+
+/* Navbar Admin */
+.navbar-admin {
+    background: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1800px;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.logo-container .nav-logo {
+    width: 120px;
+    height: auto;
+}
+
+.nav-direita {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.nav-voltar-btn {
+    position: relative;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--texto-escuro);
+    text-decoration: none;
+    padding-bottom: .25rem;
+    margin-left: auto;
+}
+
+.nav-voltar-btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--cor-primaria);
+    transition: width 0.3s ease-out;
+}
+
+.nav-voltar-btn:hover::after {
+    width: 100%;
+}
+
+/* Container Principal */
+.container-relatorios {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.relatorio-box {
+    background: #ffffff;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+/* Título centralizado */
+.titulo-relatorio {
+    text-align: center;
+    color: var(--texto-escuro);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.titulo-relatorio i {
+    margin-right: 1rem;
+}
+
+/* Coluna de relatórios */
+.coluna-relatorios {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Cards de Relatório */
+.card-relatorio {
+    background: #ffffff;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--cor-primaria);
+    cursor: pointer;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.card-relatorio:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Conteúdo dos Cards */
+.card-relatorio i {
+    font-size: 2.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 1rem;
+}
+
+.card-relatorio h2 {
+    color: var(--texto-escuro);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.card-relatorio p {
+    color: var(--texto-escuro);
+    opacity: 0.9;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Destaques Visuais */
+.destaque-farmacia {
+    border-left-color: #2587ea;
+}
+
+.destaque-estoque {
+    border-left-color: #2279d0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container-relatorios {
+        padding: 1rem;
+    }
+
+    .relatorios-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .card-relatorio {
+        min-height: auto;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-admin {
+        padding: 0.75rem;
+    }
+
+    .nav-logo {
+        width: 100px !important;
+    }
+}

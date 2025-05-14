@@ -32,7 +32,7 @@ const MantimentosModel = sequelize.define("mantimentos", {
         allowNull: false
     },
     data: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false
     }
 }, {

@@ -14,27 +14,29 @@ router.get('/', authenticate, AdminController.homeAdmin);
 
 router.get('/login', verifyLogin, AdminController.login);
 router.post('/login/acess', verifyLogin, AdminController.loginPost);
-router.get('/register', AdminController.register);
-router.post('/register', AdminController.registerPost);
+router.get('/register', authenticate, verifyNivel([4]), AdminController.register);
+router.post('/register', authenticate, verifyNivel([4]), AdminController.registerPost);
+router.get('/edit', authenticate, AdminController.edit);
 router.get('/logout', authenticate, AdminController.logout);
 
 //mantimentos
-router.get('/mantimentos/all', authenticate, MantimentosController.mostrar );
+router.get('/mantimentos/show', authenticate, MantimentosController.show );
 
 router.post('/mantimentos/saida/:id', authenticate, verifyNivel([2, 3, 4]), MantimentosController.saida);
 
 router.get('/mantimentos/edit/:id', authenticate, MantimentosController.editar);
-router.post('/mantimentos/edit/:id', authenticate, MantimentosController.editando);
+router.post('/mantimentos/edit/:id', authenticate, MantimentosController.editarPost);
 
 router.get('/mantimentos/delete/:id', authenticate, MantimentosController.deletar);
 
 router.get('/mantimentos/add', authenticate, MantimentosController.adicionar);
-router.post('/mantimentos/add', authenticate, MantimentosController.adicionando);
+router.post('/mantimentos/add', authenticate, MantimentosController.adicionarPost);
 
 
 //farmacia
 
 //relatorio 
+router.get('/relatorio', authenticate, AdminController.relatorio);
 router.get('/relatorio/login', authenticate, AdminLoginsController.relatorioLogin);
 router.get('/relatorio/mantimentos', authenticate, ControleMantiController.relatorioControle);
 router.get('/relatorio/doadores', authenticate, ControleMantiController.relatorioDoadoresMantimentos);

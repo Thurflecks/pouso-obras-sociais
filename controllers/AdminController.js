@@ -85,6 +85,22 @@ module.exports = class AdminController {
             res.render('admin/register');
         }
     }
+    static async relatorio(req, res) {
+        try {
+            res.render('admin/relatorio');
+        } catch (error) {
+            console.log(error, 'erro ao renderizar a página de relatorio');
+            res.redirect('/admin/login');
+        }
+    }
+    static async edit(req, res) {
+        try {
+            res.render('admin/edit');
+        } catch (error) {
+            console.log(error, 'erro ao renderizar a página de edição');
+            res.redirect('/admin/login');
+        }
+    }
 
     static logout(req, res) {
         req.session.destroy();

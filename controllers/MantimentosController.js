@@ -1,32 +1,31 @@
 const { where } = require('sequelize');
 const MantimentosModel = require('../models/Mantimentos');
 const ControleMantimentosModel = require('../models/ControleMantimentos');
-const data = new Date().toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' })
-    .split('/')
-    .reverse()
-    .join('-');
-
+const dataAtual = new Date().toLocaleDateString('fr-CA', {
+    timeZone: 'America/Sao_Paulo'
+  });
+  
+console.log(dataAtual);
 
 module.exports = class MantimentosController {
 
-    static async mostrar(req, res) {
+    static async show(req, res) {
         try {
             const mantimentos = await MantimentosModel.findAll();
             const mantimentosAjeitados = mantimentos.map(mantimento => {
-                const dataFormatada = new Date(mantimento.data).toLocaleDateString('pt-BR');
                 return {
                     ...mantimento.dataValues,
                     nome: mantimento.produto,
                     descricao: mantimento.descricao,
                     categoria: mantimento.categoria,
                     quantidade: mantimento.quantidade,
-                    data: dataFormatada,
+                    data: mantimento.data,
                     doador: mantimento.doador,
                     telefoneDoador: mantimento.telefoneDoador,
                     id: mantimento.id_mantimento
                 };
             });
-            res.render('mantimentos/all', { mantimentosAjeitados });
+            res.render('mantimentos/show', { mantimentosAjeitados });
         } catch (error) {
             console.log(error, 'erro ao mostrar o estoque');
         }
@@ -36,7 +35,7 @@ module.exports = class MantimentosController {
         try {
             const { id } = req.params;
             await MantimentosModel.destroy({ where: { id_mantimento: id } });
-            res.redirect('/admin/mantimentos/all');
+            res.redirect('/admin/mantimentos/show');
         } catch (error) {
             console.log(error, 'erro ao deletar o mantimento');
         }
@@ -54,7 +53,7 @@ module.exports = class MantimentosController {
                 }
             } catch (error) {
                 console.log(error, 'erro ao deletar o mantimento');
-            } 
+            }
             await ControleMantimentosModel.create({
                 nome: mantimento.produto,
                 cpf_admin: req.session.user.cpf,
@@ -64,8 +63,8 @@ module.exports = class MantimentosController {
                 categoria: mantimento.categoria,
                 descricao: mantimento.descricao,
                 movimentacao: 'Saída'
-            });                                                                                                                                   
-            res.redirect(`/admin/mantimentos/all`);
+            });
+            res.redirect(`/admin/mantimentos/show`);
         } catch (error) {
             console.log(error, 'erro ao atualizar quantidade');
         }
@@ -75,16 +74,17 @@ module.exports = class MantimentosController {
         try {
             const { id } = req.params;
             const mantimento = await MantimentosModel.findOne({ where: { id_mantimento: id } });
-            res.render('mantimentos/edit', { mantimento,  data });
+            res.render('mantimentos/edit', { mantimento, dataAtual });
         } catch (error) {
             console.log(error, 'erro ao exibir a pagina de editar o mantimento',);
         }
     }
 
-    static async editando(req, res) {
+    static async editarPost(req, res) {
         try {
             const { id } = req.params;
             const { nome, quantidade, doador, data, categoria, descricao, telefoneDoador } = req.body;
+            console.log('oi to aqui')
             const mantimento = await MantimentosModel.update({
                 produto: nome,
                 quantidade,
@@ -94,6 +94,7 @@ module.exports = class MantimentosController {
                 categoria,
                 descricao
             }, { where: { id_mantimento: id } });
+            console.log(data)
             try {
                 if (mantimento.quantidade === 0) {
                     mantimento.destroy();
@@ -109,18 +110,18 @@ module.exports = class MantimentosController {
                 telefoneDoador,
                 categoria,
                 descricao,
-                movimentacao: 'Edicão'
+                movimentacao: 'Edição'
             });
-            res.redirect('/admin/mantimentos/all');
+            res.redirect('/admin/mantimentos/show');
         } catch (error) {
             console.log(error, 'erro ao editar o mantimento');
         }
     }
 
     static adicionar(req, res) {
-        res.render('mantimentos/add', { data });
+        res.render('mantimentos/add', { dataAtual });
     }
-    static async adicionando(req, res) {
+    static async adicionarPost(req, res) {
         try {
             const { nome, quantidade, doador, data, categoria, descricao, telefoneDoador } = req.body;
             await MantimentosModel.create({
@@ -142,7 +143,7 @@ module.exports = class MantimentosController {
                 descricao,
                 movimentacao: 'Entrada'
             });
-            res.redirect('/admin/mantimentos/all');
+            res.redirect('/admin/mantimentos/show');
 
         } catch (error) {
             console.log(error);

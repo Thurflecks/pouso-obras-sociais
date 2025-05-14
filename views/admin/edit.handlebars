@@ -1,0 +1,64 @@
+<head><link rel="stylesheet" href="/css/admin.css"></head>
+<nav class="navbar-admin">
+    <div class="nav-container">
+        <div class="logo-container">
+            <img src="/assets/logos/logo.svg" alt="Pouso Obras Sociais" class="nav-logo">
+            <div class="logo-text">
+                <h1>Painel Administrativo</h1>
+                <span>Sistema de Gestão Integrada</span>
+            </div>
+        </div>
+
+        <div class="nav-direita">
+            <div class="usuario-info">
+                <div class="dados-usuario">
+                    <span class="usuario-cpf">CPF: {{session.user.cpf}}</span>
+                    <span class="usuario-cargo">Cargo: </span>
+                </div>
+                <a href="/admin" class="nav-voltar-btn-novo">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Voltar ao Painel Administrativo</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="container-admin">
+    <form class="formulario-admin" action="/admin/edit" method="POST">  
+        <div class="titulo-formulario">
+            <i class="fas fa-key"></i>
+            <h2>Alteração de Senha</h2>
+        </div>
+
+        <div class="grupo-formulario">
+            <label for="senha-atual"><i class="fas fa-lock"></i> Senha Atual</label>
+            <input type="password" id="senha-atual" placeholder="Digite sua senha atual" required>
+        </div>
+
+        <div class="grupo-formulario">
+            <label for="nova-senha"><i class="fas fa-lock"></i> Nova Senha</label>
+            <input type="password" id="nova-senha" placeholder="Crie uma nova senha" required>
+        </div>
+
+        <div class="grupo-formulario">
+            <label for="confirmar-senha"><i class="fas fa-lock"></i> Confirmar Senha</label>
+            <input type="password" id="confirmar-senha" placeholder="Repita a nova senha" required>
+        </div>
+
+        <div class="requisitos-senha">
+            <p>A senha deve conter:</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Mínimo 8 caracteres</li>
+                <li><i class="fas fa-check-circle"></i> Pelo menos 1 número</li>
+                <li><i class="fas fa-check-circle"></i> 1 caractere especial</li>
+            </ul>
+        </div>
+
+        <button type="submit" class="btn-cadastro-admin">
+            <i class="fas fa-save"></i>
+            Atualizar Senha
+        </button>
+
+    </form>
+</main>
