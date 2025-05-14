@@ -323,7 +323,8 @@ body {
     text-align: center;
     padding: 20px;
     font-weight: 800;
-    background-color: aqua;
+    background-color: #357abd;
+    margin: 1rem;
 }
 .erroCpf{
     display: flex;

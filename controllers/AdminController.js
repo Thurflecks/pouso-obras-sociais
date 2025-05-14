@@ -28,14 +28,14 @@ module.exports = class AdminController {
 
             if (!admin) {
                 req.flash('message', 'CPF ou senha incorretos');
-                return res.status(401).render('admin/loginAdmin');
+                return res.status(401).redirect('/admin/login');
             }
 
             const senhaCorreta = await bcrypt.compare(senha, admin.senha);
 
             if (!senhaCorreta) {
                 req.flash('message', 'CPF ou senha incorretos');
-                return res.status(401).render('admin/loginAdmin');
+                return res.status(401).redirect('/admin/login');
             }
 
             req.session.user = {
@@ -52,6 +52,7 @@ module.exports = class AdminController {
             res.redirect("/admin");
         } catch (error) {
             console.log(error, 'erro ao realizar o login');
+            req.flash('message', 'Erro ao realizar o login');
             res.status(500).redirect('/admin/login');
         }
     }

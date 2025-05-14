@@ -17,7 +17,7 @@
 }
 
 body {
-    background: var(--fundo-claro);
+    background-color: #C8E3FF;
     color: var(--texto-escuro);
     line-height: 1.6;
 }
