@@ -37,6 +37,11 @@
 
     <!-- Lista de Itens -->
     <section class="lista-itens">
+        {{#if messages.message}}
+        <div class="erroNivel">
+            <span>{{messages.message}}</span>
+        </div>
+        {{/if}}
         <div class="items-box">
 
             <!-- Barra de pesquisar e botão de adicionar-->

@@ -40,6 +40,7 @@ module.exports = class ControleMantimentosController {
             doc.end();
         } catch (error) {
             console.log(error, 'erro ao gerar o relatório de controle de mantimentos');
+            res.status(500).redirect('/admin/relatorios');
         }
     }
     static async relatorioDoadoresMantimentos(req, res) {
@@ -72,6 +73,7 @@ module.exports = class ControleMantimentosController {
             doc.end();
         } catch (error) {
             console.log(error, 'erro ao gerar o relatório de doadores de mantimentos');
+            res.status(500).redirect('/admin/relatorios');
         }
     }
 }

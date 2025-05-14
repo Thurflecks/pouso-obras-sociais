@@ -1,4 +1,6 @@
-<head><link rel="stylesheet" href="/css/admin.css"></head>
+<head>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
 <nav class="navbar-admin">
     <div class="nav-container">
         <!-- Logo -->
@@ -15,7 +17,7 @@
             <div class="usuario-info">
                 <div class="dados-usuario">
                     <span class="usuario-cpf">CPF: {{session.user.cpf}}</span>
-                    <span class="usuario-cargo">Nível: {{session.user.nivel}}</span>
+                    <span class="usuario-nivel">Nível: {{session.user.nivel}}</span>
                 </div>
                 <a href="/admin/logout" class="nav-voltar-btn">
                     <i class="fas fa-sign-out-alt"></i>
@@ -32,7 +34,7 @@
     <section class="secao-principal">
         <div class="controle-superior">
             <a href="/" class="voltar-inicio">
-                <i class="fa-solid fa-arrow-left"></i> Voltar ao Início
+                <i class="fa-solid fa-arrow-left"></i> Voltar a Página Inicial
             </a>
             <div class="status-sistema">
                 <span class="online-indicator"></span>
@@ -40,6 +42,11 @@
             </div>
         </div>
 
+        {{#if messages.message}}
+        <div class="erroNivel">
+            <span>{{messages.message}}</span>
+        </div>
+        {{/if}}
         <!-- Cards de Funcionalidades -->
         <div class="grid-funcionalidades">
             <article class="card-admin destaque-perfil">
@@ -186,9 +193,3 @@
     </div>
     </section>
 </main>
-
-{{#if messages.message}}
-<div class="erroNivel">
-    <span>{{messages.message}}</span>
-</div>
-{{/if}}

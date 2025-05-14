@@ -17,9 +17,13 @@
 }
 
 body {
-    background: var(--fundo-claro);
+    background-color: #C8E3FF;
     color: var(--texto-escuro);
     line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Navbar */
@@ -291,10 +295,6 @@ body {
     gap: 1rem;
 }
 
-.item-lista:hover {
-    transform: translateX(5px);
-}
-
 .item-cabecalho {
     display: flex;
     justify-content: space-between;
@@ -400,6 +400,7 @@ body {
     background: var(--cor-primaria);
     color: white;
     border: 2px solid var(--cor-primaria);
+    text-decoration: none;
 }
 
 .btn-editar:hover {
@@ -411,6 +412,7 @@ body {
     background: var(--cor-terciaria);
     color: white;
     border: 2px solid var(--cor-terciaria);
+    text-decoration: none;
 }
 
 .btn-deletar:hover {
@@ -590,6 +592,22 @@ body {
     background: var(--cor-secundaria);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(39, 147, 255, 0.2);
+}
+
+.erroNivel {
+    display: flex;
+    justify-content: center;
+}
+
+.erroNivel span {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    padding: 20px;
+    font-weight: 800;
+    background-color: #357abd;
+    width: 40%;
+    margin: 1rem;
 }
 
 /* ========== RESPONSIVIDADE OTIMIZADA ========== */

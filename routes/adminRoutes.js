@@ -13,7 +13,7 @@ const verifyNivel = require('../middlewares/verifyNivel');
 router.get('/', authenticate, AdminController.homeAdmin);
 
 router.get('/login', verifyLogin, AdminController.login);
-router.post('/login/acess', verifyLogin, AdminController.loginPost);
+router.post('/login', verifyLogin, AdminController.loginPost);
 router.get('/register', authenticate, verifyNivel([4]), AdminController.register);
 router.post('/register', authenticate, verifyNivel([4]), AdminController.registerPost);
 router.get('/edit', authenticate, AdminController.edit);

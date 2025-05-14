@@ -20,6 +20,9 @@
 body {
     background-color: #C8E3FF;
 }
+a {
+    text-decoration: none;
+}
 
 /* Estrutura Base */
 .admin-body {
@@ -113,14 +116,14 @@ body {
 }
 
 .usuario-cpf {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--texto-escuro);
 }
 
-.usuario-cargo {
-    font-size: 0.85rem;
-    color: var(--cor-secundaria);
+.usuario-nivel {
+    font-size: 1rem;
+    color: var(--texto-escuro);
 }
 
 .usuario-info {
@@ -144,10 +147,11 @@ body {
     gap: 0.5rem;
     transition: all 0.3s ease;
     text-decoration: none;
+    border: 1px solid rgb(255, 0, 0);
 }
 
 .nav-voltar-btn:hover {
-    background: #d9302d;
+    background-color: #d9302d;
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(243, 66, 63, 0.2);
@@ -226,12 +230,9 @@ body {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-}
-
-.card-admin:hover {
-    transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
+
 
 .card-header {
     display: flex;
@@ -562,6 +563,22 @@ body {
     font-size: 0.9rem;
     margin-left: 1rem;
     margin-top: -1rem;
+}
+
+.erroNivel {
+    display: flex;
+    justify-content: center;
+}
+
+.erroNivel span {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    padding: 20px;
+    font-weight: 800;
+    background-color: #357abd;
+    width: 40%;
+    margin: 1rem;
 }
 
 /* ================= RESPONSIVIDADE COMPLETA - NAVBAR ================= */

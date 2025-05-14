@@ -3,9 +3,8 @@ const MantimentosModel = require('../models/Mantimentos');
 const ControleMantimentosModel = require('../models/ControleMantimentos');
 const dataAtual = new Date().toLocaleDateString('fr-CA', {
     timeZone: 'America/Sao_Paulo'
-  });
-  
-console.log(dataAtual);
+});
+
 
 module.exports = class MantimentosController {
 
@@ -28,6 +27,7 @@ module.exports = class MantimentosController {
             res.render('mantimentos/show', { mantimentosAjeitados });
         } catch (error) {
             console.log(error, 'erro ao mostrar o estoque');
+            res.status(500).redirect('/admin');
         }
     }
 
@@ -38,6 +38,7 @@ module.exports = class MantimentosController {
             res.redirect('/admin/mantimentos/show');
         } catch (error) {
             console.log(error, 'erro ao deletar o mantimento');
+            res.status(500).redirect('/admin/mantimentos/show');
         }
     }
 
@@ -67,6 +68,7 @@ module.exports = class MantimentosController {
             res.redirect(`/admin/mantimentos/show`);
         } catch (error) {
             console.log(error, 'erro ao atualizar quantidade');
+            res.status(500).redirect('/admin/mantimentos/show');
         }
     }
 
@@ -77,6 +79,7 @@ module.exports = class MantimentosController {
             res.render('mantimentos/edit', { mantimento, dataAtual });
         } catch (error) {
             console.log(error, 'erro ao exibir a pagina de editar o mantimento',);
+            res.status(500).redirect('/admin/mantimentos/show');
         }
     }
 
@@ -147,7 +150,7 @@ module.exports = class MantimentosController {
 
         } catch (error) {
             console.log(error);
-            res.send('erro ao adicionar o alimento');
+            res.status(500).redirect('/admin/mantimentos/show');
         }
     }
 }

@@ -34,6 +34,7 @@ module.exports = class AdminLoginsController {
             doc.end();
         } catch (error) {
             console.log(error, 'erro ao gerar o relatório de admin logins');
+            res.status(500).redirect('/admin/relatorios');
         }
     }
 }

@@ -2,6 +2,11 @@
 
 module.exports = class BaseController {
     static home(req, res) {
-        res.render('base/home')
+        try {
+            res.render('base/home')
+        } catch (error) {
+            console.log(error, 'erro ao renderizar a página inicial');
+            res.status(500).redirect('/');
+        }
     }
 }
