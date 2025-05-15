@@ -21,6 +21,7 @@ module.exports = class AdminLoginsController {
                 const dataFormatada = `${dataHora.toLocaleDateString('pt-BR')} ${dataHora.toLocaleTimeString('pt-BR')}`;
 
                 doc.fontSize(14).text(`CPF do Admin: `, { continued: true }).font('Helvetica-Bold').text(`${login.cpf_admin}`).font('Helvetica');
+                doc.text(`Nome do Admin: `, { continued: true }).font('Helvetica-Bold').text(`${login.nome_admin}`).font('Helvetica');
                 doc.text(`Data do Login: `, { continued: true }).font('Helvetica-Bold').text(`${dataFormatada}`).font('Helvetica');
                 doc.text(`IP do Login: `, { continued: true }).font('Helvetica-Bold').text(`${login.ip_address}`).font('Helvetica');
 

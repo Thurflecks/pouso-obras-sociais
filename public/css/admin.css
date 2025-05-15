@@ -602,6 +602,7 @@ a {
         transform: translate(-50%);
     }
 }
+
 /* ================= RESPONSIVIDADE COMPLETA - NAVBAR ================= */
 @media (max-width: 992px) {
     .navbar-admin {
@@ -726,4 +727,25 @@ a {
     .nav-voltar-btn-novo span {
         font-size: 0.9rem !important;
     }
+}
+
+.div-eye {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.div-eye input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.div-eye .eye {
+    position: absolute;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    font-size: .9rem;  
 }

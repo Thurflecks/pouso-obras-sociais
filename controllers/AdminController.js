@@ -47,7 +47,8 @@ module.exports = class AdminController {
 
             await AdminLoginModel.create({
                 cpf_admin: cpf,
-                ip_address: req.ip
+                ip_address: req.ip,
+                nome_admin: admin.nome,
             });
 
             res.redirect("/admin");

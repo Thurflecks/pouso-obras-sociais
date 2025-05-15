@@ -28,8 +28,13 @@
 
                 <div class="input-group">
                     <label class="labelFormLogin" for="senha">Senha</label>
-                    <input class="inputformLogin" name="senha" type="password" id="senha" maxlength="8"
-                        placeholder="Digite sua senha" required>
+                    <div class="div-eye">
+                        <input class="inputformLogin" name="senha" type="password" id="senha" maxlength="8"
+                            placeholder="Digite sua senha" required>
+                        <button type="button" id="togglePassword" class="eye">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <a href="#" class="forgot-password">Esqueceu sua senha?</a>
@@ -44,8 +49,22 @@
         </div>
     </div>
 </section>
-
-<!-- Botão de Voltar (apenas mobile) -->
 <section class="mobile-back-button">
     <a href="/" class="back-btn">Voltar à Página Inicial</a>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('senha');
+
+        togglePassword.addEventListener('click', function () {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('fa-eye');
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+
+
+    });
+</script>

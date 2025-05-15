@@ -11,6 +11,10 @@ const AdminLoginModel = sequelize.define("admin_logins", {
         type: Sequelize.STRING,
         allowNull: false
     },
+    nome_admin: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     date: {
         type: Sequelize.DATE,
         allowNull: false,

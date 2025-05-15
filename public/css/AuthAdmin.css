@@ -396,3 +396,21 @@ body {
 .radioLabel input:checked+span {
     color: #2793ff;
 }
+
+.div-eye {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+.div-eye .eye {
+    position: absolute;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    font-size: .9rem;
+}

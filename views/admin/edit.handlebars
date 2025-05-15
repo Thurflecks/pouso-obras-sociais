@@ -40,20 +40,30 @@
 
         <div class="grupo-formulario">
             <label for="senhaNova"><i class="fas fa-lock"></i> Nova Senha</label>
-            <input type="password" name="senhaNova" id="nova-senha" placeholder="Crie uma nova senha" required>
+            <div class="div-eye">
+                <input type="password" name="senhaNova" id="senhaNova" placeholder="Crie uma nova senha" minlength="8"
+                    required>
+                <button type="button" id="toggleNovaSenha" class="eye">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
         </div>
 
         <div class="grupo-formulario">
             <label for="confirmeSenha"><i class="fas fa-lock"></i> Confirmar Senha</label>
-            <input type="password" name="confirmeSenha" id="confirmar-senha" placeholder="Repita a nova senha" required>
+            <div class="div-eye">
+                <input type="password" name="confirmeSenha" id="confirmeSenha" placeholder="Repita a nova senha"
+                    minlength="8" required>
+                <button type="button" id="toggleConfirmePassword" class="eye">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
         </div>
 
         <div class="requisitos-senha">
             <p>A senha deve conter:</p>
             <ul>
                 <li><i class="fas fa-check-circle"></i> Mínimo 8 caracteres</li>
-                <li><i class="fas fa-check-circle"></i> Pelo menos 1 número</li>
-                <li><i class="fas fa-check-circle"></i> 1 caractere especial</li>
             </ul>
         </div>
 
@@ -64,3 +74,22 @@
 
     </form>
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function toggleSenha(btnId, inputId) {
+            const btn = document.getElementById(btnId);
+            const input = document.getElementById(inputId);
+
+            btn.addEventListener('click', function () {
+                const type = input.type === 'password' ? 'text' : 'password';
+                input.type = type;
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            });
+        }
+
+        toggleSenha('toggleNovaSenha', 'senhaNova');
+        toggleSenha('toggleConfirmePassword', 'confirmeSenha');
+    });
+</script>
