@@ -1,6 +1,7 @@
-const { where } = require('sequelize');
+const { where, DATEONLY } = require('sequelize');
 const MantimentosModel = require('../models/Mantimentos');
 const ControleMantimentosModel = require('../models/ControleMantimentos');
+const { Op } = require('sequelize');
 const dataAtual = new Date().toLocaleDateString('fr-CA', {
     timeZone: 'America/Sao_Paulo'
 });
@@ -10,15 +11,28 @@ module.exports = class MantimentosController {
 
     static async show(req, res) {
         try {
-            const mantimentos = await MantimentosModel.findAll();
+            const search = String(req.query.search || "");
+            const mantimentos = await MantimentosModel.findAll({
+                where: {
+                    produto: {
+                        [Op.like]: `%${search}%`
+                    }
+                }
+            });
+            if (mantimentos.length === 0) {
+                req.flash('message', 'Nenhum produto encontrado!');
+                res.redirect('/admin/mantimentos/show');
+                return;
+            }
             const mantimentosAjeitados = mantimentos.map(mantimento => {
+                const dataFormatada = mantimento.data.split('T')[0].split('-').reverse().join('/');
                 return {
                     ...mantimento.dataValues,
                     nome: mantimento.produto,
                     descricao: mantimento.descricao,
                     categoria: mantimento.categoria,
                     quantidade: mantimento.quantidade,
-                    data: mantimento.data,
+                    data: dataFormatada,
                     doador: mantimento.doador,
                     telefoneDoador: mantimento.telefoneDoador,
                     id: mantimento.id_mantimento

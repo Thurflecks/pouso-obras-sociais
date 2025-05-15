@@ -1,4 +1,6 @@
-<head><link rel="stylesheet" href="/css/admin.css"></head>
+<head>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
 <nav class="navbar-admin">
     <div class="nav-container">
         <div class="logo-container">
@@ -13,7 +15,7 @@
             <div class="usuario-info">
                 <div class="dados-usuario">
                     <span class="usuario-cpf">CPF: {{session.user.cpf}}</span>
-                    <span class="usuario-cargo">Cargo: </span>
+                    <span class="usuario-nivel">Nível: {{session.user.nivel}}</span>
                 </div>
                 <a href="/admin" class="nav-voltar-btn-novo">
                     <i class="fas fa-arrow-left"></i>
@@ -23,9 +25,14 @@
         </div>
     </div>
 </nav>
+{{#if messages.message}}
+<div class="erroNivel">
+    <span>{{messages.message}}</span>
+</div>
+{{/if}}
 
 <main class="container-admin">
-    <form class="formulario-admin" action="/admin/edit" method="POST">  
+    <form class="formulario-admin" action="/admin/edit" method="POST">
         <div class="titulo-formulario">
             <i class="fas fa-key"></i>
             <h2>Alteração de Senha</h2>

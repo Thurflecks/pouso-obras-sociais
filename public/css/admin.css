@@ -20,6 +20,7 @@
 body {
     background-color: #C8E3FF;
 }
+
 a {
     text-decoration: none;
 }
@@ -159,7 +160,6 @@ a {
 
 .container-admin {
     flex: 1;
-    padding: 2rem;
     max-width: 1600px;
     margin: 0 auto;
     width: 100%;
@@ -227,7 +227,6 @@ a {
     box-shadow: var(--sombra);
     border-left: 4px solid var(--azul-principal);
     transition: var(--transicao);
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -471,7 +470,7 @@ a {
     border-top: #3498db 2px solid;
     border-left: #3498db 2px solid;
     max-width: 800px;
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 
 .titulo-formulario {
@@ -573,9 +572,11 @@ a {
     gap: .7rem;
     flex-direction: column;
 }
+
 .erroNivel {
     display: flex;
     justify-content: center;
+
 }
 
 .erroNivel span {
@@ -584,9 +585,10 @@ a {
     text-align: center;
     padding: 20px;
     font-weight: 800;
-    background-color: #357abd;
     width: 40%;
     margin: 1rem;
+    border-radius: 10px;
+    background-color: #357abd;
 }
 
 /* ================= RESPONSIVIDADE COMPLETA - NAVBAR ================= */

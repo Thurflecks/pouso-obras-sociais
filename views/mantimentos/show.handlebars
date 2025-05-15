@@ -31,8 +31,16 @@
             <!-- Barra de pesquisar e botão de adicionar-->
             <div class="controle-superior">
                 <div class="barra-pesquisa">
-                    <input type="text" placeholder="Pesquisar item..." class="input-pesquisa">
-                    <a href="#"><i class="fas fa-search"></i></a>
+                    <form action="/admin/mantimentos/show" class="formPesquisa" method="get">
+                        <div class="div-form-search">
+                            <input type="text" placeholder="Pesquisar item..." name="search" class="input-pesquisa"
+                                required>
+                            <button type="submit" class="btn-pesquisar">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+
+                    </form>
                 </div>
                 <div class="voltar-inicio">
                     <a href="/admin/mantimentos/add" class="btn-adicionar">

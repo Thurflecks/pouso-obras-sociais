@@ -129,35 +129,30 @@ a {
     align-items: center;
     justify-content: space-between;
 }
+.div-form-search {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
-.barra-pesquisa {
-    flex: 0 1 500px;
-    position: relative;
-    max-width: 400px;
-    margin-right: auto;
+.div-form-search button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .input-pesquisa {
-    width: 100%;
-    padding: 0.8rem 2.5rem 0.8rem 1rem;
-    border: 2px solid var(--borda);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+    width: 400px;
+    margin-right: 10px;
 }
 
-.input-pesquisa:focus {
-    border-color: var(--cor-primaria);
-    outline: none;
-}
-
-.barra-pesquisa i {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--cor-secundaria);
+.btn-pesquisar i {
+    font-size: 18px;
+    color: #0773FF;
 }
 
 .btn-adicionar {
@@ -508,13 +503,7 @@ a {
     margin-bottom: 1rem;
 }
 
-/* Container do formulário */
-.items-box form {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
+
 
 /* Título do formulário */
 .items-box h2 {
@@ -526,9 +515,6 @@ a {
     font-size: 1.75rem;
 }
 
-.items-box form {
-    padding-top: 1rem;
-}
 
 /* Grupos de inputs */
 .grupo-input {
@@ -598,6 +584,7 @@ a {
 .erroNivel {
     display: flex;
     justify-content: center;
+    border-radius: 5px;
 }
 
 .erroNivel span {
@@ -610,6 +597,8 @@ a {
     width: 40%;
     margin: 1rem;
 }
+
+
 
 /* ========== RESPONSIVIDADE OTIMIZADA ========== */
 @media (max-width: 1200px) {
