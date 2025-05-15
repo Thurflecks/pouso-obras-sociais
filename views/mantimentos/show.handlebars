@@ -17,17 +17,10 @@
         </div>
     </div>
 </nav>
-
 <main class="container">
     <!-- Lista de Itens -->
     <section class="lista-itens">
-        {{#if messages.message}}
-        <div class="erroNivel">
-            <span>{{messages.message}}</span>
-        </div>
-        {{/if}}
         <div class="items-box">
-
             <!-- Barra de pesquisar e botão de adicionar-->
             <div class="controle-superior">
                 <div class="barra-pesquisa">
@@ -39,8 +32,8 @@
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
-
                     </form>
+                    <a href="/admin/mantimentos/show" class="limparPesquisa">Limpar Pesquisa</a>
                 </div>
                 <div class="voltar-inicio">
                     <a href="/admin/mantimentos/add" class="btn-adicionar">
@@ -48,8 +41,23 @@
                     </a>
                 </div>
             </div>
-
-            <h2><i class="fas fa-list-ul"></i> Últimas Entradas</h2>
+            <div class="order">
+                <h2><i class="fas fa-list-ul"></i>Ordenar por: </h2>
+                <form action="/admin/mantimentos/show" method="get">
+                    <input type="hidden" name="search" value="{{this.search}}">
+                    <input type="hidden" name="order" value="new">
+                    <button type="submit" class="order-button">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+                </form>
+                <form action="/admin/mantimentos/show" method="get">
+                    <input type="hidden" name="search" value="{{this.search}}">
+                    <input type="hidden" name="order" value="old">
+                    <button type="submit" class="order-button">
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                </form>
+            </div>
             <div class="itens-container">
 
                 {{#each mantimentosAjeitados}}

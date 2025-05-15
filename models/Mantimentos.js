@@ -37,7 +37,10 @@ const MantimentosModel = sequelize.define("mantimentos", {
     }
 }, {
     tableName: 'mantimentos',
-    timestamps: false
+    timestamps: true,
+    createdAt: false,
+    updatedAt: 'updated_at'
 });
+
 
 module.exports = MantimentosModel;

@@ -14,8 +14,9 @@
         <div class="nav-direita">
             <div class="usuario-info">
                 <div class="dados-usuario">
-                    <span class="usuario-cpf">CPF: {{session.user.cpf}}</span>
-                    <span class="usuario-nivel">Nível: {{session.user.nivel}}</span>
+                    <span class="usuario">CPF: {{session.user.cpf}}</span>
+                    <span class="usuario">Nome: {{session.user.nome}}</span>
+                    <span class="usuario">Nível: {{session.user.nivel}}</span>
                 </div>
                 <a href="/admin" class="nav-voltar-btn-novo">
                     <i class="fas fa-arrow-left"></i>
@@ -25,12 +26,6 @@
         </div>
     </div>
 </nav>
-{{#if messages.message}}
-<div class="erroNivel">
-    <span>{{messages.message}}</span>
-</div>
-{{/if}}
-
 <main class="container-admin">
     <form class="formulario-admin" action="/admin/edit" method="POST">
         <div class="titulo-formulario">

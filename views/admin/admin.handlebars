@@ -16,8 +16,9 @@
         <div class="nav-direita">
             <div class="usuario-info">
                 <div class="dados-usuario">
-                    <span class="usuario-cpf">CPF: {{session.user.cpf}}</span>
-                    <span class="usuario-nivel">Nível: {{session.user.nivel}}</span>
+                    <span class="usuario">CPF: {{session.user.cpf}}</span>
+                    <span class="usuario">Nome: {{session.user.nome}}</span>
+                    <span class="usuario">Nível: {{session.user.nivel}}</span>
                 </div>
                 <a href="/admin/logout" class="nav-voltar-btn">
                     <i class="fas fa-sign-out-alt"></i>
@@ -41,12 +42,6 @@
                 Sistema Online
             </div>
         </div>
-
-        {{#if messages.message}}
-        <div class="erroNivel">
-            <span>{{messages.message}}</span>
-        </div>
-        {{/if}}
         <!-- Cards de Funcionalidades -->
         <div class="grid-funcionalidades">
             <!-- Controle do Depósito -->

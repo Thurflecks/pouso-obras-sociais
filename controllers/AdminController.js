@@ -27,21 +27,22 @@ module.exports = class AdminController {
             const admin = await AdminModel.findOne({ where: { cpf: cpf } });
 
             if (!admin) {
-                req.flash('message', 'CPF ou senha incorretos');
+                req.flash('message', 'CPF ou senha incorretos!');
                 return res.status(401).redirect('/admin/login');
             }
 
             const senhaCorreta = await bcrypt.compare(senha, admin.senha);
 
             if (!senhaCorreta) {
-                req.flash('message', 'CPF ou senha incorretos');
+                req.flash('message', 'CPF ou senha incorretos!');
                 return res.status(401).redirect('/admin/login');
             }
 
             req.session.user = {
                 id: admin.id_admin,
                 cpf: admin.cpf,
-                nivel: admin.nivel
+                nivel: admin.nivel,
+                nome: admin.nome
             };
 
             await AdminLoginModel.create({
@@ -52,7 +53,7 @@ module.exports = class AdminController {
             res.redirect("/admin");
         } catch (error) {
             console.log(error, 'erro ao realizar o login');
-            req.flash('message', 'Erro ao realizar o login');
+            req.flash('message', 'Erro ao realizar o login!');
             res.status(500).redirect('/admin/login');
         }
     }
@@ -68,24 +69,24 @@ module.exports = class AdminController {
 
     static async registerPost(req, res) {
         try {
-            const { cpf, senha, confirmeSenha, nivel } = req.body;
+            const { cpf, nome, senha, confirmeSenha, nivel } = req.body;
 
             if (senha !== confirmeSenha) {
-                req.flash('message', 'As senhas não coincidem');
+                req.flash('message', 'As senhas não coincidem!');
                 return res.status(400).render('admin/register');
             }
 
             const admin = await AdminModel.findOne({ where: { cpf: cpf } });
 
             if (admin) {
-                req.flash('message', 'CPF já cadastrado');
+                req.flash('message', 'CPF já cadastrado!');
                 return res.status(409).render('admin/register');
             }
 
             const salt = bcrypt.genSaltSync(10);
             const senhaHash = bcrypt.hashSync(senha, salt);
 
-            await AdminModel.create({ cpf, senha: senhaHash, nivel });
+            await AdminModel.create({ cpf, nome, senha: senhaHash, nivel });
 
             res.redirect('/admin/login');
         } catch (error) {
@@ -119,12 +120,10 @@ module.exports = class AdminController {
             const senhaAntiga = await bcrypt.compare(senhaAtual, admin.senha);
             if (!senhaAntiga) {
                 req.flash('message', 'Senha atual incorreta!');
-                console.log(error, 'senha atual incorreta');
                 return res.status(401).redirect('/admin/edit');
             }
             if (senhaNova !== confirmeSenha) {
                 req.flash('message', 'As senhas não coincidem!');
-                console.log(error, 'As senhas não coincidem');
                 return res.status(400).redirect('/admin/edit');
             }
             const salt = bcrypt.genSaltSync(10);

@@ -32,7 +32,13 @@
 </head>
 
 <body>
+    {{#if messages.message}}
+    <div class="erro">
+        <span>{{messages.message}}</span>
+    </div>
+    {{/if}}
     {{{body}}}
+    <script src="/js/flash/message.js"></script>
 </body>
 
 </html>

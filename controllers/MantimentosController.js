@@ -12,17 +12,21 @@ module.exports = class MantimentosController {
     static async show(req, res) {
         try {
             const search = String(req.query.search || "");
+            let order = 'DESC';
+            if (req.query.order === 'old') {
+                order = 'ASC';
+            } else if (req.query.order === 'new') {
+                order = 'DESC';
+            }
             const mantimentos = await MantimentosModel.findAll({
                 where: {
                     produto: {
                         [Op.like]: `%${search}%`
                     }
-                }
+                }, order: [['updated_at', order]]
             });
             if (mantimentos.length === 0) {
-                req.flash('message', 'Nenhum produto encontrado!');
-                res.redirect('/admin/mantimentos/show');
-                return;
+                req.flash('message', 'Nenhum produto correspondente com: ' + search);
             }
             const mantimentosAjeitados = mantimentos.map(mantimento => {
                 const dataFormatada = mantimento.data.split('T')[0].split('-').reverse().join('/');
@@ -38,7 +42,7 @@ module.exports = class MantimentosController {
                     id: mantimento.id_mantimento
                 };
             });
-            res.render('mantimentos/show', { mantimentosAjeitados });
+            res.render('mantimentos/show', { mantimentosAjeitados, search });
         } catch (error) {
             console.log(error, 'erro ao mostrar o estoque');
             res.status(500).redirect('/admin');
