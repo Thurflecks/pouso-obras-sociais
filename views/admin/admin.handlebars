@@ -49,24 +49,33 @@
         {{/if}}
         <!-- Cards de Funcionalidades -->
         <div class="grid-funcionalidades">
-            <article class="card-admin destaque-perfil">
+            <!-- Controle do Depósito -->
+            <article class="card-admin destaque-deposito">
                 <div class="card-header">
-                    <i class="fas fa-user-edit"></i>
-                    <h2>Editar Perfil</h2>
+                    <i class="fas fa-warehouse"></i>
+                    <h2>Controle do Depósito</h2>
                 </div>
                 <div class="card-content">
-                    <p>Alterar senha ou excluir conta administrativa</p>
-                    <div class="botoes-perfil">
-                        <a href="/admin/edit" class="btn-acao btn-alterar-senha">
-                            <i class="fas fa-key"></i> Alterar Senha
-                        </a>
-                        <a href="/admin/delete" class="btn-acao btn-excluir">
-                            <i class="fas fa-trash-alt"></i> Excluir Perfil
-                        </a>
-                    </div>
+                    <p>Gerenciamento completo de estoque e mantimentos</p>
+                    <a href="/admin/mantimentos/show" class="btn-acao">
+                        <i class="fas fa-box-open"></i> Acessar Depósito
+                    </a>
                 </div>
             </article>
 
+            <!-- Controle Farmacêutico -->
+            <article class="card-admin destaque-farmacia">
+                <div class="card-header">
+                    <i class="fas fa-prescription-bottle-medical"></i>
+                    <h2>Controle Farmacêutico</h2>
+                </div>
+                <div class="card-content">
+                    <p>Gestão de medicamentos e insumos médicos</p>
+                    <a href="farmacia.html" class="btn-acao">
+                        <i class="fas fa-pills"></i> Acessar Farmácia
+                    </a>
+                </div>
+            </article>
             <!-- Novo Administrador -->
             <article class="card-admin destaque-novo-admin">
                 <div class="card-header">
@@ -150,32 +159,22 @@
                     </button>
                 </div>
             </article>
-
-            <!-- Controle do Depósito -->
-            <article class="card-admin destaque-deposito">
+            {{!-- editar dados admin --}}
+            <article class="card-admin destaque-perfil">
                 <div class="card-header">
-                    <i class="fas fa-warehouse"></i>
-                    <h2>Controle do Depósito</h2>
+                    <i class="fas fa-user-edit"></i>
+                    <h2>Editar Perfil</h2>
                 </div>
                 <div class="card-content">
-                    <p>Gerenciamento completo de estoque e mantimentos</p>
-                    <a href="/admin/mantimentos/show" class="btn-acao">
-                        <i class="fas fa-box-open"></i> Acessar Depósito
-                    </a>
-                </div>
-            </article>
-
-            <!-- Controle Farmacêutico -->
-            <article class="card-admin destaque-farmacia">
-                <div class="card-header">
-                    <i class="fas fa-prescription-bottle-medical"></i>
-                    <h2>Controle Farmacêutico</h2>
-                </div>
-                <div class="card-content">
-                    <p>Gestão de medicamentos e insumos médicos</p>
-                    <a href="farmacia.html" class="btn-acao">
-                        <i class="fas fa-pills"></i> Acessar Farmácia
-                    </a>
+                    <p>Alterar senha ou excluir conta administrativa</p>
+                    <div class="botoes-perfil">
+                        <a href="/admin/edit" class="btn-acao btn-alterar-senha">
+                            <i class="fas fa-key"></i> Alterar Senha
+                        </a>
+                        <a href="/admin/delete" class="btn-acao btn-excluir">
+                            <i class="fas fa-trash-alt"></i> Excluir Perfil
+                        </a>
+                    </div>
                 </div>
             </article>
         </div>

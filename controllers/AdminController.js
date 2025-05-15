@@ -112,6 +112,37 @@ module.exports = class AdminController {
             res.status(500).redirect('/admin');
         }
     }
+    static async editPost(req, res) {
+        try {
+            const { senhaAtual, senhaNova, confirmeSenha } = req.body;
+            const admin = await AdminModel.findOne({ where: { id_admin: req.session.user.id } });
+            const senhaAntiga = await bcrypt.compare(senhaAtual, admin.senha);
+            if (!senhaAntiga) {
+                req.flash('message', 'Senha atual incorreta');
+                console.log(error, 'senha atual incorreta');
+                return res.status(401).redirect('/admin/edit');
+            }
+            if (senhaNova !== confirmeSenha) {
+                req.flash('message', 'As senhas não coincidem');
+                console.log(error, 'As senhas não coincidem');
+                return res.status(400).redirect('/admin/edit');
+            }
+            const salt = bcrypt.genSaltSync(10);
+            const senhaHash = bcrypt.hashSync(senhaNova, salt);
+            await AdminModel.update({ senha: senhaHash }, { where: { id_admin: req.session.user.id } }).then(() => {
+                req.flash('message', 'Senha atualizada com sucesso');
+                res.redirect('/admin');
+            }).catch((error) => {
+                console.log(error, 'erro ao atualizar a senha');
+                req.flash('message', 'Erro ao atualizar a senha');
+                res.redirect('/admin/edit');
+            });
+        } catch (error) {
+            console.log(error, 'erro ao atualizar a senha');
+            req.flash('message', 'Erro ao atualizar a senha');
+            res.status(500).redirect('/admin/edit');
+        }
+    }
 
     static logout(req, res) {
         req.session.destroy();

@@ -6,6 +6,7 @@
     --fundo-claro: #f9f9f9;
     --texto-escuro: #1A3A4D;
     --borda: #ecf0f1;
+    --cinza-claro: #f5f5f5;
 }
 
 * {
@@ -257,7 +258,7 @@ a {
     padding: 2rem 1rem;
     border: 1px solid var(--borda);
     border-radius: 12px;
-    background: #ffff;
+    background-color: #fff;
     margin-top: 1rem;
     margin-right: 0;
 }

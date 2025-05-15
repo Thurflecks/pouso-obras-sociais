@@ -17,6 +17,7 @@ router.post('/login', verifyLogin, AdminController.loginPost);
 router.get('/register', authenticate, verifyNivel([4]), AdminController.register);
 router.post('/register', authenticate, verifyNivel([4]), AdminController.registerPost);
 router.get('/edit', authenticate, AdminController.edit);
+router.post('/edit', authenticate, AdminController.editPost);
 router.get('/logout', authenticate, AdminController.logout);
 
 //mantimentos

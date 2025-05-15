@@ -19,22 +19,6 @@
 </nav>
 
 <main class="container">
-
-    <!-- Card de DoaçÕes-->
-    <div class="lateral-direita">
-
-        <!-- Card de Estoque -->
-        <div class="card-quantidade">
-            <div class="quantidade-header">
-                <i class="fas fa-boxes"></i>
-                <div>
-                    <h3>Itens cadastrados</h3>
-                    <span class="quantidade-valor">3</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Lista de Itens -->
     <section class="lista-itens">
         {{#if messages.message}}
@@ -60,9 +44,8 @@
             <h2><i class="fas fa-list-ul"></i> Últimas Entradas</h2>
             <div class="itens-container">
 
-
+                {{#each mantimentosAjeitados}}
                 <div class="item-lista">
-                    {{#each mantimentosAjeitados}}
                     <div class="item-cabecalho">
                         <div class="item-info-principal">
                             <div class="item-meta">
@@ -97,8 +80,8 @@
                             </form>
                         </div>
                     </div>
-                    {{/each}}
                 </div>
+                {{/each}}
             </div>
         </div>
     </section>
