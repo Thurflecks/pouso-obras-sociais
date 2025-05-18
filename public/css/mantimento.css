@@ -188,8 +188,9 @@ a {
     border-radius: 4px;
     padding: 10px;
     font-size: 14px;
-    width: 400px;
+    width: 90%;
     margin-right: 10px;
+    outline: none;
 }
 
 .btn-pesquisar i {
