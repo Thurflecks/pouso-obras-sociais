@@ -23,6 +23,10 @@ const FarmaciaModel = sequelize.define("farmacia", {
         type: Sequelize.STRING(255),
         allowNull: false
     },
+    concentracao: {
+        type: Sequelize.STRING(255),
+        allowNull: false
+    },
     descricao: {
         type: Sequelize.TEXT,
         allowNull: false

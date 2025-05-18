@@ -35,6 +35,7 @@ router.post('/mantimentos/add', authenticate, MantimentosController.adicionarPos
 
 
 //farmacia
+router.get('/farmacia', authenticate, FarmaciaController.showFarmacia);
 
 //relatorio 
 router.get('/relatorio', authenticate, AdminController.relatorio);
