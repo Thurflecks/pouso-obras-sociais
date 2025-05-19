@@ -9,4 +9,7 @@ module.exports = class BaseController {
             res.status(500).redirect('/');
         }
     }
+    static notFound(req, res) {
+        res.send('Página não encontrada');
+    }
 }

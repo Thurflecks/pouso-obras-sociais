@@ -23,16 +23,20 @@ module.exports = class FarmaciaController {
             req.flash('message', 'Nenhum produto correspondente com: ' + search);
         }
 
-        const farmaciaAjeitados = farmacia.map((item) => ({
-            id: item.id_remedio,
-            nome: item.nome,
-            quantidade: item.quantidade,
-            concentracao: item.concentracao,
-            tipo: item.tipo,
-            categoria: item.categoria,
-            controleEspecial: item.controleEspecial,
-            data_validade: item.data_validade,
-        }));
+        const farmaciaAjeitados = farmacia.map(item => {
+            const dataFormatada = item.data_validade.split('T')[0].split('-').reverse().join('/');
+            return {
+                ...item.dataValues,
+                id: item.id_remedio,
+                nome: item.nome,
+                quantidade: item.quantidade,
+                concentracao: item.concentracao,
+                tipo: item.tipo,
+                categoria: item.categoria,
+                controleEspecial: item.controleEspecial,
+                data_validade: dataFormatada
+            }
+        });
         console.log(farmaciaAjeitados);
 
         res.render('farmacia/farmacia', { farmaciaAjeitados, search });

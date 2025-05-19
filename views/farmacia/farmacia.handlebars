@@ -81,7 +81,7 @@
         <div class="farm-container">
             <div class="farm-title-content">
                 <span class="farm-title"> <i class="fa-solid fa-pills"></i> Controle de Medicamentos</span>
-                <a class="button-novo"> <i class="fa-solid fa-plus"></i> Novo </a>
+                <button class="button-novo" onclick="novo()"> <i class="fa-solid fa-plus"></i> Novo </button>
             </div>
             {{#each farmaciaAjeitados}}
             <div class="table-farm-container">
@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div>
-                    <a><i class="fa-solid fa-up-right-and-down-left-from-center"></i></a>
+                    <button onclick="show()" class="show"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
                 </div>
             </div>
             {{/each}}
@@ -156,3 +156,5 @@
         </div>
     </div>
 </footer>
+<script src="/js/farmacia/new.js"></script>
+<script src="/js/farmacia/show.js"></script>
