@@ -10,6 +10,12 @@ module.exports = class BaseController {
         }
     }
     static notFound(req, res) {
-        res.send('Página não encontrada');
+        try {
+            res.render('base/404')
+        } catch (error) {
+            console.log(error, 'erro ao renderizar a página inicial');
+            res.status(500).redirect('/');
+        }
+        
     }
 }

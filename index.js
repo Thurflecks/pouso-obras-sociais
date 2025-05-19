@@ -8,6 +8,7 @@ const routerBase = require("./routes/baseRoutes")
 const routerUser = require("./routes/usuariosRoutes")
 const routerAdmin = require("./routes/adminRoutes")
 const routerDoacao = require("./routes/doacaoRoutes")
+const BaseController = require("./controllers/BaseController")
 const flash =  require('express-flash')
 
 app.engine("handlebars", engine({
@@ -52,6 +53,8 @@ app.use("/user", routerUser)
 app.use("/admin", routerAdmin)
 app.use("/doacao", routerDoacao)
 app.use("/", routerBase)
+app.use(BaseController.notFound);
+
 
 
 app.listen(port, () => {
