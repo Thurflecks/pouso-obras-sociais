@@ -27,10 +27,6 @@ const FarmaciaModel = sequelize.define("farmacia", {
         type: Sequelize.STRING(255),
         allowNull: false
     },
-    descricao: {
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
     categoria: {
         type: Sequelize.STRING(255),
         allowNull: false
@@ -53,7 +49,9 @@ const FarmaciaModel = sequelize.define("farmacia", {
     }
 }, {
     tableName: 'farmacia',
-    timestamps: false
+    timestamps: true,
+    createdAt: false,
+    updatedAt: 'updated_at'
 });
 
 module.exports = FarmaciaModel;

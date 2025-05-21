@@ -36,6 +36,10 @@ router.post('/mantimentos/add', authenticate, MantimentosController.adicionarPos
 
 //farmacia
 router.get('/farmacia', authenticate, verifyNivel([3, 4]), FarmaciaController.showFarmacia);
+router.get('/farmacia/exibirMedicamento/:id', authenticate, verifyNivel([3, 4]), FarmaciaController.exibirMedicamento);
+router.post('/farmacia/addMedicamento', authenticate, verifyNivel([3, 4]), FarmaciaController.addMedicamento);
+router.get('/farmacia/pesquisa', authenticate, verifyNivel([3, 4]), FarmaciaController.pesquisa);
+router.get('/farmacia/show', authenticate, verifyNivel([3, 4]), FarmaciaController.show);
 
 //relatorio 
 router.get('/relatorio', authenticate, AdminController.relatorio);

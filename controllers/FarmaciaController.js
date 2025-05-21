@@ -1,6 +1,6 @@
 const FarmaciaModel = require('../models/Farmacia');
 const { Op } = require('sequelize');
-const { where, DATEONLY } = require('sequelize');
+const MedicamentosModel = require('../models/Medicamentos');
 
 module.exports = class FarmaciaController {
     static async showFarmacia(req, res) {
@@ -17,7 +17,7 @@ module.exports = class FarmaciaController {
                 nome: {
                     [Op.like]: `%${search}%`
                 }
-            }, order: [['id_remedio', order]]
+            }, order: [['updated_at', order]]
         });
         if (farmacia.length === 0) {
             req.flash('message', 'Nenhum produto correspondente com: ' + search);
@@ -33,12 +33,49 @@ module.exports = class FarmaciaController {
                 concentracao: item.concentracao,
                 tipo: item.tipo,
                 categoria: item.categoria,
+                classe_terapeutica: item.classe_terapeutica,
                 controleEspecial: item.controleEspecial,
                 data_validade: dataFormatada
             }
         });
-        console.log(farmaciaAjeitados);
 
         res.render('farmacia/farmacia', { farmaciaAjeitados, search });
+    }
+    static async show(req, res) {
+        res.render('farmacia/pesquisa');
+    }
+    static async pesquisa(req, res) {
+        try {
+            const termo = String(req.query.termo || "");
+            console.log(termo);
+
+            await MedicamentosModel.findAll({
+                where: {
+                    NOME_PRODUTO: {
+                        [Op.like]: `%${termo}%`
+                    }
+                }
+            }).then(itens => {
+                return res.json(itens);
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    static async exibirMedicamento(req, res) {
+        const id = req.params.id;
+        try {
+            const medicamento = await MedicamentosModel.findOne({
+                where: {
+                    id: id
+                }
+            });
+            res.render('farmacia/exibirMedicamento', { medicamento });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    static async addMedicamento(req, res) {
+        res.send('ok');
     }
 }

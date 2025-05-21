@@ -7,7 +7,7 @@
     --branco: #ffffff;
     --sombra: 0 4px 6px rgba(0, 0, 0, 0.05);
     --transicao: all 0.3s ease;
-
+    --verde: #08b31f;
 }
 
 * {
@@ -302,6 +302,9 @@ a {
 
 .strong-table {
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .erro {
@@ -330,7 +333,20 @@ a {
     /* <- impede quebra de linha */
     pointer-events: auto;
 }
-
+.div-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.fa-circle-check{
+    color: var(--verde);
+    font-size: 1rem;
+}
+.fa-circle-xmark{
+    color: var(--vermelho-destaque);
+    font-size: 1rem;
+}
 @keyframes fadeIn {
     from {
         opacity: 0;

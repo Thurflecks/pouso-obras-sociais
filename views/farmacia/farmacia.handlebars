@@ -100,18 +100,14 @@
 
                     </div>
                     <div class="table">
-                        <strong class="strong-table">Tipo:</strong>
-                        <div class="div-table">{{tipo}}</div>
-
-                    </div>
-                    <div class="table">
-                        <strong class="strong-table">Categoria:</strong>
-                        <div class="div-table">{{categoria}}</div>
+                        <strong class="strong-table">Classe Terapeutica:</strong>
+                        <div class="div-table">{{classe_terapeutica}}</div>
 
                     </div>
                     <div class="table">
                         <strong class="strong-table">Controle especial:</strong>
-                        <div class="div-table">{{#if controleEspecial}}Sim{{else}}Não{{/if}}</div>
+                        <div class="div-table">{{#if controleEspecial}}<i class="fa-solid fa-circle-check"></i>{{else}}<i
+                                class="fa-solid fa-circle-xmark"></i>{{/if}}</div>
 
                     </div>
                     <div class="table">
@@ -120,7 +116,8 @@
                     </div>
                 </div>
                 <div>
-                    <button onclick="show()" class="show"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
+                    <button onclick="show()" class="show"><i
+                            class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
                 </div>
             </div>
             {{/each}}
