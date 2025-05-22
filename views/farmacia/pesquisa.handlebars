@@ -1,44 +1,22 @@
-<input type="text" id="busca" placeholder="Buscar produto..." />
+<head>
+    <link rel="stylesheet" href="/css/farmacia.css">
+</head>
+<div class="paidopopo">
 
-<ul id="resultados"></ul>
 
-<script>
-    const inputBusca = document.getElementById('busca');
-    const listaResultados = document.getElementById('resultados');
+    <section class="pop">
+        <h4><i class="fa-solid fa-prescription-bottle-medical" style="color: #ffffff;"></i>Adição de um novo medicamento
+        </h4>
+        <div class="pop-input">
+            <input type="text" id="busca" placeholder="Buscar medicamento..." />
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <ul id="resultados"></ul>
+        <div class="prodnotFound">
 
-    inputBusca.addEventListener('input', async () => {
-        const termo = inputBusca.value;
+        </div>
 
-        if (termo.length === 0) {
-            listaResultados.innerHTML = '';
-            return;
-        }
-
-        if (termo.length >= 3) {
-            try {
-                const resposta = await fetch('/admin/farmacia/medicamentos/search', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ termo })
-                });
-                const produtos = await resposta.json();
-
-                listaResultados.innerHTML = '';
-                if (produtos.length === 0) {
-                    listaResultados.innerHTML = '<li>Nenhum produto encontrado</li>';
-                } else {
-                    produtos.forEach(produto => {
-                        const li = document.createElement('li');
-                        const a = document.createElement('a');
-                        a.href = `/admin/farmacia/medicamentos/add/${produto.id}`;
-                        a.textContent = produto.NOME_PRODUTO;
-                        li.appendChild(a);
-                        listaResultados.appendChild(li);
-                    });
-                }
-            } catch (erro) {
-                console.error('Erro ao buscar produtos:', erro);
-            }
-        }
-    });
-</script>
+</div>
+</section>
+</div>
+<script src="/js/farmacia/pesquisa.js"></script>
