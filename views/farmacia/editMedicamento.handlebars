@@ -1,0 +1,177 @@
+<head>
+    <link rel="stylesheet" href="/css/editMedicamento.css">
+</head>
+<nav class="navbar-admin">
+    <div class="nav-container">
+        <div class="logo-container">
+            <img src="/assets/logos/logo.png" alt="Pouso Obras Sociais" class="nav-logo">
+            <div>
+                <span class="span-text">Gestão Farmacêutica</span>
+                <span class="logo-text">Sistema de controle farmacêutico</span>
+            </div>
+        </div>
+
+        <div class="middle-section-nav">
+            <div>
+                <a href="/admin" class="middle-section-nav-button">
+                    <i class="fa-solid fa-bed-pulse"></i>
+                    <span>Pacientes</span>
+                </a>
+            </div>
+            <div>
+                <a href="/admin" class="middle-section-nav-button">
+                    <i class="fa-solid fa-suitcase-medical"></i>
+                    <span>Equipamentos</span>
+                </a>
+            </div>
+            <div>
+                <a href="/admin" class="middle-section-nav-button">
+                    <i class="fa-solid fa-mask-face"></i>
+                    <span>EPIs</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="nav-direita">
+            <div class="usuario-info">
+                <div class="dados-usuario">
+                    <span class="usuario">Cpf: {{session.user.cpf}}</span>
+                    <span class="usuario">Nome: {{session.user.nome}}</span>
+                    <span class="usuario">Nível: {{session.user.nivel}}</span>
+                </div>
+                <a href="/admin/farmacia/medicamentos" class="nav-voltar-btn-novo">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Voltar à Farmacia</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="section-container">
+    <div class="header" id="header-med">
+        <span id="header-span">📘 Painel Geral Medicamento</span>
+    </div>
+    <div class="section">
+        <div class="grid">
+            <div class="up-grid">
+                <div class="item"><strong>Nome do Medicamento:</strong>{{farmacia.nome}}</div>
+                <div class="item"><strong>Data de Fabricação:</strong>{{dataFabricacao}}</div>
+                <div class="item"><strong>Concentração:</strong>{{farmacia.concentracao}}</div>
+                <div class="item"><strong>Tipo:</strong>{{farmacia.tipo}}</div>
+                <div class="item"><strong>Categoria:</strong>{{farmacia.categoria}}</div>
+                <div class="item"><strong>Controle Especial:</strong>{{#if farmacia.controleEspecial}}<i
+                        class="fa-solid fa-circle-check"></i>{{else}}<i class="fa-solid fa-circle-xmark"></i>{{/if}}
+                </div>
+                <div class="item"><strong>Data de Validade:</strong>{{dataValidade}}</div>
+            </div>
+            <div class="middle-grid">
+                <div class="last-itens">
+                    <div class="item"><strong>Lote:</strong>{{farmacia.lote}}</div>
+                    <div class="item"><strong>Classe Terapêutica:</strong>{{farmacia.classe_terapeutica}}</div>
+                </div>
+                <div class="saida-container">
+                    <div class="quantity">
+                        <div class="name"><strong>Quantidade:</strong></div>
+                        <div class="value">{{farmacia.quantidade}}</div>
+                    </div>
+                    <div class="quantity">
+                        <form class="formSaida" action="/admin/farmacia/medicamentos/saida/{{farmacia.id_remedio}}" method="post">
+                            <div class="name">
+                                <strong>Informar saída:</strong>
+                            </div>
+                            <div class="value">
+                                <input type="text" placeholder="Informar Quantidade..." name="saida">
+                                <button type="submit" class="btn-saida">Retirar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="header">
+            <span>📘 Edição do Medicamento</span>
+        </div>
+        <form class="formEdit" action="/admin/farmacia/medicamentos/edit/{{farmacia.id_remedio}}" method="post">
+            <div class="edit-grid">
+                <div class="item-edit"><strong>Nome do Medicamento:</strong>
+                    <input class="input-edit" type="text" placeholder="Nome do medicamento..." name="nome"
+                        value="{{farmacia.nome}}">
+                </div>
+                <div class="item-edit"><strong>Data de Fabricação:</strong>
+                    <input class="input-edit" type="date" value="{{farmacia.data_fabricacao}}" name="data_fabricacao">
+                </div>
+                <div class="item-edit"><strong>Concentração:</strong>
+                    <input class="input-edit" type="text" placeholder="Concentração..."
+                        value="{{farmacia.concentracao}}" name="concentracao">
+                </div>
+                <div class="item-edit"><strong>Tipo:</strong>
+                    <input class="input-edit" type="text" placeholder="Tipo..." value="{{farmacia.tipo}}" name="tipo">
+                </div>
+                <div class="item-edit"><strong>Categoria:</strong>
+                    <input class="input-edit" type="text" placeholder="Categoria..." value="{{farmacia.categoria}}"
+                        name="categoria">
+                </div>
+                <div class="item-edit">
+                    <strong>Controle Especial:</strong>
+                    <span class="switch">
+                        <label class="switch">
+                            <input type="checkbox" name="controleEspecial" {{#if
+                                farmacia.controleEspecial}}checked{{/if}}>
+                            <span class="slider"></span>
+                        </label>
+                    </span>
+                </div>
+
+                <div class="item-edit"><strong>Data de Validade:</strong>
+                    <input class="input-edit" type="date" value="{{farmacia.data_validade}}" name="data_validade">
+                </div>
+                <div class="item-edit"><strong>Lote:</strong>
+                    <input class="input-edit" type="text" placeholder="Lote..." value="{{farmacia.lote}}" name="lote">
+                </div>
+                <div class="item-edit"><strong>Classe Terapêutica:</strong>
+                    <input class="input-edit" type="text" placeholder="Classe Terapêutica..."
+                        value="{{farmacia.classe_terapeutica}}" name="classe_terapeutica">
+                </div>
+                <div class="item-edit"><strong>Quantidade:</strong>
+                    <input class="input-edit" type="text" placeholder="Quantidade..." value="{{farmacia.quantidade}}"
+                        name="quantidade">
+                </div>
+            </div>
+            <div class="save-button">
+                <button class="btn-save" type="submit">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <a class="footer-voltar" href="/admin/farmacia/medicamentos">
+            <i class="fas fa-arrow-left"></i>
+            <span>Voltar</span>
+        </a>
+        <div class="footer-icons">
+            <div>
+                <a href="/admin" class="footer-button">
+                    <i class="fa-solid fa-bed-pulse"></i>
+                    <span>Pacientes</span>
+                </a>
+            </div>
+            <div>
+                <a href="/admin" class="footer-button">
+                    <i class="fa-solid fa-suitcase-medical"></i>
+                    <span>Equipamentos</span>
+                </a>
+            </div>
+            <div>
+                <a href="/admin" class="footer-button">
+                    <i class="fa-solid fa-mask-face"></i>
+                    <span>EPIs</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>

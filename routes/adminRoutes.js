@@ -21,7 +21,7 @@ router.post('/edit', authenticate, AdminController.editPost);
 router.get('/logout', authenticate, AdminController.logout);
 
 //mantimentos
-router.get('/mantimentos/show', authenticate, MantimentosController.show );
+router.get('/mantimentos/show', authenticate, MantimentosController.show);
 
 router.post('/mantimentos/saida/:id', authenticate, verifyNivel([2, 3, 4]), MantimentosController.saida);
 
@@ -35,11 +35,23 @@ router.post('/mantimentos/add', authenticate, MantimentosController.adicionarPos
 
 
 //farmacia
-router.get('/farmacia', authenticate, verifyNivel([3, 4]), FarmaciaController.showFarmacia);
-router.get('/farmacia/exibirMedicamento/:id', authenticate, verifyNivel([3, 4]), FarmaciaController.exibirMedicamento);
-router.post('/farmacia/addMedicamento', authenticate, verifyNivel([3, 4]), FarmaciaController.addMedicamento);
-router.get('/farmacia/pesquisa', authenticate, verifyNivel([3, 4]), FarmaciaController.pesquisa);
-router.get('/farmacia/show', authenticate, verifyNivel([3, 4]), FarmaciaController.show);
+router.get('/farmacia/medicamentos', authenticate, verifyNivel([3, 4]), FarmaciaController.showMedicamentos);
+router.get('/farmacia/medicamentos/edit/:id', authenticate, verifyNivel([3, 4]), FarmaciaController.edit);
+router.post('/farmacia/medicamentos/edit/:id', authenticate, verifyNivel([3, 4]), FarmaciaController.update);
+router.post('/farmacia/medicamentos/saida/:id', authenticate, verifyNivel([3, 4]), FarmaciaController.saida);
+
+
+
+//rotas de add medicamentos no banco
+//clicou em +novo => abre popup => pesquisa => clica em um medicamentos => vai pra rota de medicamento/add
+router.get('/farmacia/medicamentos/add/:id', authenticate, verifyNivel([3, 4]), FarmaciaController.addMedicamento);
+router.post('/farmacia/medicamentos/add', authenticate, verifyNivel([3, 4]), FarmaciaController.addMedicamentoPost);
+//rota do de pesquisar medicamentos (popup)
+router.get('/farmacia/medicamentos/search', authenticate, verifyNivel([3, 4]), FarmaciaController.search);
+//rota do fetch
+router.post('/farmacia/medicamentos/search', authenticate, verifyNivel([3, 4]), FarmaciaController.searchPost);
+
+
 
 //relatorio 
 router.get('/relatorio', authenticate, AdminController.relatorio);

@@ -16,7 +16,11 @@
 
         if (termo.length >= 3) {
             try {
-                const resposta = await fetch(`/admin/farmacia/pesquisa?termo=${encodeURIComponent(termo)}`);
+                const resposta = await fetch('/admin/farmacia/medicamentos/search', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ termo })
+                });
                 const produtos = await resposta.json();
 
                 listaResultados.innerHTML = '';
@@ -26,7 +30,7 @@
                     produtos.forEach(produto => {
                         const li = document.createElement('li');
                         const a = document.createElement('a');
-                        a.href = `/admin/farmacia/exibirMedicamento/${produto.id}`;
+                        a.href = `/admin/farmacia/medicamentos/add/${produto.id}`;
                         a.textContent = produto.NOME_PRODUTO;
                         li.appendChild(a);
                         listaResultados.appendChild(li);

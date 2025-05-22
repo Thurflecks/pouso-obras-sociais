@@ -52,24 +52,24 @@
     <section class="section-principal">
         <div class="search-container">
             <div class="search-bar-container">
-                <form action="/admin/farmacia" class="search-bar-form" method="get">
+                <form action="/admin/farmacia/medicamentos" class="search-bar-form" method="get">
                     <input type="text" name="search" class="search-input" placeholder="Pesquisar...">
                     <button type="submit" class="search-button">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-                <a href="/admin/farmacia" class="limparPesquisa">Limpar Pesquisa</a>
+                <a href="/admin/farmacia/medicamentos" class="limparPesquisa">Limpar Pesquisa</a>
             </div>
             <div class="order-container">
                 <span class="order-span"> Ordenar por: </span>
-                <form action="/admin/farmacia" method="get">
+                <form action="/admin/farmacia/medicamentos" method="get">
                     <input type="hidden" name="search" value="{{this.search}}">
                     <input type="hidden" name="order" value="new">
                     <button type="submit" class="order-button">
                         <i class="fas fa-arrow-up"></i>
                     </button>
                 </form>
-                <form action="/admin/farmacia" method="get">
+                <form action="/admin/farmacia/medicamentos" method="get">
                     <input type="hidden" name="search" value="{{this.search}}">
                     <input type="hidden" name="order" value="old">
                     <button type="submit" class="order-button">
@@ -81,7 +81,7 @@
         <div class="farm-container">
             <div class="farm-title-content">
                 <span class="farm-title"> <i class="fa-solid fa-pills"></i> Controle de Medicamentos</span>
-                <button class="button-novo" onclick="novo()"> <i class="fa-solid fa-plus"></i> Novo </button>
+                <a class="button-novo" href="/admin/farmacia/medicamentos/search"> <i class="fa-solid fa-plus"></i> Novo </a>
             </div>
             {{#each farmaciaAjeitados}}
             <div class="table-farm-container">
@@ -116,8 +116,8 @@
                     </div>
                 </div>
                 <div>
-                    <button onclick="show()" class="show"><i
-                            class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
+                    <a href="/admin/farmacia/medicamentos/edit/{{id}}" class="show"><i
+                            class="fa-solid fa-up-right-and-down-left-from-center"></i></a>
                 </div>
             </div>
             {{/each}}
@@ -127,7 +127,7 @@
 </main>
 <footer>
     <div class="footer-container">
-        <a class="footer-voltar" href="/admin">
+        <a class="footer-voltar" href="/admin/farmacia">
             <i class="fas fa-arrow-left"></i>
             Voltar
         </a>
@@ -153,5 +153,3 @@
         </div>
     </div>
 </footer>
-<script src="/js/farmacia/new.js"></script>
-<script src="/js/farmacia/show.js"></script>
