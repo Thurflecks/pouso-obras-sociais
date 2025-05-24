@@ -88,7 +88,7 @@ module.exports = class MantimentosController {
                 telefoneDoador: mantimento.telefoneDoador,
                 categoria: mantimento.categoria,
                 descricao: mantimento.descricao,
-                data_validade: mantimento.data,
+                data_validade: mantimento.data_validade,
                 lote: mantimento.lote,
                 movimentacao: 'Saída'
             });
