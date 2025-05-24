@@ -77,9 +77,13 @@
                     <div class="item-detalhes">
                         <div class="item-info">
                             <p><i class="fas fa-user"></i> Doador: {{doador}}</p>
-                            <p><i class="fas fa-calendar"></i> Data: {{data}}</p>
+                            <p><i class="fas fa-calendar"></i> Data de Entrada: {{data}}</p>
+                            <p><i class="fas fa-calendar"></i> Data de Validade: {{#if data_validade}}{{data_validade}}{{else}}<i
+                                class="fa-solid fa-circle-xmark"></i>{{/if}}</p>
                             <p><i class="fas fa-phone"></i> Contato: {{telefoneDoador}}</p>
                             <p><i class="fas fa-box"></i> Quantidade: {{quantidade}}</p>
+                            <p><i class="fas fa-calendar"></i> Lote: {{#if lote}}{{lote}}{{else}}<i
+                                class="fa-solid fa-circle-xmark"></i>{{/if}}</p>
                         </div>
 
                         <div class="item-acoes">

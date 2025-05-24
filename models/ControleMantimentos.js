@@ -43,7 +43,15 @@ const ControleMantimentosModel = sequelize.define("controle_mantimentos", {
     categoria: {
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
+    data_validade: {
+        type: Sequelize.DATEONLY,
+        allowNull: true
+    },
+    lote: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
 }, {
     tableName: 'controle_mantimentos',
     timestamps: false

@@ -34,6 +34,14 @@ const MantimentosModel = sequelize.define("mantimentos", {
     data: {
         type: Sequelize.DATEONLY,
         allowNull: false
+    },
+    data_validade: {
+        type: Sequelize.DATEONLY,
+        allowNull: true
+    },
+    lote: {
+        type: Sequelize.STRING,
+        allowNull: true
     }
 }, {
     tableName: 'mantimentos',

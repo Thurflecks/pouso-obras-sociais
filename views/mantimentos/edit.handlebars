@@ -41,20 +41,28 @@
 
                 <div class="grupo-input">
                     <label>Categoria:</label>
-                    <select name="categoria" id="categoria-produto" selected="{{mantimento.categoria}}">
-                        <option value="alimentos" {{#if (eq mantimento.categoria "alimentos" )}}selected{{/if}}>
-                            Alimentos</option>
-                        <option value="bebidas" {{#if (eq mantimento.categoria "bebidas" )}}selected{{/if}}>Bebidas
-                        </option>
-                        <option value="pereciveis" {{#if (eq mantimento.categoria "pereciveis" )}}selected{{/if}}>
-                            Perecíveis</option>
-                    </select>
+                    <input type="text" id="categoria" name="categoria" value="{{mantimento.categoria}}" required>
                 </div>
 
                 <div class="grupo-input">
                     <label>Data de entrada:</label>
                     <input type="date" id="data-produto" name="data" value="{{mantimento.data}}" max="{{dataAtual}}"
                         required>
+                </div>
+
+                <div class="grupo-input">
+                    <label>Data de Validade:</label>
+                    {{#if mantimento.data_validade}}
+                    <input type="date" id="data-validade" name="data_validade" value="{{mantimento.data_validade}}" min="{{dataAtual}}">
+                    {{else}}
+                    <input type="date" id="data-validade" name="data_validade" disabled>
+                    {{/if}}
+                </div>
+
+
+                <div class="grupo-input">
+                    <label>Lote:</label>
+                    <input type="text" id="data-validade" name="lote" value="{{mantimento.lote}}">
                 </div>
 
                 <div class="grupo-input-duplo">

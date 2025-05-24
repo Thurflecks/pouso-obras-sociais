@@ -2,6 +2,7 @@ const { where, DATEONLY } = require('sequelize');
 const MantimentosModel = require('../models/Mantimentos');
 const ControleMantimentosModel = require('../models/ControleMantimentos');
 const { Op } = require('sequelize');
+const moment = require('moment');
 const dataAtual = new Date().toLocaleDateString('fr-CA', {
     timeZone: 'America/Sao_Paulo'
 });
@@ -30,6 +31,10 @@ module.exports = class MantimentosController {
             }
             const mantimentosAjeitados = mantimentos.map(mantimento => {
                 const dataFormatada = mantimento.data.split('T')[0].split('-').reverse().join('/');
+                const dataValidadeFormatada = mantimento.data_validade === null
+                    ? null
+                    : mantimento.data_validade.split('T')[0].split('-').reverse().join('/');
+
                 return {
                     ...mantimento.dataValues,
                     nome: mantimento.produto,
@@ -39,7 +44,9 @@ module.exports = class MantimentosController {
                     data: dataFormatada,
                     doador: mantimento.doador,
                     telefoneDoador: mantimento.telefoneDoador,
-                    id: mantimento.id_mantimento
+                    id: mantimento.id_mantimento,
+                    lote: mantimento.lote,
+                    data_validade: dataValidadeFormatada,
                 };
             });
             res.render('mantimentos/show', { mantimentosAjeitados, search });
@@ -81,6 +88,8 @@ module.exports = class MantimentosController {
                 telefoneDoador: mantimento.telefoneDoador,
                 categoria: mantimento.categoria,
                 descricao: mantimento.descricao,
+                data_validade: mantimento.data,
+                lote: mantimento.lote,
                 movimentacao: 'Saída'
             });
             res.redirect(`/admin/mantimentos/show`);
@@ -104,8 +113,7 @@ module.exports = class MantimentosController {
     static async editarPost(req, res) {
         try {
             const { id } = req.params;
-            const { nome, quantidade, doador, data, categoria, descricao, telefoneDoador } = req.body;
-            console.log('oi to aqui')
+            const { nome, quantidade, doador, data, categoria, descricao, telefoneDoador, lote, data_validade } = req.body;
             const mantimento = await MantimentosModel.update({
                 produto: nome,
                 quantidade,
@@ -113,9 +121,10 @@ module.exports = class MantimentosController {
                 telefoneDoador,
                 data,
                 categoria,
-                descricao
+                descricao,
+                lote: lote || null,
+                data_validade: data_validade || null,
             }, { where: { id_mantimento: id } });
-            console.log(data)
             try {
                 if (mantimento.quantidade === 0) {
                     mantimento.destroy();
@@ -130,6 +139,8 @@ module.exports = class MantimentosController {
                 doador,
                 telefoneDoador,
                 categoria,
+                lote: lote || null,
+                data_validade: data_validade || null,
                 descricao,
                 movimentacao: 'Edição'
             });
@@ -144,13 +155,15 @@ module.exports = class MantimentosController {
     }
     static async adicionarPost(req, res) {
         try {
-            const { nome, quantidade, doador, data, categoria, descricao, telefoneDoador } = req.body;
+            const { nome, quantidade, doador, data, categoria, descricao, telefoneDoador, lote, data_validade } = req.body;
             await MantimentosModel.create({
                 produto: nome,
                 quantidade,
                 doador,
                 telefoneDoador,
                 data,
+                lote: lote || null,
+                data_validade: data_validade || null,
                 categoria,
                 descricao
             });
@@ -159,6 +172,8 @@ module.exports = class MantimentosController {
                 cpf_admin: req.session.user.cpf,
                 quantidade,
                 doador,
+                lote: lote || null,
+                data_validade: data_validade || null,
                 telefoneDoador,
                 categoria,
                 descricao,

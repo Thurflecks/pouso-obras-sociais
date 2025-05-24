@@ -38,17 +38,22 @@
                 </div>
 
                 <div class="grupo-input">
-                    <label>Categoria:</label>
-                    <select name="categoria" id="categoria-produto">
-                        <option value="alimentos">Alimentos</option>
-                        <option value="bebidas">Bebidas</option>
-                        <option value="pereciveis">Perecíveis</option>
-                    </select>
+                    <label for="categoria-produto">Categoria:</label>
+                    <input type="text" name="categoria" id="categoria-produto" placeholder="Digite a categoria" />
+
                 </div>
 
                 <div class="grupo-input">
                     <label>Data de Entrada:</label>
                     <input type="date" name="data" max="{{dataAtual}}" required>
+                </div>
+                <div class="grupo-input">
+                    <label>Data de Validade:</label>
+                    <input type="date" name="data_validade" min="{{dataAtual}}">
+                </div>
+                <div class="grupo-input">
+                    <label>Lote:</label>
+                    <input type="tel" name="lote" placeholder="A0V9V8">
                 </div>
 
                 <div class="grupo-input-duplo">
@@ -66,6 +71,7 @@
                         <label>Telefone:</label>
                         <input type="tel" name="telefoneDoador" placeholder="(00) 00000-0000" required>
                     </div>
+
                 </div>
 
                 <div class="botoes-acao">

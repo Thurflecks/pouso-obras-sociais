@@ -20,6 +20,8 @@ module.exports = class ControleMantimentosController {
             controles.forEach(controle => {
                 const dataHora = new Date(controle.data);
                 const dataFormatada = `${dataHora.toLocaleDateString('pt-BR')} ${dataHora.toLocaleTimeString('pt-BR')}`;
+                const data = new Date(controle.data_validade);
+                const dataFormatadaValidade = controle.data_validade ? `${data.toLocaleDateString('pt-BR')}` : 'Sem Data';
 
                 doc.fontSize(14).text(`Cpf do Administrador: `, { continued: true, bold: true }).font('Helvetica-Bold').text(`${controle.cpf_admin}`).font('Helvetica');
                 doc.fontSize(14).text(`Produto: `, { continued: true, bold: true }).font('Helvetica-Bold').text(`${controle.nome}`).font('Helvetica');
@@ -28,6 +30,8 @@ module.exports = class ControleMantimentosController {
                 doc.text(`Quantidade: `, { continued: true }).font('Helvetica-Bold').text(`${controle.quantidade}`).font('Helvetica');
                 doc.text(`Categoria: `, { continued: true }).font('Helvetica-Bold').text(`${controle.categoria}`).font('Helvetica');
                 doc.text(`Descrição: `, { continued: true }).font('Helvetica-Bold').text(`${controle.descricao}`).font('Helvetica');
+                doc.text(`Lote: `, { continued: true }).font('Helvetica-Bold').text(`${controle.lote}`).font('Helvetica');
+                doc.text(`Data de Validade: `, { continued: true }).font('Helvetica-Bold').text(`${dataFormatadaValidade}`).font('Helvetica');
 
                 doc.moveDown(1);
                 doc.moveTo(doc.x, doc.y) 
