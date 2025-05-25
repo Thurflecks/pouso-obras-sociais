@@ -1,7 +1,7 @@
 const { Sequelize, sequelize } = require('../db/conn');
 
 const PacienteModel = sequelize.define("paciente", {
-    id_pessoa: {
+    id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -26,14 +26,12 @@ const PacienteModel = sequelize.define("paciente", {
     telefone: {
         type: Sequelize.STRING(255),
         allowNull: false
-    },
-    responsavelRetirada: {
-        type: Sequelize.STRING(255),
-        allowNull: false
     }
 }, {
     tableName: 'paciente',
-    timestamps: false
+    timestamps: true,
+    createdAt: false,
+    updatedAt: 'updated_at'
 });
 
 module.exports = PacienteModel;

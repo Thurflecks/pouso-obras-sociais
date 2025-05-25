@@ -286,16 +286,25 @@ a {
     flex-direction: column;
 }
 
-.fa-up-right-and-down-left-from-center {
+.iconDes{
     font-size: 18px;
     color: var(--azul-principal);
-    padding: 0 15px;
     cursor: pointer;
+}
+.despacharMedicamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
 }
 
 .show {
+    text-decoration: none;
+    color: var(--azul-principal);
     background-color: transparent;
     border: none;
+    font-weight: 600;
 }
 
 .footer-container {
@@ -352,6 +361,11 @@ a {
     color: var(--vermelho-destaque);
     font-size: 1rem;
 }
+.edit{
+    color: var(--azul-principal);
+    font-size: 1rem;
+    padding-left: 10px;
+}
 
 @keyframes fadeIn {
     from {
@@ -363,221 +377,4 @@ a {
         opacity: 1;
         transform: translate(-50%);
     }
-}
-
-@media (max-width: 1150px) {
-    .navbar-admin {
-        height: clamp(10px, 10vh, 80px);
-        display: flex;
-        padding: 0;
-    }
-
-    .logo-container {
-        width: 60%;
-    }
-
-    .nav-logo {
-        padding-left: 10px;
-        width: clamp(5px, 10vh, 60px);
-        object-fit: contain;
-    }
-
-    .middle-section-nav {
-        display: none;
-    }
-
-    .nav-voltar-btn-novo {
-        display: none;
-    }
-
-    .nav-direita {
-        padding-right: 10px;
-    }
-
-    .search-container {
-        justify-content: space-between;
-    }
-
-    .search-bar-container {
-        width: 100%;
-        flex-direction: row;
-    }
-
-    .search-input {
-        width: 100%;
-        margin-right: 0;
-    }
-
-    .order-container {
-        gap: 0.5rem;
-    }
-
-    .footer-container {
-        height: 6vw;
-        min-height: 50px;
-        display: flex;
-        flex-direction: row;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: var(--azul-principal);
-        align-items: center;
-        color: var(--branco);
-        text-align: center;
-        padding: 10px;
-        z-index: 100;
-        font-size: 2.5vw;
-
-    }
-
-    .footer-voltar {
-        width: 30%;
-        color: var(--branco);
-
-    }
-
-    .footer-icons {
-        width: 70%;
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .footer-icons i {
-        color: var(--branco);
-    }
-
-    .footer-icons span {
-        color: var(--branco);
-    }
-
-    .table-farm {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: space-between;
-        font-size: 1rem;
-    }
-
-    .table {
-        flex: 1 1 calc(33.333% - 20px);
-    }
-}
-
-@media (max-width: 570px) {
-    .nav-container {
-        gap: 0;
-    }
-
-    .logo-container {
-        gap: 0.2rem;
-    }
-
-    .nav-direita {
-        width: 25%;
-    }
-
-    .logo-container {
-        width: 75%;
-    }
-
-    .span-text {
-        font-size: 0.8rem;
-    }
-
-    .logo-text {
-        font-size: 0.8rem;
-    }
-
-    .usuario {
-        font-size: 0.5rem;
-    }
-
-    .search-bar-form {
-        width: 100%;
-    }
-
-    .search-bar-container {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .search-input {
-        width: 90%;
-    }
-
-    .footer-container {
-        font-size: 0.75rem;
-    }
-
-    .table-farm-container {
-        width: 100%;
-    }
-
-    .table-farm {
-        width: 90%;
-        font-size: 3vw;
-    }
-
-    .strong-table {
-        white-space: nowrap;
-    }
-
-    .table {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .div-table {
-        white-space: normal;
-        word-break: break-word;
-        overflow-wrap: break-word;
-    }
-}
-
-.paidopopo {
-
-    height: 100vh;
-    background-color: white;
-}
-
-.pop {
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 1em;
-}
-
-.pop h4 {
-    color: white;
-    background-color: #2793FF;
-    padding: 1em;
-    border-radius: 1em 1em 0 0;
-}
-
-.pop .pop-input {
-    width: 100%;
-    margin: 0 auto;
-    border-radius: 1em;
-    padding: .80em;
-    margin-top: 1em;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    border: 2px solid #C4C4C4;
-}
-
-.pop div input {
-    border: none;
-}
-
-.pop #resultados li {
-    margin-top: 1em;
-    border-radius: 1em;
-    font-weight: 500;
-    padding: 1em;
-    border: 2px solid #C4C4C4;
-}
-
-.anotfound {
-    color: red;
 }

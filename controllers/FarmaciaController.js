@@ -20,7 +20,7 @@ module.exports = class FarmaciaController {
             }, order: [['updated_at', order]]
         });
         if (farmacia.length === 0) {
-            req.flash('message', 'Nenhum produto correspondente com: ' + search);
+            req.flash('message', 'Nenhum medicamento correspondente com: ' + search);
         }
 
         const farmaciaAjeitados = farmacia.map(item => {
@@ -104,10 +104,15 @@ module.exports = class FarmaciaController {
             }
             farmacia.update({
                 quantidade: farmacia.quantidade - saida
-            }).then(() => {
+            }).then((async () => {
+                if (farmacia.quantidade <= 0) {
+                    await farmacia.destroy();
+                    req.flash('message', 'Medicamento retirado com sucesso! Mas com o estoque zerado.');
+                    return res.redirect('/admin/farmacia/medicamentos');
+                }
                 req.flash('message', 'Medicamento retirado com sucesso!');
                 return res.redirect('/admin/farmacia/medicamentos');
-            })
+            }))
         } catch (error) {
             console.log(error);
             req.flash('message', 'Erro');

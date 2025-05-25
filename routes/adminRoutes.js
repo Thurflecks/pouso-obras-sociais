@@ -7,6 +7,7 @@ const authenticate = require('../middlewares/authenticate');
 const verifyLogin = require("../middlewares/verifyLogin");
 const AdminLoginsController = require('../controllers/AdminLoginsController');
 const ControleMantiController = require('../controllers/ControleMantiController');
+const PacienteController = require('../controllers/PacienteController');
 const verifyNivel = require('../middlewares/verifyNivel');
 
 //admin
@@ -40,18 +41,13 @@ router.get('/farmacia/medicamentos/edit/:id', authenticate, verifyNivel([3, 4]),
 router.post('/farmacia/medicamentos/edit/:id', authenticate, verifyNivel([3, 4]), FarmaciaController.update);
 router.post('/farmacia/medicamentos/saida/:id', authenticate, verifyNivel([3, 4]), FarmaciaController.saida);
 
-
-
-//rotas de add medicamentos no banco
-//clicou em +novo => abre popup => pesquisa => clica em um medicamentos => vai pra rota de medicamento/add
 router.get('/farmacia/medicamentos/add/:id', authenticate, verifyNivel([3, 4]), FarmaciaController.addMedicamento);
 router.post('/farmacia/medicamentos/add', authenticate, verifyNivel([3, 4]), FarmaciaController.addMedicamentoPost);
-//rota do de pesquisar medicamentos (popup)
 router.get('/farmacia/medicamentos/search', authenticate, verifyNivel([3, 4]), FarmaciaController.search);
-//rota do fetch
 router.post('/farmacia/medicamentos/search', authenticate, verifyNivel([3, 4]), FarmaciaController.searchPost);
 
-
+//pacientes
+router.get('/farmacia/pacientes', authenticate, verifyNivel([3, 4]), PacienteController.showPacientes);
 
 //relatorio 
 router.get('/relatorio', authenticate, AdminController.relatorio);

@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="/css/farmacia.css">
+    <link rel="stylesheet" href="/css/pacientes.css">
 </head>
 <nav class="navbar-admin">
     <div class="nav-container">
@@ -13,9 +13,9 @@
 
         <div class="middle-section-nav">
             <div>
-                <a href="/admin/farmacia/pacientes" class="middle-section-nav-button">
-                    <i class="fa-solid fa-bed-pulse"></i>
-                    <span>Pacientes</span>
+                <a href="/admin/farmacia/medicamentos" class="middle-section-nav-button">
+                    <i class="fa-solid fa-pills"></i>
+                    <span>Fármacos</span>
                 </a>
             </div>
             <div>
@@ -39,9 +39,9 @@
                     <span class="usuario">Nome: {{session.user.nome}}</span>
                     <span class="usuario">Nível: {{session.user.nivel}}</span>
                 </div>
-                <a href="/admin" class="nav-voltar-btn-novo">
+                <a href="/admin/farmacia/medicamentos" class="nav-voltar-btn-novo">
                     <i class="fas fa-arrow-left"></i>
-                    <span>Voltar ao Painel Administrativo</span>
+                    <span>Voltar ao Painel Farmacêutico</span>
                 </a>
             </div>
         </div>
@@ -52,24 +52,24 @@
     <section class="section-principal">
         <div class="search-container">
             <div class="search-bar-container">
-                <form action="/admin/farmacia/medicamentos" class="search-bar-form" method="get">
+                <form action="/admin/farmacia/pacientes" class="search-bar-form" method="get">
                     <input type="text" name="search" class="search-input" placeholder="Pesquisar...">
                     <button type="submit" class="search-button">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-                <a href="/admin/farmacia/medicamentos" class="limparPesquisa">Limpar Pesquisa</a>
+                <a href="/admin/farmacia/pacientes" class="limparPesquisa">Limpar Pesquisa</a>
             </div>
             <div class="order-container">
                 <span class="order-span"> Ordenar por: </span>
-                <form action="/admin/farmacia/medicamentos" method="get">
+                <form action="/admin/farmacia/pacientes" method="get">
                     <input type="hidden" name="search" value="{{this.search}}">
                     <input type="hidden" name="order" value="new">
                     <button type="submit" class="order-button">
                         <i class="fas fa-arrow-up"></i>
                     </button>
                 </form>
-                <form action="/admin/farmacia/medicamentos" method="get">
+                <form action="/admin/farmacia/pacientes" method="get">
                     <input type="hidden" name="search" value="{{this.search}}">
                     <input type="hidden" name="order" value="old">
                     <button type="submit" class="order-button">
@@ -80,46 +80,42 @@
         </div>
         <div class="farm-container">
             <div class="farm-title-content">
-                <span class="farm-title"> <i class="fa-solid fa-pills"></i> Controle de Medicamentos</span>
-                <a class="button-novo" href="/admin/farmacia/medicamentos/search"> <i class="fa-solid fa-plus"></i> Novo
+                <span class="farm-title"> <i class="fa-solid fa-pills"></i> Controle de Pacientes</span>
+                <a class="button-novo" href="#"> <i class="fa-solid fa-plus"></i> Novo
                 </a>
             </div>
-            {{#each farmaciaAjeitados}}
+            {{#each PacientesAjeitados}}
             <div class="table-farm-container">
+                <div>
+                    <a href=""><i class="fas fa-edit edit"></i></a>
+                </div>
                 <div class="table-farm">
                     <div class="table">
-                        <strong class="strong-table">Nome do Medicamento:</strong>
+                        <strong class="strong-table">Nome:</strong>
                         <div class="div-table">{{nome}}</div>
                     </div>
                     <div class="table">
-                        <strong class="strong-table">Quantidade:</strong>
-                        <div class="div-table">{{quantidade}}</div>
+                        <strong class="strong-table">CPF:</strong>
+                        <div class="div-table">{{cpf}}</div>
                     </div>
                     <div class="table">
-                        <strong class="strong-table">Concentração:</strong>
-                        <div class="div-table">{{concentracao}}</div>
+                        <strong class="strong-table">Endereço:</strong>
+                        <div class="div-table">{{endereco}}</div>
 
                     </div>
                     <div class="table">
-                        <strong class="strong-table">Classe Terapeutica:</strong>
-                        <div class="div-table">{{classe_terapeutica}}</div>
+                        <strong class="strong-table">Data De Nascimento:</strong>
+                        <div class="div-table">{{dataNasc}}</div>
 
                     </div>
                     <div class="table">
-                        <strong class="strong-table">Controle especial:</strong>
-                        <div class="div-table">{{#if controleEspecial}}<i
-                                class="fa-solid fa-circle-check"></i>{{else}}<i
-                                class="fa-solid fa-circle-xmark"></i>{{/if}}</div>
-
-                    </div>
-                    <div class="table">
-                        <strong class="strong-table">Data de validade:</strong>
-                        <div class="div-table">{{data_validade}}</div>
+                        <strong class="strong-table">Telefone:</strong>
+                        <div class="div-table">{{telefone}}</div>
                     </div>
                 </div>
-                <div>
-                    <a href="/admin/farmacia/medicamentos/edit/{{id}}" class="show"><i
-                            class="fa-solid fa-up-right-and-down-left-from-center"></i></a>
+                <div class="despacharMedicamento">
+                    <a href="#" class="show">Despachar Medicamento <i class="fas fa-pills iconDes"></i>
+                            </i></a>
                 </div>
             </div>
             {{/each}}

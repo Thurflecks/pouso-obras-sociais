@@ -80,7 +80,7 @@
                                 <strong>Informar saída:</strong>
                             </div>
                             <div class="value">
-                                <input type="text" placeholder="Informar Quantidade..." name="saida">
+                                <input type="text" placeholder="Informar Quantidade..." name="saida" min="1" max="{{farmacia.quantidade}}" required>
                                 <button type="submit" class="btn-saida">Retirar</button>
                             </div>
                         </form>
