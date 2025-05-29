@@ -2,7 +2,6 @@ const { where, DATEONLY } = require('sequelize');
 const MantimentosModel = require('../models/Mantimentos');
 const ControleMantimentosModel = require('../models/ControleMantimentos');
 const { Op } = require('sequelize');
-const moment = require('moment');
 const dataAtual = new Date().toLocaleDateString('fr-CA', {
     timeZone: 'America/Sao_Paulo'
 });

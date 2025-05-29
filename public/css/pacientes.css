@@ -207,7 +207,7 @@ a {
     padding: 10px;
     font-size: 14px;
     margin-right: 10px;
-    width: 100%;
+    width: 85%;
     outline: none;
 }
 
@@ -215,6 +215,16 @@ a {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    padding-right: 10px;
+}
+
+.search-bar-form select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
 }
 
 .search-button i {
@@ -286,11 +296,12 @@ a {
     flex-direction: column;
 }
 
-.iconDes{
+.iconDes {
     font-size: 18px;
     color: var(--azul-principal);
     cursor: pointer;
 }
+
 .despacharMedicamento {
     display: flex;
     align-items: center;
@@ -361,7 +372,8 @@ a {
     color: var(--vermelho-destaque);
     font-size: 1rem;
 }
-.edit{
+
+.edit {
     color: var(--azul-principal);
     font-size: 1rem;
     padding-left: 10px;

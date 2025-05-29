@@ -9,6 +9,7 @@ const AdminLoginsController = require('../controllers/AdminLoginsController');
 const ControleMantiController = require('../controllers/ControleMantiController');
 const PacienteController = require('../controllers/PacienteController');
 const verifyNivel = require('../middlewares/verifyNivel');
+const EpiController = require('../controllers/EpiController');
 
 //admin
 router.get('/', authenticate, AdminController.homeAdmin);
@@ -48,6 +49,10 @@ router.post('/farmacia/medicamentos/search', authenticate, verifyNivel([3, 4]), 
 
 //pacientes
 router.get('/farmacia/pacientes', authenticate, verifyNivel([3, 4]), PacienteController.showPacientes);
+
+
+//epi
+router.get('/farmacia/epi', authenticate, EpiController.showEPI);
 
 //relatorio 
 router.get('/relatorio', authenticate, AdminController.relatorio);

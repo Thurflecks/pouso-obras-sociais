@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div>
-                <a href="/admin" class="middle-section-nav-button">
+                <a href="/admin/farmacia/epi" class="middle-section-nav-button">
                     <i class="fa-solid fa-mask-face"></i>
                     <span>EPIs</span>
                 </a>
@@ -54,6 +54,13 @@
             <div class="search-bar-container">
                 <form action="/admin/farmacia/medicamentos" class="search-bar-form" method="get">
                     <input type="text" name="search" class="search-input" placeholder="Pesquisar...">
+                    <select name="table" id="table">
+                        <option value="nome">Nome</option>
+                        <option value="tipo">tipo</option>
+                        <option value="categoria">Categoria</option>
+                        <option value="lote">Lote</option>
+                        <option value="classe_terapeutica">Classe Terapeutica</option>
+                    </select>
                     <button type="submit" class="search-button">
                         <i class="fas fa-search"></i>
                     </button>
@@ -147,7 +154,7 @@
                 </a>
             </div>
             <div>
-                <a href="/admin" class="footer-button">
+                <a href="/admin/farmacia/epi" class="footer-button">
                     <i class="fa-solid fa-mask-face"></i>
                     <span>EPIs</span>
                 </a>

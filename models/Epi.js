@@ -1,13 +1,13 @@
 const { Sequelize, sequelize } = require('../db/conn');
 
-const MateriaisEPIModel = sequelize.define('materiais_EPI', {
-  id_material: {
+const EpiModel = sequelize.define('epi', {
+  id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false
   },
-  nome_material: {
+  nome: {
     type: Sequelize.STRING(255),
     allowNull: false
   },
@@ -20,12 +20,14 @@ const MateriaisEPIModel = sequelize.define('materiais_EPI', {
     allowNull: false
   },
   data: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: false
   }
 }, {
-  tableName: 'materiais_EPI',
-  timestamps: false
+  tableName: 'epi',
+  timestamps: true,
+  createdAt: false,
+  updatedAt: 'updated_at'
 });
 
-module.exports = MateriaisEPIModel;
+module.exports = EpiModel;
