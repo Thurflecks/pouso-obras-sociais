@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 module.exports = class PacienteController {
     static async showPacientes(req, res) {
         const search = String(req.query.search || "");
-        const table = String(req.query.table || "");
+        const column = String(req.query.column || "");
         let order = 'DESC';
         if (req.query.order === 'old') {
             order = 'ASC';
@@ -14,7 +14,7 @@ module.exports = class PacienteController {
 
         const pacientes = await PacienteModel.findAll({
             where: {
-                [table ? table : 'nome']: {
+                [column ? column : 'nome']: {
                     [Op.like]: `%${search}%`
                 }
             }, order: [['updated_at', order]]

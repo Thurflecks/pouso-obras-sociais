@@ -5,7 +5,7 @@ module.exports = class EpiController {
     static async showEPI(req, res) {
         try {
             const search = String(req.query.search || "");
-            const table = String(req.query.table || "");
+            const column = String(req.query.column || "");
             let order = 'DESC';
             if (req.query.order === 'old') {
                 order = 'ASC';
@@ -15,7 +15,7 @@ module.exports = class EpiController {
 
             const epi = await EpiModel.findAll({
                 where: {
-                    [table ? table : 'nome']: {
+                    [column ? column : 'nome']: {
                         [Op.like]: `%${search}%`
                     }
                 }, order: [['updated_at', order]]

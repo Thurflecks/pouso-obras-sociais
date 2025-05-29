@@ -5,7 +5,7 @@ const MedicamentosModel = require('../models/Medicamentos');
 module.exports = class FarmaciaController {
     static async showMedicamentos(req, res) {
         const search = String(req.query.search || "");
-        const table = String(req.query.table || "");
+        const column = String(req.query.column || "");
         let order = 'DESC';
         if (req.query.order === 'old') {
             order = 'ASC';
@@ -15,7 +15,7 @@ module.exports = class FarmaciaController {
 
         const farmacia = await FarmaciaModel.findAll({
             where: {
-                [table ? table : 'nome']: {
+                [column ? column : 'nome']: {
                     [Op.like]: `%${search}%`
                 }
             }, order: [['updated_at', order]]
