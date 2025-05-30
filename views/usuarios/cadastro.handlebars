@@ -1,40 +1,78 @@
+<head>
+    <link rel="stylesheet" href="/css/cadastroUser.css">
+</head>
+
+<section class="navbar">
+    <div class="navbar-left">
+        <a href="/"><img src="/assets/logos/logo.png" alt="Logo" class="logo" /></a>
+    </div>
+    <div class="navbar-right">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="horarios.html">Horários</a>
+        <a href="contato.html">Contato</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="/doacao" class="pgi-link button-doar">Doar agora</a>
+    </div>
+</section>
 <form id="formulario" action="/user/add_cadastro" method="POST">
+
+    <div id="progresso-formulario">
+        <div class="linha-conectora"></div>
+        <div class="etapa" data-secao="secao1"><span class="bolinha"></span> Ficha Socioeconômica</div>
+        <div class="etapa" data-secao="secao3"><span class="bolinha"></span> Atividade Profissional</div>
+        <div class="etapa" data-secao="secao6"><span class="bolinha"></span> Moradia e Transporte</div>
+        <div class="etapa" data-secao="secao10"><span class="bolinha"></span> Situação Trabalhista e Renda</div>
+        <div class="etapa" data-secao="secao12"><span class="bolinha"></span> Benefícios e Necessidades Especiais</div>
+    </div>
+
 
     <!-- Seção 1 -->
     <div class="secao" id="secao1">
         <h2>Ficha Socioeconômica</h2>
 
-        <div class="form-section">
-            <label for="nome">Nome completo:</label>
-            <input type="text" id="nome" name="nome">
-            <p class="erro" style="color:red; display:none;">Preencha o nome.</p>
+        <!-- Linha 1: Nome -->
+        <div class="linha-campos">
+            <div class="campo" style="flex: 1 1 100%;">
+                <label for="nome">Nome completo:</label>
+                <input type="text" id="nome" name="nome">
+                <p class="erro" style="color:red; display:none;">Preencha o nome.</p>
+            </div>
         </div>
 
-        <div class="form-section">
-            <label for="dataNascimento">Data de Nascimento:</label>
-            <input type="date" id="dataNascimento" name="dataNascimento">
-            <p class="erro" style="color:red; display:none;">Informe a data de nascimento.</p>
+        <!-- Linha 2: Data de nascimento + Telefone -->
+        <div class="linha-campos">
+            <div class="campo">
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento">
+                <p class="erro" style="color:red; display:none;">Informe a data de nascimento.</p>
+            </div>
+
+            <div class="campo">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" inputmode="numeric" pattern="\d*">
+                <p class="erro" style="color:red; display:none;">Informe o telefone.</p>
+            </div>
         </div>
 
-        <div class="form-section">
-            <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone" inputmode="numeric" pattern="\d*">
-            <p class="erro" style="color:red; display:none;">Informe o telefone.</p>
-        </div>
+        <!-- Linha 3: CPF + Identidade -->
+        <div class="linha-campos">
+            <div class="campo">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" inputmode="numeric">
+                <p class="erro" style="color:red; display:none;">Informe o CPF.</p>
+            </div>
 
-        <div class="form-section">
-            <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" name="cpf" inputmode="numeric" pattern="\d*" maxlength="11">
-            <p class="erro" style="color:red; display:none;">Informe o CPF.</p>
-        </div>
-
-        <div class="form-section">
-            <label for="identidade">Carteira de Identidade:</label>
-            <input type="text" id="identidade" name="identidade">
-            <p class="erro" style="color:red; display:none;">Carteira de Identidade</p>
+            <div class="campo">
+                <label for="identidade">Carteira de Identidade:</label>
+                <input type="text" id="identidade" name="identidade">
+                <p class="erro" style="color:red; display:none;">Carteira de Identidade</p>
+            </div>
         </div>
 
         <div class="botoes">
+            <button type="button" onclick="voltarSecao()">Voltar</button>
             <button type="button" onclick="validarSecao1()">Próximo</button>
         </div>
     </div>
@@ -164,19 +202,21 @@
         <div class="form-section">
             <label for="formacao_tecnica">Você tem alguma formação técnica?</label>
             <input type="text" name="formacao_tecnica" id="formacao_tecnica">
-            <p class="erro" style="color:red; display:none;">Informe a formação técnica (ou escreva "Não").</p>
+            <p class="erro">Informe a formação técnica (ou escreva "Não").</p>
         </div>
 
-        <div class="form-section">
-            <label for="num_pessoas">Número total de pessoas na residência:</label>
-            <input type="number" id="num_pessoas" name="num_pessoas" required>
-            <p class="erro" style="color:red; display:none;">Informe a quantidade de membros da família.</p>
-        </div>
+        <div class="form-section linha-horizontal">
+            <div class="campo-lado-a-lado">
+                <label for="num_pessoas">Número total de pessoas na residência:</label>
+                <input type="number" id="num_pessoas" name="num_pessoas" required>
+                <p class="erro">Informe a quantidade de membros da família.</p>
+            </div>
 
-        <div class="form-section">
-            <label for="num_criancas">Número de crianças:</label>
-            <input type="number" id="num_criancas" name="num_criancas" required>
-            <p class="erro" style="color:red; display:none;">Informe quantos são menores de idade.</p>
+            <div class="campo-lado-a-lado">
+                <label for="num_criancas">Número de crianças:</label>
+                <input type="number" id="num_criancas" name="num_criancas" required>
+                <p class="erro">Informe quantos são menores de idade.</p>
+            </div>
         </div>
 
         <div class="form-section">
@@ -188,7 +228,7 @@
                 <label><input type="radio" name="etnia" value="amarelo"> Amarelo(a)</label>
                 <label><input type="radio" name="etnia" value="indigena"> Indígena</label>
             </div>
-            <p class="erro" style="color:red; display:none;">Selecione uma opção de etnia.</p>
+            <p class="erro">Selecione uma opção de etnia.</p>
         </div>
 
         <div class="botoes">
@@ -263,9 +303,8 @@
 
     <div class="secao" id="secao9">
         <h2>Participação Econômica</h2>
-
+        <label>Qual sua participação na vida econômica do seu grupo familiar?</label>
         <div class="form-section opcoes">
-            <label>Qual sua participação na vida econômica do seu grupo familiar?</label>
 
             <label>
                 <input type="radio" name="participacao_economica" value="recebe_ajuda">
@@ -402,4 +441,49 @@
         </div>
     </div>
 </form>
-<script src="/js/app.js"></script>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="/assets/logos/logo.png" alt="Logo Pouso" class="footer-logo" />
+                <div class="footer-info">
+                    <p>CNPJ: 00.000.000/0001-00</p>
+                    <p>Certificado de Entidade Beneficente</p>
+                    <p>Registro CEBAS nº 123456</p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Transparência</h4>
+                <ul class="footer-links">
+                    <li><a href="#relatorios">Relatórios Anuais</a></li>
+                    <li><a href="#prestacao">Prestação de Contas</a></li>
+                    <li><a href="#estatuto">Estatuto Social</a></li>
+                    <li><a href="#politica">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Como Ajudar</h4>
+                <ul class="footer-links">
+                    <li><a href="#doacoes">Doações Materiais</a></li>
+                    <li><a href="#voluntario">Voluntariado</a></li>
+                    <li><a href="#empresas">Parcerias Empresariais</a></li>
+                    <li><a href="#campanhas">Campanhas Ativas</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <div class="footer-contato">
+                    <p>(98) 9999-9999</p>
+                    <p>contato@pouso.org.br</p>
+                    <p>Veja no mapa</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Pouso: Obras Sociais. Todos os direitos reservados.</p>
+            <p>Desenvolvido por CodeTrack.</p>
+        </div>
+    </div>
+</footer>
+<script src="/js/users/cadastro.js"></script>

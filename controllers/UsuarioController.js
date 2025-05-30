@@ -12,7 +12,6 @@ module.exports = class UsuarioController {
             participacao_economica, situacao_trabalhista, descricao_outro, renda_percapta,
             beneficio_social, qual_beneficio, cadastro_unico, necessidades_especiais, descricao_necessidade,
             medicacao_continua } = req.body
-         console.log(req.body)
          await UsuarioModel.create({
             nome: nome,
             data_nasc: dataNascimento,
@@ -52,7 +51,6 @@ module.exports = class UsuarioController {
    }
    static async index(req, res) {
       const usuarios = await UsuarioModel.findAll()
-      console.log(usuarios)
       res.render('usuarios/index', { usuarios })
    }
 }

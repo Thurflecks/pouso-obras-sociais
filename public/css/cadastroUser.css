@@ -1,0 +1,625 @@
+/* RESET GERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #1A3A4D;
+    background: url('imagens/91675.jpg') center center / cover no-repeat fixed, #f5f5f5;
+}
+
+#formulario {
+    margin-top: 50px;
+    /* ajuste o valor conforme quiser */
+}
+
+#formulario {
+    margin-bottom: 50px;
+}
+
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    height: 70px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left,
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-right {
+    margin-left: auto;
+}
+
+.navbar-right a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #1A3A4D;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.navbar-right a:hover {
+    color: #2793ff;
+}
+
+.logo {
+    width: 120px;
+}
+
+/* BOTÃO DOAR */
+.button-doar {
+    width: 135px;
+    height: 40px;
+    background: #2793FF;
+    color: #fff !important;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.button-doar:hover {
+    background-color: #1A6ED8;
+}
+
+#progresso-formulario {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* deixa espaço para o texto */
+    position: relative;
+    margin: 10px 0 10px;
+    padding: 0 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.etapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+    z-index: 2;
+    color: #666;
+    margin-top: 5px;
+    /* afasta do topo, afastando o texto da linha */
+    font-size: 0.8rem;
+}
+
+.etapa .bolinha {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ddd;
+    border: 3px solid white;
+    z-index: 2;
+    box-shadow: 0 0 0 2px #ccc;
+    transition: all 0.3s ease;
+
+    /* Espaço entre bolinha e texto */
+    margin-bottom: 10px;
+    /* Ajuste conforme preferir */
+}
+
+
+.etapa.ativa .bolinha {
+    background-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.etapa.completa .bolinha {
+    background-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+}
+
+.etapa.ativa {
+    color: #007bff;
+    font-weight: 400;
+}
+
+.etapa.completa {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.linha-conectora {
+    position: absolute;
+    top: 0.94rem;
+    /* alinhado ao centro da bolinha */
+    left: 0;
+    right: 0;
+    height: 0.125rem;
+    /* 2px = 2/16 = 0.125rem */
+    background-color: #e0e0e0;
+    z-index: 1;
+}
+
+
+/* Formulário centralizado */
+form {
+    max-width: 100rem;
+    /* Mais largo */
+    width: 40%;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+    /* Padding mais leve */
+    background: #fff;
+    border-radius: 1.6rem;
+    /* Borda suavemente arredondada */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Cabeçalhos */
+h2 {
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #0044ff;
+    display: inline-block;
+    padding-bottom: 6px;
+}
+
+label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 200;
+    color: #34495e;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 0.3rem 0.8rem;
+    /* Mais estreito verticalmente, largo horizontalmente */
+    margin-top: 0.2rem;
+    border: 1px solid #cccccc;
+    border-radius: 1rem;
+    /* Levemente arredondado */
+    font-size: 0.8rem;
+    height: 2rem;
+    /* Altura menor para um visual mais retangular */
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form {
+    max-width: 70rem;
+    /* Largura máxima aumentada */
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.6rem 2rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Opções (radio/checkbox) */
+.opcoes {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.opcoes label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f9f9f9;
+    padding: 10px 16px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.opcoes label:hover {
+    background-color: #f0f0f0;
+    border-color: #0044ff;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #0044ff;
+    width: 16px;
+    height: 16px;
+}
+
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline: 2px solid #0044ff;
+}
+
+.linha-campos {
+    gap: 1rem;
+    /* antes 1.5rem */
+    margin-bottom: 1rem;
+}
+
+.opcoes {
+    gap: 1rem;
+    /* antes 1.5rem */
+}
+
+.linha-campos .campo {
+    flex: 1 1 30%;
+    min-width: 10%;
+}
+
+.linha-campos {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.linha-campos .campo {
+    flex: 1 1 45%;
+    min-width: 100px;
+}
+
+.linha-campos {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.linha-campos .campo {
+    flex: 1 1 30%;
+    min-width: 200px;
+}
+
+.opcoes,
+.opcoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.opcoes label,
+.opcoes-grid label {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 1.5rem;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.opcoes label:hover,
+.opcoes-grid label:hover {
+    background-color: #eef4ff;
+    border-color: #0044ff;
+    transform: scale(1.02);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #0044ff;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+.linha-campos {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.linha-campos .campo {
+    flex: 1 1 30%;
+    min-width: 200px;
+}
+
+/* Opções em grade para múltiplas colunas */
+.opcoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.8rem;
+    margin-top: 10px;
+}
+
+/* Opções em coluna (como para renda per capita) */
+.opcoes-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 10px;
+}
+
+/* Seções */
+.secao {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    padding-bottom: 10px;
+    /* Reduzindo o espaço inferior nas seções */
+    margin-bottom: 0;
+}
+
+.secao.ativa {
+    display: block;
+    opacity: 1;
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Exibir a primeira seção por padrão */
+#secao1,
+#section1 {
+    display: block;
+    opacity: 1;
+}
+
+/* Botões */
+.botoes {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    /* Alinha os botões à esquerda */
+    flex-wrap: wrap;
+    /* Permite quebra de linha se necessário */
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.botoes button {
+    background-color: #006eff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    /* 12px = 0.75rem, 24px = 1.5rem */
+    margin: 0 0.3125rem;
+    /* 5px = 0.3125rem */
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 650;
+    /* só deixa a fonte mais grossa */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover no botão */
+.botoes button:hover {
+    background-color: #005cbf;
+    /* Cor mais clara para o hover */
+    transform: scale(1.05);
+    /* Pequeno aumento de tamanho ao passar o mouse */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Animação para transição de slide */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Seções */
+.secao {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    padding-bottom: 10px;
+    /* Reduzindo o espaço inferior nas seções */
+    margin-bottom: 0;
+    transform: translateY(20px);
+    /* Inicia as seções com um pequeno deslocamento */
+}
+
+/* Seção ativa (vai para display:block e visível) */
+.secao.ativa {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    /* Move para a posição original */
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.linha-horizontal {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.campo-lado-a-lado {
+    flex: 1;
+    min-width: 250px;
+}
+
+.erro {
+    color: red;
+    display: none;
+    /* Só aparece se for necessário */
+}
+
+/* =================== VARIÁVEIS =================== */
+:root {
+    /* Cores principais */
+    --azul-principal: #2A5C82;
+    --vermelho-destaque: #C3423F;
+    --branco: #FFFFFF;
+    --cinza-claro: #F5F5F5;
+    --azul-escuro: #1A3A4D;
+
+    /* Cores alternativas (neutras e tons escuros) */
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-primary-100: hsl(205, 15%, 58%);
+    --clr-primary-400: hsl(215, 25%, 27%);
+    --clr-primary-800: hsl(217, 33%, 17%);
+    --clr-primary-900: hsl(218, 33%, 9%);
+
+    /* Estilo e transições */
+    --sombra: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --borda: 2px solid rgba(42, 92, 130, 0.1);
+    --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =================== FOOTER =================== */
+.footer {
+    background: var(--azul-principal);
+    color: var(--branco);
+    padding: 4rem 1.5rem 2rem;
+    /* menos padding horizontal para centralizar */
+    margin-top: auto;
+    border: var(--borda);
+    font-size: 0.8rem;
+    /* fonte menor */
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* um pouco menor para centralizar */
+    gap: 1.5rem;
+    /* menos espaçamento entre colunas */
+}
+
+.footer-col {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    /* centralizar texto nas colunas */
+}
+
+.footer-logo {
+    width: 10rem;
+    /* 160px para ficar menor e proporcional */
+    margin: 0 auto 1rem;
+    /* centralizar logo e espaço abaixo */
+    display: block;
+}
+
+.footer-info {
+    opacity: 0.85;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    /* centralizar lista */
+    max-width: 180px;
+    /* limitar largura para centralizar melhor */
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--branco);
+    text-decoration: none;
+    transition: var(--transicao);
+}
+
+.footer-links a:hover {
+    color: var(--vermelho-destaque);
+    padding-left: 0.3rem;
+}
+
+.footer-contato p {
+    display: flex;
+    justify-content: center;
+    /* centralizar conteúdo do contato */
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* Responsividade (mantém oculto no mobile < 600px) */
+@media (max-width: 37.5rem) {
+
+    /* 600px */
+    .footer {
+        display: none;
+    }
+}
+
+/* Para garantir responsividade total */
+@media (max-width: 600px) {
+    .linha-campos .campo {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    #progresso-formulario {
+        display: none;
+    }
+}
