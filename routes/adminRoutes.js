@@ -57,6 +57,7 @@ router.get('/farmacia/epi', authenticate, verifyNivel([3, 4]), EpiController.sho
 
 //equipamentos
 router.get('/farmacia/equipamentos', authenticate, verifyNivel([3, 4]), EquipamentosController.showEquipamentos);
+router.get('/farmacia/equipamentos/edit', authenticate, verifyNivel([3, 4]), EquipamentosController.edit);
 
 //relatorio 
 router.get('/relatorio', authenticate, AdminController.relatorio);

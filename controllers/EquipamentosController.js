@@ -42,4 +42,13 @@ module.exports = class EquipamentosController {
             res.status(500).redirect('/admin/farmacia/medicamentos');
         }
     }
+    static async edit(req, res) {
+        try {
+            res.render('equipamentosFarma/edit')
+        } catch (erro) {
+            console.error(error);
+            req.flash('message', 'Erro ao acessar a página de equipamentos')
+            res.status(500).redirect('/admin/farmacia/medicamentos');
+        }
+    }
 }
