@@ -40,6 +40,7 @@ module.exports = class EpiController {
         }
         catch (error) {
             console.error(error);
+            req.flash('message', 'Erro ao acessar a página de EPI')
             res.status(500).redirect('/admin/farmacia/medicamentos');
         }
     }

@@ -41,6 +41,10 @@ module.exports = class FarmaciaController {
         });
 
         res.render('farmacia/medicamentos', { farmaciaAjeitados, search });
+    } catch(error) {
+        console.error(error);
+        req.flash('message', 'Erro ao acessar a página de equipamentos')
+        res.status(500).redirect('/admin/');
     }
     static async edit(req, res) {
         const id = req.params.id;

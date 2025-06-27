@@ -38,6 +38,7 @@ module.exports = class EquipamentosController {
         }
         catch (error) {
             console.error(error);
+            req.flash('message', 'Erro ao acessar a página de equipamentos')
             res.status(500).redirect('/admin/farmacia/medicamentos');
         }
     }

@@ -37,5 +37,10 @@ module.exports = class PacienteController {
         });
         res.render('pacientes/pacientes', { PacientesAjeitados, search });
     }
+    catch(error) {
+        console.error(error);
+        req.flash('message', 'Erro ao acessar a página de pacientes')
+        res.status(500).redirect('/admin/farmacia/medicamentos');
+    }
 }
 

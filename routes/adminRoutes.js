@@ -53,10 +53,10 @@ router.get('/farmacia/pacientes', authenticate, verifyNivel([3, 4]), PacienteCon
 
 
 //epi
-router.get('/farmacia/epi', authenticate, EpiController.showEPI);
+router.get('/farmacia/epi', authenticate, verifyNivel([3, 4]), EpiController.showEPI);
 
 //equipamentos
-router.get('/farmacia/equipamentos', authenticate, EquipamentosController.showEquipamentos);
+router.get('/farmacia/equipamentos', authenticate, verifyNivel([3, 4]), EquipamentosController.showEquipamentos);
 
 //relatorio 
 router.get('/relatorio', authenticate, AdminController.relatorio);
