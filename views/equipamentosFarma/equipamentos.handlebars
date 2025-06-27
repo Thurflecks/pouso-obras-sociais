@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="/css/pacientes.css">
+    <link rel="stylesheet" href="/css/equipamentos.css">
 </head>
 <nav class="navbar-admin">
     <div class="nav-container">
@@ -19,15 +19,15 @@
                 </a>
             </div>
             <div>
-                <a href="/admin/farmacia/equipamentos" class="middle-section-nav-button">
+                <a href="/admin/farmacia/epi" class="middle-section-nav-button">
                     <i class="fa-solid fa-suitcase-medical"></i>
-                    <span>Equipamentos</span>
+                    <span>Epi</span>
                 </a>
             </div>
             <div>
-                <a href="/admin/farmacia/epi" class="middle-section-nav-button">
-                    <i class="fa-solid fa-mask-face"></i>
-                    <span>EPIs</span>
+                <a href="/admin/farmacia/pacientes" class="middle-section-nav-button">
+                    <i class="fa-solid fa-bed-pulse"></i>
+                    <span>Pacientes</span>
                 </a>
             </div>
         </div>
@@ -39,42 +39,41 @@
                     <span class="usuario">Nome: {{session.user.nome}}</span>
                     <span class="usuario">Nível: {{session.user.nivel}}</span>
                 </div>
-                <a href="/admin/farmacia/medicamentos" class="nav-voltar-btn-novo">
+                <a href="/admin" class="nav-voltar-btn-novo">
                     <i class="fas fa-arrow-left"></i>
-                    <span>Voltar ao Painel Farmacêutico</span>
+                    <span>Voltar ao Painel Administrativo</span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
-
 <main>
     <section class="section-principal">
         <div class="search-container">
             <div class="search-bar-container">
-                <form action="/admin/farmacia/pacientes" class="search-bar-form" method="get">
+                <form action="/admin/farmacia/equipamentos" class="search-bar-form" method="get">
                     <input type="text" name="search" class="search-input" placeholder="Pesquisar...">
                     <select name="column" id="column">
                         <option value="nome">Nome</option>
-                        <option value="cpf">CPF</option>
-                        <option value="telefone">Telefone</option>
+                        <option value="situacao">Situação</option>
+                        <option value="codigo">Código</option>
                     </select>
                     <button type="submit" class="search-button">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-                <a href="/admin/farmacia/pacientes" class="limparPesquisa">Limpar Pesquisa</a>
+                <a href="/admin/farmacia/equipamentos" class="limparPesquisa">Limpar Pesquisa</a>
             </div>
             <div class="order-container">
                 <span class="order-span"> Ordenar por: </span>
-                <form action="/admin/farmacia/pacientes" method="get">
+                <form action="/admin/farmacia/equipamentos" method="get">
                     <input type="hidden" name="search" value="{{this.search}}">
                     <input type="hidden" name="order" value="new">
                     <button type="submit" class="order-button">
                         <i class="fas fa-arrow-up"></i>
                     </button>
                 </form>
-                <form action="/admin/farmacia/pacientes" method="get">
+                <form action="/admin/farmacia/equipamentos" method="get">
                     <input type="hidden" name="search" value="{{this.search}}">
                     <input type="hidden" name="order" value="old">
                     <button type="submit" class="order-button">
@@ -83,16 +82,17 @@
                 </form>
             </div>
         </div>
+
         <div class="farm-container">
             <div class="farm-title-content">
-                <span class="farm-title"> <i class="fa-solid fa-pills"></i> Controle de Pacientes</span>
-                <a class="button-novo" href="#"> <i class="fa-solid fa-plus"></i> Novo
-                </a>
+                <span class="farm-title"><i class="fa-solid fa-boxes-stacked"></i> Controle de Equipamentos</span>
+                <a class="button-novo" href="#"> <i class="fa-solid fa-plus"></i> Novo</a>
             </div>
-            {{#each PacientesAjeitados}}
+
+            {{#each EquipamentosAjeitados}}
             <div class="table-farm-container">
                 <div>
-                    <a href=""><i class="fas fa-edit edit"></i></a>
+                    <a href="#"><i class="fas fa-edit edit"></i></a>
                 </div>
                 <div class="table-farm">
                     <div class="table">
@@ -100,59 +100,16 @@
                         <div class="div-table">{{nome}}</div>
                     </div>
                     <div class="table">
-                        <strong class="strong-table">CPF:</strong>
-                        <div class="div-table">{{cpf}}</div>
+                        <strong class="strong-table">Código:</strong>
+                        <div class="div-table">{{codigo}}</div>
                     </div>
                     <div class="table">
-                        <strong class="strong-table">Endereço:</strong>
-                        <div class="div-table">{{endereco}}</div>
-
+                        <strong class="strong-table">Situação:</strong>
+                        <div class="div-table">{{situacao}}</div>
                     </div>
-                    <div class="table">
-                        <strong class="strong-table">Data De Nascimento:</strong>
-                        <div class="div-table">{{dataNasc}}</div>
-
-                    </div>
-                    <div class="table">
-                        <strong class="strong-table">Telefone:</strong>
-                        <div class="div-table">{{telefone}}</div>
-                    </div>
-                </div>
-                <div class="despacharMedicamento">
-                    <a href="#" class="show">Despachar Medicamento <i class="fas fa-pills iconDes"></i>
-                            </i></a>
                 </div>
             </div>
             {{/each}}
         </div>
     </section>
-
 </main>
-<footer>
-    <div class="footer-container">
-        <a class="footer-voltar" href="/admin/farmacia">
-            <i class="fas fa-arrow-left"></i>
-            Voltar
-        </a>
-        <div class="footer-icons">
-            <div>
-                <a href="/admin" class="footer-button">
-                    <i class="fa-solid fa-bed-pulse"></i>
-                    <span>Pacientes</span>
-                </a>
-            </div>
-            <div>
-                <a href="/admin" class="footer-button">
-                    <i class="fa-solid fa-suitcase-medical"></i>
-                    <span>Equipamentos</span>
-                </a>
-            </div>
-            <div>
-                <a href="/admin" class="footer-button">
-                    <i class="fa-solid fa-mask-face"></i>
-                    <span>EPIs</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>

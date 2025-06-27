@@ -10,6 +10,7 @@ const ControleMantiController = require('../controllers/ControleMantiController'
 const PacienteController = require('../controllers/PacienteController');
 const verifyNivel = require('../middlewares/verifyNivel');
 const EpiController = require('../controllers/EpiController');
+const EquipamentosController = require('../controllers/EquipamentosController')
 
 //admin
 router.get('/', authenticate, AdminController.homeAdmin);
@@ -53,6 +54,9 @@ router.get('/farmacia/pacientes', authenticate, verifyNivel([3, 4]), PacienteCon
 
 //epi
 router.get('/farmacia/epi', authenticate, EpiController.showEPI);
+
+//equipamentos
+router.get('/farmacia/equipamentos', authenticate, EquipamentosController.showEquipamentos);
 
 //relatorio 
 router.get('/relatorio', authenticate, AdminController.relatorio);
