@@ -8,6 +8,7 @@ const routerBase = require("./routes/baseRoutes")
 const routerUser = require("./routes/usuariosRoutes")
 const routerAdmin = require("./routes/adminRoutes")
 const routerDoacao = require("./routes/doacaoRoutes")
+const routerEventos = require("./routes/eventosRoutes")
 const BaseController = require("./controllers/BaseController")
 const flash =  require('express-flash')
 
@@ -53,6 +54,7 @@ app.use("/user", routerUser)
 app.use("/admin", routerAdmin)
 app.use("/doacao", routerDoacao)
 app.use("/", routerBase)
+app.use("/eventos", routerEventos)
 app.use(BaseController.notFound);
 
 
