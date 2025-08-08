@@ -1,7 +1,21 @@
+const EventosModel = require('../models/Eventos')
 module.exports = class EventosController {
-    static index (req, res) {
+    static async index(req, res) {
         try {
-            res.render('eventos/eventos')
+            const eventos = await EventosModel.findAll({
+                order: [['prazo', 'ASC']]
+            })
+            const eventoPrincipal = {
+                ...eventos[0].dataValues,
+                prazo: eventos[0].prazo.split('T')[0].split('-').reverse().join('/')
+            }
+            const eventosAjeitados = eventos.slice(1).map(evento => {
+                return {
+                    ...evento.dataValues,
+                    prazo: evento.prazo.split('T')[0].split('-').reverse().join('/')
+                }
+            })
+            res.render('eventos/eventos', { eventosAjeitados, eventoPrincipal })
         } catch (error) {
             console.log(error)
             res.status(500);

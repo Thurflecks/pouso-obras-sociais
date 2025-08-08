@@ -6,13 +6,13 @@
         <a href="/"><img src="/assets/logos/logo.svg" alt="Logo" class="logo" /></a>
     </div>
     <div class="navbar-right">
-        <a href="index.html">Início</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="servicos.html">Serviços</a>
-        <a href="horarios.html">Horários</a>
-        <a href="contato.html">Contato</a>
-        <a href="eventos.html">Eventos</a>
-        <a href="index.html" class="pgi-link button-doar">Doar agora</a>
+        <a href="/">Início</a>
+        <a href="/#sobre">Sobre</a>
+        <a href="/#servicos">Serviços</a>
+        <a href="/#horarios">Horários</a>
+        <a href="/#contato">Contato</a>
+        <a href="/eventos">Eventos</a>
+        <a href="/doacao" class="pgi-link button-doar">Doar agora</a>
     </div>
 </section>
 
@@ -20,16 +20,16 @@
 <section class="evento-destaque">
     <h2>Evento em destaque</h2>
     <div class="container">
-        <img class="evento-destaque-img" src="/assets/img/image.avif" alt="Curso de computação">
+        <img class="evento-destaque-img" src="{{eventoPrincipal.foto}}" alt="Curso de computação">
         <div class="info">
-            <h3 style="color: red;">Curso de computação</h3>
+            <h3 style="color: red;">{{eventoPrincipal.nome}}</h3>
             <br>
-            <p><strong style="color: #007bff">Horário:</strong> <strong>das 08h às 15h</strong></p>
+            <p><strong style="color: #007bff">Horário:</strong> <strong>{{eventoPrincipal.horario}}</strong></p>
             <br>
-            <p><strong style="color: #007bff">Dias da semana:</strong> <strong>de segunda-feira à quinta-feira</strong>
+            <p><strong style="color: #007bff">Dias da semana:</strong> <strong>{{eventoPrincipal.diaSemana}}</strong>
             </p>
             <br>
-            <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia 30/07/2025)</strong></p>
+            <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia <strong style="color: red;">{{eventoPrincipal.prazo}}</strong>!)</strong></strong></p>
             <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
         </div>
     </div>
@@ -42,92 +42,27 @@
         <div class="carousel">
             <button class="prev">&#10094;</button>
             <div class="carousel-track">
-
+                {{#if eventosAjeitados.length}}
+                {{#each eventosAjeitados}}
                 <div class="card">
                     <div class="card-header">
-                        <img class="card-image" src="/assets/img/image.avif" alt="Palestra com Clóvis Nunes">
+                        <img class="card-image" src="{{foto}}" alt="{{nome}}">
                     </div>
                     <div class="card-content">
-                        <h3 style="color: red;">Curso de computação</h3>
+                        <h3 style="color: red;">{{nome}}</h3>
                         <br>
-                        <p><strong style="color: #007bff">Horário:</strong> <strong>das 08h às 15h</strong></p>
+                        <p><strong style="color: #007bff">Horário:</strong> <strong>{{horario}}</strong></p>
                         <br>
-                        <p><strong style="color: #007bff">Dias da semana:</strong> <strong>de segunda-feira à
-                                quinta-feira</strong></p>
+                        <p><strong style="color: #007bff">Dias da semana:</strong> <strong>{{diaSemana}}</strong></p>
                         <br>
-                        <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia 30/07/2025)</strong></p>
+                        <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia <strong style="color: red;">{{prazo}}</strong>!)</strong></p>
                         <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <img class="card-image" src="/assets/img/image.avif" alt="Palestra com Clóvis Nunes">
-                    </div>
-                    <div class="card-content">
-                        <h3 style="color: red;">Curso de computação</h3>
-                        <br>
-                        <p><strong style="color: #007bff">Horário:</strong> <strong>das 08h às 15h</strong></p>
-                        <br>
-                        <p><strong style="color: #007bff">Dias da semana:</strong> <strong>de segunda-feira à
-                                quinta-feira</strong></p>
-                        <br>
-                        <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia 30/07/2025)</strong></p>
-                        <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <img class="card-image" src="/assets/img/image.avif" alt="Palestra com Clóvis Nunes">
-                    </div>
-                    <div class="card-content">
-                        <h3 style="color: red;">Curso de computação</h3>
-                        <br>
-                        <p><strong style="color: #007bff">Horário:</strong> <strong>das 08h às 15h</strong></p>
-                        <br>
-                        <p><strong style="color: #007bff">Dias da semana:</strong> <strong>de segunda-feira à
-                                quinta-feira</strong></p>
-                        <br>
-                        <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia 30/07/2025)</strong></p>
-                        <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <img class="card-image" src="/assets/img/image.avif" alt="Palestra com Clóvis Nunes">
-                    </div>
-                    <div class="card-content">
-                        <h3 style="color: red;">Curso de computação</h3>
-                        <br>
-                        <p><strong style="color: #007bff">Horário:</strong> <strong>das 08h às 15h</strong></p>
-                        <br>
-                        <p><strong style="color: #007bff">Dias da semana:</strong> <strong>de segunda-feira à
-                                quinta-feira</strong></p>
-                        <br>
-                        <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia 30/07/2025)</strong></p>
-                        <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <img class="card-image" src="/assets/img/image.avif" alt="Palestra com Clóvis Nunes">
-                    </div>
-                    <div class="card-content">
-                        <h3 style="color: red;">Curso de computação</h3>
-                        <br>
-                        <p><strong style="color: #007bff">Horário:</strong> <strong>das 08h às 15h</strong></p>
-                        <br>
-                        <p><strong style="color: #007bff">Dias da semana:</strong> <strong>de segunda-feira à
-                                quinta-feira</strong></p>
-                        <br>
-                        <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia 30/07/2025)</strong></p>
-                        <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
-                    </div>
-                </div>
-
+                {{/each}}
+                {{else}}
+                <p>Nenhum evento encontrado</p>
+                {{/if}}
             </div>
             <button class="next">&#10095;</button>
         </div>

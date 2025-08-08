@@ -127,7 +127,9 @@ body {
     background-color: white;
     padding: 20px;
 }
-
+.card-image{
+  border-radius: 8px;
+}
 .carousel {
     position: relative;
     overflow: hidden;
@@ -150,12 +152,12 @@ body {
     overflow: hidden;
     position: relative;
     transition: transform 0.3s ease;
+    padding: 5px;
 }
 
 .card-header {
     width: 95%;
     height: 360px;
-    border: 1px solid #ddd;
     margin: 10px auto;
 }
 
