@@ -18,18 +18,18 @@
 
 <!-- EVENTO EM DESTAQUE -->
 <section class="evento-destaque">
-    <h2>Evento em destaque</h2>
+    <h2 style="font-weight: bolder;">Evento em destaque</h2>
     <div class="container">
         <img class="evento-destaque-img" src="{{eventoPrincipal.foto}}" alt="Curso de computação">
         <div class="info">
-            <h3 style="color: red;">{{eventoPrincipal.nome}}</h3>
+            <h3 style="color: #E12323;" class="info-curso">{{eventoPrincipal.nome}}</h3>
             <br>
-            <p><strong style="color: #007bff">Horário:</strong> <strong>{{eventoPrincipal.horario}}</strong></p>
+            <p class="info-curso"><strong style="color: #007bff">Horário:</strong> <strong>{{eventoPrincipal.horario}}</strong></p>
             <br>
-            <p><strong style="color: #007bff">Dias da semana:</strong> <strong>{{eventoPrincipal.diaSemana}}</strong>
+            <p class="info-curso"><strong style="color: #007bff">Dias da semana:</strong> <strong>{{eventoPrincipal.diaSemana}}</strong>
             </p>
             <br>
-            <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia <strong style="color: red;">{{eventoPrincipal.prazo}}</strong>!)</strong></strong></p>
+            <p class="info-curso"><strong style="color: #1A3A4D;">Inscrições abertas! (Prazo até dia {{eventoPrincipal.prazo}}!)</strong></p>
             <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
         </div>
     </div>
@@ -38,7 +38,7 @@
 <!-- OUTROS EVENTOS -->
 <section class="outros-eventos">
     <div class="container">
-        <h2>Outros eventos</h2>
+        <h2 style="font-weight: bolder;">Outros eventos</h2>
         <div class="carousel">
             <button class="prev">&#10094;</button>
             <div class="carousel-track">
@@ -49,13 +49,13 @@
                         <img class="card-image" src="{{foto}}" alt="{{nome}}">
                     </div>
                     <div class="card-content">
-                        <h3 style="color: red;">{{nome}}</h3>
+                        <h3 style="color: #E12323;" class="info-curso">{{nome}}</h3>
                         <br>
-                        <p><strong style="color: #007bff">Horário:</strong> <strong>{{horario}}</strong></p>
+                        <p class="info-curso"><strong style="color: #007bff">Horário:</strong> <strong>{{horario}}</strong></p>
                         <br>
-                        <p><strong style="color: #007bff">Dias da semana:</strong> <strong>{{diaSemana}}</strong></p>
+                        <p class="info-curso"><strong style="color: #007bff">Dias da semana:</strong> <strong>{{diaSemana}}</strong></p>
                         <br>
-                        <p><strong style="color: #022d5b;">Inscrições abertas! (Prazo até dia <strong style="color: red;">{{prazo}}</strong>!)</strong></p>
+                        <p class="info-curso"><strong style="color: #1A3A4D;">Inscrições abertas! (Prazo até dia {{prazo}}!)</strong></p>
                         <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
                     </div>
                 </div>

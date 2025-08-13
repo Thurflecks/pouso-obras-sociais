@@ -4,14 +4,25 @@
 <nav class="navbar-admin">
     <div class="nav-container">
         <div class="logo-container">
-            <img src="/assets/logos/logo.svg" alt="Pouso Obras Sociais" class="nav-logo">
+            <img src="/assets/logos/logo.png" alt="Pouso Obras Sociais" class="nav-logo">
+            <div>
+                <span class="span-text">Gestão de Depósito</span>
+                <span class="logo-text">Sistema de Controle de Depósito</span>
+            </div>
         </div>
 
         <div class="nav-direita">
-            <a href="/admin" class="nav-voltar-btn">
-                <i class="fas fa-arrow-left"></i>
-                Voltar ao Painel Administrativo
-            </a>
+            <div class="usuario-info">
+                <div class="dados-usuario">
+                    <span class="usuario">Cpf: {{session.user.cpf}}</span>
+                    <span class="usuario">Nome: {{session.user.nome}}</span>
+                    <span class="usuario">Nível: {{session.user.nivel}}</span>
+                </div>
+                <a href="/admin" class="nav-voltar-btn-novo">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Voltar ao Painel Administrativo</span>
+                </a>
+            </div>
         </div>
     </div>
 </nav>

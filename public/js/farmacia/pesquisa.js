@@ -24,7 +24,7 @@ inputBusca.addEventListener('input', async () => {
             if (produtos.length === 0) {
                 const anotfound = document.createElement('a');
                 anotfound.classList.add('anotfound');
-                anotfound.href = '/admin/farmacia/medicamentos/add';
+                anotfound.href = '/admin/farmacia/medicamentos/add/9999999';
                 anotfound.textContent = 'Adicionar mesmo assim.';
                 prodnotFound.appendChild(anotfound)
             } else {

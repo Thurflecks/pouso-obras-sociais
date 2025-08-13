@@ -116,6 +116,7 @@ body {
     padding: 8px 16px;
     border-radius: 25px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* CARROSSEL */
@@ -276,4 +277,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2em;
+}
+
+.info-curso {
+  font-weight: bold;
 }

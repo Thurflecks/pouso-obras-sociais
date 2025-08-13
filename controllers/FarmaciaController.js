@@ -162,6 +162,31 @@ module.exports = class FarmaciaController {
         }
     }
     static async addMedicamentoPost(req, res) {
-        res.send('ok');
+        try {
+            const { nome, quantidade, concentracao, lote, tipo, categoria, classe_terapeutica, controleEspecial, data_validade, data_fabricacao } = req.body;
+            console.log(req.body);
+            await FarmaciaModel.create({
+                nome,
+                quantidade,
+                concentracao,
+                lote,
+                tipo,
+                categoria,
+                classe_terapeutica,
+                controleEspecial: controleEspecial === 'on' ? 1 : 0,
+                data_validade,
+                data_fabricacao
+            }).then(() => {
+                req.flash('message', 'Medicamento adicionado com sucesso!');
+                res.redirect('/admin/farmacia/medicamentos');
+            }).catch((err) => {
+                console.log(err);
+                req.flash('message', 'Erro ao atualizar o medicamento');
+                res.redirect('/admin/farmacia/medicamentos');
+            });
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Erro ao atualizar medicamento");
+        }
     }
 }

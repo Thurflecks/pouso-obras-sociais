@@ -1,5 +1,132 @@
-<form action="/admin/farmacia/medicamentos/add" method="post">
-    <h1>Nome:</h1>
-    <input type="text" value="{{medicamento.NOME_PRODUTO}}"> 
-    <input type="submit" value="Salvar">
-</form>
+<head>
+    <link rel="stylesheet" href="/css/addMedicamento.css">
+</head>
+<nav class="navbar-admin">
+    <div class="nav-container">
+        <div class="logo-container">
+            <img src="/assets/logos/logo.png" alt="Pouso Obras Sociais" class="nav-logo">
+            <div>
+                <span class="span-text">Gestão Farmacêutica</span>
+                <span class="logo-text">Sistema de controle farmacêutico</span>
+            </div>
+        </div>
+
+        <div class="middle-section-nav">
+            <div>
+                <a href="/admin/farmacia/pacientes" class="middle-section-nav-button">
+                    <i class="fa-solid fa-bed-pulse"></i>
+                    <span>Pacientes</span>
+                </a>
+            </div>
+            <div>
+                <a href="/admin/farmacia/equipamentos" class="middle-section-nav-button">
+                    <i class="fa-solid fa-suitcase-medical"></i>
+                    <span>Equipamentos</span>
+                </a>
+            </div>
+            <div>
+                <a href="/admin/farmacia/epi" class="middle-section-nav-button">
+                    <i class="fa-solid fa-mask-face"></i>
+                    <span>EPIs</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="nav-direita">
+            <div class="usuario-info">
+                <div class="dados-usuario">
+                    <span class="usuario">Cpf: {{session.user.cpf}}</span>
+                    <span class="usuario">Nome: {{session.user.nome}}</span>
+                    <span class="usuario">Nível: {{session.user.nivel}}</span>
+                </div>
+                <a href="/admin/farmacia/medicamentos" class="nav-voltar-btn-novo">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Voltar à Farmacia</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="center">
+    <div class="section">
+        <div class="header">
+            <span>📘 Adicionar Medicamento</span>
+        </div>
+        <form class="formEdit" action="/admin/farmacia/medicamentos/add" method="post">
+            <div class="edit-grid">
+                <div class="item-edit"><strong>Nome do Medicamento:</strong>
+                    <input class="input-edit" type="text" placeholder="Nome do medicamento..." name="nome"
+                        value="{{medicamento.NOME_PRODUTO}}" required>
+                </div>
+                <div class="item-edit"><strong>Data de Fabricação:</strong>
+                    <input class="input-edit" type="date" name="data_fabricacao" required>
+                </div>
+                <div class="item-edit"><strong>Concentração:</strong>
+                    <input class="input-edit" type="text" placeholder="Concentração..." name="concentracao" required>
+                </div>
+                <div class="item-edit"><strong>Tipo:</strong>
+                    <input class="input-edit" type="text" placeholder="Tipo..." name="tipo" required>
+                </div>
+                <div class="item-edit"><strong>Categoria:</strong>
+                    <input class="input-edit" type="text" placeholder="Categoria..."
+                        value="{{medicamento.CATEGORIA_REGULATORIA}}" name="categoria" required>
+                </div>
+                <div class="item-edit">
+                    <strong>Controle Especial:</strong>
+                    <span class="switch">
+                        <label class="switch">
+                            <input type="checkbox" name="controleEspecial">
+                            <span class="slider"></span>
+                        </label>
+                    </span>
+                </div>
+
+                <div class="item-edit"><strong>Data de Validade:</strong>
+                    <input class="input-edit" type="date" name="data_validade" required>
+                </div>
+                <div class="item-edit"><strong>Lote:</strong>
+                    <input class="input-edit" type="text" placeholder="Lote..." name="lote" required>
+                </div>
+                <div class="item-edit"><strong>Classe Terapêutica:</strong>
+                    <input class="input-edit" type="text" placeholder="Classe Terapêutica..."
+                        value="{{medicamento.CLASSE_TERAPEUTICA}}" name="classe_terapeutica" required>
+                </div>
+                <div class="item-edit"><strong>Quantidade:</strong>
+                    <input class="input-edit" type="text" placeholder="Quantidade..." name="quantidade" required>
+                </div>
+            </div>
+            <div class="save-button">
+                <button class="btn-save" type="submit">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <a class="footer-voltar" href="/admin/farmacia/medicamentos">
+            <i class="fas fa-arrow-left"></i>
+            <span>Voltar</span>
+        </a>
+        <div class="footer-icons">
+            <div>
+                <a href="/admin" class="footer-button">
+                    <i class="fa-solid fa-bed-pulse"></i>
+                    <span>Pacientes</span>
+                </a>
+            </div>
+            <div>
+                <a href="/admin" class="footer-button">
+                    <i class="fa-solid fa-suitcase-medical"></i>
+                    <span>Equipamentos</span>
+                </a>
+            </div>
+            <div>
+                <a href="/admin" class="footer-button">
+                    <i class="fa-solid fa-mask-face"></i>
+                    <span>EPIs</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
