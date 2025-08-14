@@ -3,7 +3,6 @@ const path = require("path")
 const { engine } = require("express-handlebars")
 const app = express()
 const session = require("express-session")
-const port = process.env.PORT | 8080;
 const routerBase = require("./routes/baseRoutes")
 const routerUser = require("./routes/usuariosRoutes")
 const routerAdmin = require("./routes/adminRoutes")
@@ -11,6 +10,8 @@ const routerDoacao = require("./routes/doacaoRoutes")
 const routerEventos = require("./routes/eventosRoutes")
 const BaseController = require("./controllers/BaseController")
 const flash =  require('express-flash')
+require("dotenv").config()
+const { SESSION_SECRET, PORT } = process.env
 
 app.engine("handlebars", engine({
     defaultLayout: "main",
@@ -19,7 +20,7 @@ app.engine("handlebars", engine({
     },
     helpers: {
         eq: (a, b) => a === b,
-    },
+    }
 }));
 app.set("view engine", "handlebars")
 app.use(
@@ -29,7 +30,7 @@ app.use(
 )
 app.use(session({
     name: 'session',
-    secret: 'pouso9090',
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { 
@@ -59,6 +60,6 @@ app.use(BaseController.notFound);
 
 
 
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta http://localhost:${port}`)
+app.listen(PORT || 8080, () => {
+    console.log(`Servidor rodando na porta http://localhost:${PORT}`)
 })  
