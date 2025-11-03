@@ -10,7 +10,9 @@ const routerDoacao = require("./routes/doacaoRoutes")
 const routerEventos = require("./routes/eventosRoutes")
 const BaseController = require("./controllers/BaseController")
 const flash =  require('express-flash')
-require("dotenv").config()
+const multer = require('multer')
+const upload = multer({ storage: multer.memoryStorage() })
+require("dotenv").config({quiet: true})
 const { SESSION_SECRET, PORT } = process.env
 
 app.engine("handlebars", engine({
@@ -62,4 +64,4 @@ app.use(BaseController.notFound);
 
 app.listen(PORT || 8080, () => {
     console.log(`Servidor rodando na porta http://localhost:${PORT}`)
-})  
+})

@@ -1,0 +1,136 @@
+:root {
+    --azul-principal: #248cf4;
+    --azul-escuro: #357abd;
+    --vermelho-destaque: #dc3545;
+    --texto-escuro: #1A3A4D;
+    --ciano: #32BCAD;
+    --cinza-claro: #f5f5f5;
+    --branco: #ffffff;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --transicao: all 0.3s ease;
+    --verde: #08b31f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #C8E3FF;
+}
+
+a {
+    text-decoration: none;
+}
+
+.section {
+    background-color: var(--branco);
+    width: 96%;
+    margin: 2rem auto;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.cadastro-title-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.cadastro-title {
+    color: var(--azul-principal);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.table-farm-container {
+    background-color: #C8E3FF;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.table-farm {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Alterado para empilhar os campos */
+    gap: 1rem;
+    justify-content: center;
+}
+
+.table-input {
+    border: none;
+    border-radius: 10px;
+    padding: 8px;
+    width: 100%;
+    box-shadow: var(--sombra);
+    transition: var(--transicao);
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.titulo-editar {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--texto-escuro);
+    text-align: left; /* Alinhado à esquerda */
+}
+
+.button-save {
+    background-color: var(--ciano);
+    color: var(--branco);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 600;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    width: 200px;
+    justify-content: center;
+}
+
+.button-save:active {
+    background-color: #357abd;
+}
+
+.button-cancel {
+    background-color: var(--vermelho-destaque);
+    color: var(--branco);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 600;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    width: 200px;
+    justify-content: center;
+}
+
+.button-cancel:active {
+    background-color: #b91b1b;
+}

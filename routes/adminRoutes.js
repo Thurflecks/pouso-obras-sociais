@@ -11,6 +11,11 @@ const PacienteController = require('../controllers/PacienteController');
 const verifyNivel = require('../middlewares/verifyNivel');
 const EpiController = require('../controllers/EpiController');
 const EquipamentosController = require('../controllers/EquipamentosController')
+const SiteController = require('../controllers/SiteController');
+const EventosController = require('../controllers/EventosController');
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() });
+
 
 //admin
 router.get('/', authenticate, AdminController.homeAdmin);
@@ -69,4 +74,15 @@ router.get('/relatorio/login', authenticate, AdminLoginsController.relatorioLogi
 router.get('/relatorio/mantimentos', authenticate, ControleMantiController.relatorioControle);
 router.get('/relatorio/doadores', authenticate, ControleMantiController.relatorioDoadoresMantimentos);
 
-module.exports = router 
+//eventos
+router.get('/eventos', authenticate, EventosController.listar)
+router.get('/eventos/criar', authenticate, EventosController.criar)
+router.post('/eventos/criar', authenticate, upload.single('foto'), EventosController.criarPost)
+router.get('/eventos/editar/:id', authenticate, EventosController.editar)
+router.post('/eventos/editar/:id', authenticate, upload.single('foto'), EventosController.editarPost)
+router.post('/eventos/deletar/:id', authenticate, EventosController.deletar)
+
+//
+
+
+module.exports = router

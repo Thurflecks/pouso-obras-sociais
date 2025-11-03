@@ -20,7 +20,7 @@
 <section class="evento-destaque">
     <h2 style="font-weight: bolder;">Evento em destaque</h2>
     <div class="container">
-        <img class="evento-destaque-img" src="{{eventoPrincipal.foto}}" alt="Curso de computação">
+        <img class="evento-destaque-img" src="data:image/jpeg;base64,{{eventoPrincipal.foto}}" alt="Curso de computação">
         <div class="info">
             <h3 style="color: #E12323;" class="info-curso">{{eventoPrincipal.nome}}</h3>
             <br>
@@ -29,8 +29,7 @@
             <p class="info-curso"><strong style="color: #007bff">Dias da semana:</strong> <strong>{{eventoPrincipal.diaSemana}}</strong>
             </p>
             <br>
-            <p class="info-curso"><strong style="color: #1A3A4D;">Inscrições abertas! (Prazo até dia {{eventoPrincipal.prazo}}!)</strong></p>
-            <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
+            <p class="info-curso"><strong style="color: #1A3A4D;">Data: {{eventoPrincipal.prazo}}</strong></p>
         </div>
     </div>
 </section>
@@ -46,7 +45,7 @@
                 {{#each eventosAjeitados}}
                 <div class="card">
                     <div class="card-header">
-                        <img class="card-image" src="{{foto}}" alt="{{nome}}">
+                        <img class="card-image" src="data:image/jpeg;base64,{{foto}}" alt="{{nome}}">
                     </div>
                     <div class="card-content">
                         <h3 style="color: #E12323;" class="info-curso">{{nome}}</h3>
@@ -55,8 +54,7 @@
                         <br>
                         <p class="info-curso"><strong style="color: #007bff">Dias da semana:</strong> <strong>{{diaSemana}}</strong></p>
                         <br>
-                        <p class="info-curso"><strong style="color: #1A3A4D;">Inscrições abertas! (Prazo até dia {{prazo}}!)</strong></p>
-                        <div class="btn-container"><a href="#" class="btn-inscrever">Inscrever-se</a></div>
+                        <p class="info-curso"><strong style="color: #1A3A4D;">Data: {{prazo}}</strong></p>
                     </div>
                 </div>
                 {{/each}}

@@ -12,7 +12,7 @@ const EventosModel = sequelize.define("eventos", {
         allowNull: false
     },
     horario: {
-        type: Sequelize.STRING,
+        type: Sequelize.TIME,
         allowNull: false
     },
     diaSemana: {
@@ -20,7 +20,7 @@ const EventosModel = sequelize.define("eventos", {
         allowNull: false
     },
     foto: {
-        type:Sequelize.STRING,
+        type:Sequelize.BLOB('long'),
         allowNull: true
     },
     prazo: {
