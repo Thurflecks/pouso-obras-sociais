@@ -1,0 +1,247 @@
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    height: 70px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left,
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-right {
+    margin-left: auto;
+}
+
+.navbar-right a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #1A3A4D;
+    font-weight: bold;
+    transition: 0.2s ease;
+    margin-right: 20px;
+}
+
+.navbar-right a:hover {
+    color: #2793ff;
+}
+
+.logo {
+    width: 120px;
+}
+
+/* BOTÃO DOAR */
+.button-doar {
+    width: 135px;
+    height: 47px;
+    background: #2793FF;
+    color: #fff !important;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.button-doar:hover {
+    background-color: #1A6ED8;
+}
+
+/* EVENTO DESTAQUE */
+.evento-destaque {
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 15px;
+    background-color: white;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.evento-destaque .container {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.info {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info-content {
+    width: 49%;
+    display: flex;
+    background-color: #F2F1F1;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.info-title {
+    color: red;
+    text-align: center;
+}
+
+.info-desc {
+    text-align: justify;
+}
+
+.image {
+    width: 300px;
+    height: 300px;
+    margin: 10px auto;
+    border: 1px solid black;
+}
+
+.edit {
+    width: 30%;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 20px;
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.hora {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.info-text {
+    width: 50%;
+}
+
+.info-edit {
+    width: 30%;
+    display: flex;
+    justify-content: left;
+}
+
+.hora-valor {
+    width: 100%;
+}
+
+.info-hora {
+    font-size: larger;
+}
+
+.info-valor {
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.table-return-container {
+    background-color: #C8E3FF;
+    color: var(--texto-escuro);
+    font-weight: 700;
+    width: 20%;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button-container div {
+    margin-right: 10px;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #2A5C82;
+    display: flex;
+    color: #F5F5F5;
+    justify-content: center;
+    font-size: .7em;
+    padding: 4em 1em 1em 1em;
+}
+
+.footer-container {
+    min-width: 100%;
+}
+
+.footer a {
+    color: #F5F5F5;
+    text-decoration: none;
+}
+
+.footer h4 {
+    font-weight: 800;
+}
+
+.footer-logo {
+    width: 120px;
+    border-radius: .48em;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: center;
+    gap: 5em;
+
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-top: 1px solid #4190a3;
+    margin: 5em auto 1em auto;
+    padding: 1em;
+    width: 50%;
+}
+
+.div-footer-information p {
+    color: #E4F1FF;
+    font-size: 1.45em;
+}
+
+.content-information-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}

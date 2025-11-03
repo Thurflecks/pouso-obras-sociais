@@ -21,4 +21,12 @@ module.exports = class EventosController {
             res.status(500);
         }
     }
+    static async editar(req, res) {
+        try {
+            res.render('eventos/edicao')
+        } catch (error) {
+            console.log(error)
+            res.status(500);
+        }
+    }
 }
