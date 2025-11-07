@@ -1,5 +1,6 @@
 const AdminModel = require('../models/Admin');
 const AdminLoginModel = require('../models/AdminLogins');
+const Scroller = require('../models/Scroller');
 const bcrypt = require('bcryptjs');
 
 module.exports = class AdminController {
@@ -99,7 +100,14 @@ module.exports = class AdminController {
 
     static async relatorio(req, res) {
         try {
-            res.render('admin/relatorio');
+            const formatter = new Intl.DateTimeFormat('fr-CA', {
+                timeZone: 'America/Sao_Paulo',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            const data = formatter.format(new Date());
+            res.render('admin/relatorio', { data });
         } catch (error) {
             console.log(error, 'erro ao renderizar a página de relatorio');
             res.status(500).redirect('/admin');
@@ -145,6 +153,31 @@ module.exports = class AdminController {
 
     static logout(req, res) {
         req.session.destroy();
-        res.redirect('/admin/login');
+        res.redirect('/');
+    }
+
+    static async scroller(req, res) {
+        const scrollers = await Scroller.findAll({ raw: true });
+
+        const scrollersWithBase64 = scrollers.map(scroller => {
+            if (scroller.image) {
+                scroller.image = Buffer.from(scroller.image).toString('base64');
+            }
+            return scroller;
+        });
+
+        res.render('admin/scroller', { scrollers: scrollersWithBase64 });
+    }
+
+    static async scrollerPost(req, res) {
+        const image = req.file.buffer;
+        await Scroller.create({ image });
+        res.redirect('/admin/scroller');
+    }
+
+    static async scrollerDelete(req, res) {
+        const id = req.body.id;
+        await Scroller.destroy({ where: { id: id } });
+        res.redirect('/admin/scroller');
     }
 }

@@ -1,3 +1,4 @@
+const PDFDocument = require('pdfkit');
 const DoacaoModel = require('../models/Doacao');
 
 module.exports = class DoacaoController {
@@ -26,6 +27,71 @@ module.exports = class DoacaoController {
             res.redirect('/doacao');
         } catch (error) {
             console.log(error, 'erro ao salvar a doação');
+            res.status(500).redirect('/');
+        }
+    }
+
+    static async relatorioDoacao(req, res) {
+        try {
+            const { start_date, end_date } = req.query;
+            const whereClause = {};
+
+            if (start_date && end_date) {
+                whereClause.createdAt = {
+                    [Op.between]: [new Date(start_date), new Date(end_date)]
+                };
+            } else if (start_date) {
+                whereClause.createdAt = {
+                    [Op.gte]: new Date(start_date)
+                };
+            } else if (end_date) {
+                whereClause.createdAt = {
+                    [Op.lte]: new Date(end_date)
+                };
+            }
+
+            const doacoes = await DoacaoModel.findAll({ where: whereClause, raw: true });
+            const doc = new PDFDocument({ margin: 50 });
+
+            res.setHeader('Content-Type', 'application/pdf');
+            res.setHeader('Content-Disposition', 'attachment; filename=relatorio_doacoes.pdf');
+            doc.pipe(res);
+
+            doc.fontSize(22).text('Relatório de Doações', {
+                align: 'center',
+                underline: true
+            });
+            doc.moveDown(0.5);
+
+            if (start_date || end_date) {
+                let dateText = 'Período do filtro:';
+                if (start_date) {
+                    dateText += ` de ${new Date(start_date).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}`;
+                }
+                if (end_date) {
+                    dateText += ` até ${new Date(end_date).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}`;
+                }
+                doc.fontSize(12).text(dateText, { align: 'center' });
+            }
+
+            doc.moveDown(2);
+
+            doacoes.forEach(doacao => {
+                doc.fontSize(14).text(`Nome: `, { continued: true, bold: true }).text(doacao.nome);
+                doc.fontSize(14).text(`Telefone: `, { continued: true, bold: true }).text(doacao.telefone);
+                doc.fontSize(14).text(`Valor: `, { continued: true, bold: true }).text(doacao.valor);
+                doc.fontSize(14).text(`Data: `, { continued: true, bold: true }).text(new Date(doacao.createdAt).toLocaleDateString('pt-BR', { timeZone: 'UTC' }));
+                doc.moveDown(1);
+                doc.moveTo(doc.x, doc.y)
+                    .lineTo(550, doc.y)
+                    .stroke();
+
+                doc.moveDown(1.5);
+            });
+
+            doc.end();
+        } catch (error) {
+            console.log(error, 'erro ao gerar o relatório de doações');
             res.status(500).redirect('/');
         }
     }

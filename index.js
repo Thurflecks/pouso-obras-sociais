@@ -31,7 +31,7 @@ app.use(
     })
 )
 app.use(session({
-    name: 'session',
+    name: 'admin',
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,

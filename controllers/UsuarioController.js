@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const UsuarioModel = require('../models/Usuario');
 
 module.exports = class UsuarioController {
@@ -50,7 +51,40 @@ module.exports = class UsuarioController {
       }
    }
    static async index(req, res) {
-      const usuarios = await UsuarioModel.findAll()
-      res.render('usuarios/index', { usuarios })
+      const search = String(req.query.search || "");
+      let column = String(req.query.column || "");
+      let order = 'ASC';
+      if (req.query.order === 'old') {
+         order = 'ASC';
+      } else if (req.query.order === 'new') {
+         order = 'DESC';
+      }
+      const usuarios = await UsuarioModel.findAll({
+         where: {
+            [column ? column : 'nome']: {
+               [Op.like]: `%${search}%`
+            }
+         }, order: [['id_usuario', order]],
+         raw: true
+      });
+      res.render('usuarios/index', { usuarios, search });
+   }
+   static async editar(req, res) {
+      const id = req.params.id
+      const usuario = await UsuarioModel.findByPk(id)
+      res.render('usuarios/edicao', { usuario })
+   }
+
+   static async editarPost(req, res) {
+      const id = req.params.id;
+      try {
+         await UsuarioModel.update(req.body, {
+            where: { id_usuario: id }
+         });
+         res.redirect('/admin/usuarios');
+      } catch (error) {
+         console.log(error);
+         res.redirect('back');
+      }
    }
 }

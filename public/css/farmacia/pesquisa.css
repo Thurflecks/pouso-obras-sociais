@@ -1,0 +1,96 @@
+/* Estilos para a página de pesquisa da farmácia */
+
+:root {
+    --azul-principal: #2c3e50;
+    --branco: #fff;
+    --cinza-claro: #ecf0f1;
+    --cinza-escuro: #95a5a6;
+    --verde: #2ecc71;
+    --vermelho: #e74c3c;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6;
+    color: var(--azul-principal);
+}
+
+.container-pesquisa {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--branco);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pesquisa-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.titulo-pesquisa {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--azul-principal);
+    margin-bottom: 1rem;
+}
+
+.pesquisa-input-container {
+    position: relative;
+}
+
+#busca {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #dde6ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#busca:focus {
+    outline: none;
+    border-color: var(--azul-principal);
+    box-shadow: 0 0 8px rgba(44, 62, 80, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: var(--cinza-escuro);
+    font-size: 1.2rem;
+}
+
+.resultados-container {
+    margin-top: 2rem;
+}
+
+#resultados {
+    list-style: none;
+    padding: 0;
+}
+
+#resultados li {
+    padding: 15px;
+    background-color: var(--cinza-claro);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+#resultados li:hover {
+    background-color: #dce4e8;
+}
+
+.prodnotFound {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: var(--vermelho);
+    font-weight: 500;
+}

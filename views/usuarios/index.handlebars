@@ -1,39 +1,80 @@
-<div class="container">
-    <h1>Lista De Usuários</h1>
-    <section>
-        {{#each usuarios}}
-        <p><strong>Nome:</strong> {{nome}}</p>
-        <p><strong>CPF:</strong> {{cpf}}</p>
-        <p><strong>Telefone:</strong> {{telefone}}</p>
-        <p><strong>Endereço:</strong> {{endereco}}</p>
-        <p><strong>Bairro:</strong> {{bairro}}</p>
-        <p><strong>CEP:</strong> {{cep}}</p>
-        <p><strong>Cidade:</strong> {{cidade}}</p>
-        <p><strong>UF:</strong> {{UF}}</p>
-        <p><strong>Profissão:</strong> {{trabalho}}</p>
-        <p><strong>Local de Trabalho:</strong> {{local_trabalho}}</p>
-        <p><strong>Data de Nascimento:</strong> {{data_nasc}}</p>
-        <p><strong>Identidade (RG):</strong> {{rg}}</p>
-        <p><strong>Faixa Etária:</strong> {{faixa_etaria}}</p>
-        <p><strong>Escolaridade:</strong> {{escolaridade}}</p>
-        <p><strong>Formação Técnica:</strong> {{form_tecnica}}</p>
-        <p><strong>Quantidade de Membros na Família:</strong> {{qnt_membros_familia}}</p>
-        <p><strong>Crianças Menores de Idade:</strong> {{qnt_menor_idade}}</p>
-        <p><strong>Etnia:</strong> {{etnia}}</p>
-        <p><strong>Tipo de Moradia:</strong> {{tipo_moradia}}</p>
-        <p><strong>Situação da Moradia:</strong> {{situacao_moradia}}</p>
-        <p><strong>Possui Meio de Transporte:</strong> {{#if transporte}}Sim{{else}}Não{{/if}}</p>
-        <p><strong>Participação Econômica:</strong> {{part_economica}}</p>
-        <p><strong>Situação Trabalhista:</strong> {{situacao_trabalho}}</p>
-        <p><strong>Renda Familiar:</strong> {{renda_familia}}</p>
-        <p><strong>Recebe Benefício Social:</strong> {{#if beneficio}}Sim{{else}}Não{{/if}}</p>
-        <p><strong>Tipo de Benefício:</strong> {{tipo_beneficio}}</p>
-        <p><strong>Possui Cadastro Único:</strong> {{#if cad_unico}}Sim{{else}}Não{{/if}}</p>
-        <p><strong>Necessidades Especiais:</strong> {{#if nec_especial}}Sim{{else}}Não{{/if}}</p>
-        <p><strong>Tipo de Necessidade:</strong> {{tipo_necessidade}}</p>
-        <p><strong>Medicação Contínua:</strong> {{#if medi_continua}}Sim{{else}}Não{{/if}}</p>
-        </p>
-        <span>--------------------------------------------</span>
-        {{/each}}
-    </section>
-</div>
+<head>
+    <link rel="stylesheet" href="/css/admin/nav.css">
+    <link rel="stylesheet" href="/css/admin/usuarios.css">
+</head>
+<nav class="navbar-admin">
+    <div class="nav-container">
+        <div class="logo-container">
+            <img src="/assets/logos/logo.svg" alt="Pouso Obras Sociais" class="nav-logo">
+        </div>
+        <div class="nav-direita">
+            <a href="/admin" class="nav-voltar-btn">
+                <i class="fas fa-arrow-left"></i>
+                Voltar ao Painel Administrativo
+            </a>
+        </div>
+    </div>
+</nav>
+<section class="section-principal">
+    <div class="search-container">
+        <div class="search-bar-container">
+            <form action="" class="search-bar-form" method="get">
+                <input type="text" name="search" class="search-input" placeholder="Pesquisar...">
+                <select name="column" id="column">
+                    <option value="nome">Nome</option>
+                    <option value="cpf">CPF</option>
+                    <option value="telefone">Telefone</option>
+                </select>
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <a href="/admin/usuarios" class="limparPesquisa">Limpar Pesquisa</a>
+        </div>
+        <div class="order-container">
+            <span class="order-span"> Ordenar por: </span>
+            <form action="" method="get">
+                <input type="hidden" name="search" value="{{this.search}}">
+                <input type="hidden" name="order" value="new">
+                <button type="submit" class="order-button">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </form>
+            <form action="" method="get">
+                <input type="hidden" name="search" value="{{this.search}}">
+                <input type="hidden" name="order" value="old">
+                <button type="submit" class="order-button">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="cadastradas-container">
+        <div class="cadastro-title-content">
+            <span class="cadastro-title"> <i class="fa-solid fa-pills"></i> Pessoas cadastradas</span>
+        </div>
+    </div>
+    {{#each usuarios}}
+    <div class="table-farm-container">
+        <div class="table-farm">
+            <div class="table">
+                <strong class="strong-table">Nome:</strong>
+                <div class="div-table">{{this.nome}}</div>
+            </div>
+            <div class="table">
+                <strong class="strong-table">Telefone:</strong>
+                <div class="div-table">{{this.telefone}}</div>
+            </div>
+            <div class="table">
+                <strong class="strong-table">Bairro:</strong>
+                <div class="div-table">{{this.bairro}}</div>
+            </div>
+        </div>
+        <div class="aumentar">
+            <a href="/admin/usuarios/editar/{{this.id_usuario}}" class="show">
+                <i class="fas fa-edit iconDes"></i>
+            </a>
+        </div>
+    </div>
+    {{/each}}
+</section>

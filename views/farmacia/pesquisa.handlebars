@@ -1,22 +1,34 @@
 <head>
-    <link rel="stylesheet" href="/css/farmacia.css">
+    <link rel="stylesheet" href="/css/admin/nav.css">
+    <link rel="stylesheet" href="/css/farmacia/pesquisa.css">
 </head>
-<div class="paidopopo">
 
+<nav class="navbar-admin">
+    <div class="nav-container">
+        <div class="logo-container">
+            <img src="/assets/logos/logo.svg" alt="Pouso Obras Sociais" class="nav-logo">
+        </div>
+        <div class="nav-direita">
+            <a href="/admin/farmacia/medicamentos" class="nav-voltar-btn">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </a>
+        </div>
+    </div>
+</nav>
 
-    <section class="pop">
-        <h4><i class="fa-solid fa-prescription-bottle-medical" style="color: #ffffff;"></i>Adição de um novo medicamento
-        </h4>
-        <div class="pop-input">
+<section class="container-pesquisa">
+    <div class="pesquisa-header">
+        <h1 class="titulo-pesquisa">Pesquisar Medicamento</h1>
+        <div class="pesquisa-input-container">
             <input type="text" id="busca" placeholder="Buscar medicamento..." />
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fas fa-search search-icon"></i>
         </div>
+    </div>
+    <div class="resultados-container">
         <ul id="resultados"></ul>
-        <div class="prodnotFound">
-
-        </div>
-
-</div>
+        <div class="prodnotFound"></div>
+    </div>
 </section>
-</div>
+
 <script src="/js/farmacia/pesquisa.js"></script>

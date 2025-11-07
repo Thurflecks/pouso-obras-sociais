@@ -19,6 +19,17 @@
     <section class="lista-itens">
         <div class="relatorio-box">
             <h2 class="titulo-relatorio"><i class="fas fa-file-alt"></i> Gerar Relatórios</h2>
+            <form id="date-filter-form" class="date-filter-form">
+                <div class="form-group">
+                    <label for="start-date">Data de Início:</label>
+                    <input type="date" id="start-date" name="start-date">
+                </div>
+                <div class="form-group">
+                    <label for="end-date">Data de Fim:</label>
+                    <input type="date" id="end-date" name="end-date" max="{{data}}">
+                </div>
+            </form>
+
             <div class="relatorios-container">
                 <div class="coluna-relatorios">
 
@@ -35,14 +46,21 @@
                         <h2>Movimentação de Estoque</h2>
                         <p>Entrada e saída de itens do depósito</p>
                     </a>
-                    <a href="/admin/relatorio/doadores" class="card-relatorio destaque-farmacia">
-                        <i class="fas fa-heart"></i>
-                        <h2>Controle Doadores</h2>
-                        <p>Controle de Doadores de Mantimentos</p>
+
+                    <a href="/admin/relatorio/doadores" class="card-relatorio destaque-doadores">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h2>Relatório de Doadores</h2>
+                        <p>Registro de doadores de mantimentos</p>
+                    </a>
+                    <!-- Relatório de Doações -->
+                    <a href="/admin/relatorio/doacoes" class="card-relatorio destaque-doacoes">
+                        <i class="fas fa-gift"></i>
+                        <h2>Relatório de Doações</h2>
+                        <p>Registro de doações recebidas</p>
                     </a>
 
                     <!-- Relatório Farmácia -->
-                    <a href="#" class="card-relatorio destaque-farmacia">
+                    <a href="/admin/relatorio/farmacia" class="card-relatorio destaque-farmacia">
                         <i class="fas fa-prescription-bottle"></i>
                         <h2>Controle Farmacêutico</h2>
                         <p>Controle de medicamentos e insumos</p>
@@ -54,3 +72,60 @@
     </section>
 
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const startDateInput = document.getElementById('start-date');
+        const endDateInput = document.getElementById('end-date');
+        const reportLinks = document.querySelectorAll('.card-relatorio');
+
+        function updateReportLinks() {
+            const startDate = startDateInput.value;
+            const endDate = endDateInput.value;
+
+            reportLinks.forEach(link => {
+                const originalHref = link.getAttribute('href').split('?')[0];
+                const params = new URLSearchParams();
+
+                if (startDate) {
+                    params.append('start_date', startDate);
+                }
+                if (endDate) {
+                    params.append('end_date', endDate);
+                }
+
+                if (startDate || endDate) {
+                    link.setAttribute('href', `${originalHref}?${params.toString()}`);
+                } else {
+                    link.setAttribute('href', originalHref);
+                }
+            });
+        }
+
+        startDateInput.addEventListener('change', updateReportLinks);
+        endDateInput.addEventListener('change', updateReportLinks);
+    });
+</script>
+
+<style>
+    .date-filter-form {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        align-items: center;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+        color: #333;
+    }
+    .form-group input {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+</style>

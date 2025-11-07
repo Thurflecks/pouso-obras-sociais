@@ -101,6 +101,93 @@ body {
   background-color: #1A6ED8;
 }
 
+/* =================== HEADER =================== */
+
+.header {
+  background-color: var(--clr-neutral-100);
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 20px;
+}
+
+.nav-links-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-link {
+  color: var(--clr-primary-400);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--azul-principal);
+}
+
+.menu-mobile {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--clr-primary-400);
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-primary-400);
+  transition: transform 0.3s;
+}
+
+.hamburger::before {
+  transform: translateY(-8px);
+}
+
+.hamburger::after {
+  transform: translateY(8px);
+}
+
+.menu-mobile.is-active .hamburger {
+  background-color: transparent;
+}
+
+.menu-mobile.is-active .hamburger::before {
+  transform: rotate(45deg);
+}
+
+.menu-mobile.is-active .hamburger::after {
+  transform: rotate(-45deg);
+}
+
+
 /* =================== FORMULÁRIOS =================== */
 
 .container {
@@ -404,60 +491,115 @@ body {
 
 /* =================== RESPONSIVIDADE =================== */
 
+@media (max-width: 1200px) {
+    .container {
+        width: 85%;
+    }
+}
+
 @media (max-width: 999px) {
-  .footer {
-    display: none;
-  }
+    .footer {
+        display: none;
+    }
 
-  .navbar {
-    display: none;
-  }
+    .nav-links-wrapper {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--clr-neutral-100);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        z-index: 999;
+    }
 
-  .container {
-    width: 90%;
-  }
+    .nav-links-wrapper.active {
+        display: flex;
+    }
 
-  .pix-image {
-    display: none;
-  }
+    .nav-list {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
+    }
 
-  .img-doacao {
-    display: none;
-  }
+    .menu-mobile {
+        display: block;
+    }
 
-  .form-card {
-    width: 100%;
-  }
+    .container {
+        width: 90%;
+        margin: 30px auto;
+    }
 
-  .section-title {
-    font-size: 24px;
-    text-align: justify;
-    margin-bottom: 10px;
-  }
+    .form-section {
+        flex-direction: column;
+    }
 
-  .input-row {
-    flex-direction: column;
-  }
+    .pix-image,
+    .img-doacao {
+        display: none;
+    }
 
-  .form-group-name {
-    width: 100%;
-  }
+    .form-card {
+        width: 100%;
+    }
 
-  .form-group-wpp {
-    width: 100%;
-  }
+    .section-title {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
 
-  .btn-enviar-red {
-    width: 100%;
-  }
+    .input-row {
+        flex-direction: column;
+        gap: 15px;
+    }
 
-  .form-note {
-    font-size: 12px;
-    text-align: justify;
-  }
+    .form-group-name,
+    .form-group-wpp {
+        width: 100%;
+    }
 
-  .return-button-class {
-    display: flex;
-  }
+    .btn-enviar-red {
+        width: 100%;
+    }
 
+    .form-note {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .return-button-class {
+        display: flex;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 95%;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .form-input,
+    .form-input-outras-doacoes,
+    .form-textarea {
+        font-size: 14px;
+    }
+
+    .btn-gerar,
+    .btn-enviar-red {
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    #popup {
+        width: 90%;
+    }
 }

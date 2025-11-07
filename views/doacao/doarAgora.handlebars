@@ -1,20 +1,27 @@
 <head>
-    <link rel="stylesheet" href="/css/eventos.css">
+    <link rel="stylesheet" href="/css/doarAgora.css">
 </head>
-<section class="navbar">
-    <div class="navbar-left">
-        <a href="/"><img src="/assets/logos/logo.svg" alt="Logo" class="logo" /></a>
-    </div>
-    <div class="navbar-right">
-        <a href="/">Início</a>
-        <a href="/#sobre">Sobre</a>
-        <a href="/#servicos">Serviços</a>
-        <a href="/#horarios">Horários</a>
-        <a href="/#contato">Contato</a>
-        <a href="/eventos">Eventos</a>
-        <a href="/doacao" class="pgi-link button-doar">Doar agora</a>
-    </div>
-</section>
+<header class="header">
+    <nav class="nav-container">
+        <a href="/" class="logo-link">
+            <img src="/assets/logos/logo.svg" alt="Logo" class="logo" />
+        </a>
+        <div class="menu-mobile">
+            <span class="hamburger"></span>
+        </div>
+        <div class="nav-links-wrapper">
+            <ul class="nav-list">
+                <li><a href="/" class="nav-link">Início</a></li>
+                <li><a href="/sobre" class="nav-link">Sobre</a></li>
+                <li><a href="/servicos" class="nav-link">Serviços</a></li>
+                <li><a href="/horarios" class="nav-link">Horários</a></li>
+                <li><a href="/contato" class="nav-link">Contato</a></li>
+                <li><a href="/eventos" class="nav-link">Eventos</a></li>
+            </ul>
+            <a href="/" class="button-doar">Voltar</a>
+        </div>
+    </nav>
+</header>
 
 <section class="container">
     <section class="intro">
@@ -38,7 +45,7 @@
                 required />
 
             <label for="valor" class="form-label">Valor da doação:</label>
-            <input name="valor" type="number" id="valor" class="form-input" min="1"
+            <input name="valor" id="valor" class="form-input" step="0.01"
                 placeholder="Informe o valor da doação" required />
             <button type="submit" class="btn-gerar">Gerar QR Code</button>
         </form>
@@ -51,7 +58,7 @@
         </div>
 
         <div class="img-doacao-wrapper">
-            <img src="/assets/img/doacao.avif" alt="Doação" class="img-doacao" />
+            <img src="/assets/img/doacao.png" alt="Doação" class="img-doacao" />
         </div>
 
     </section>
@@ -115,35 +122,23 @@
             <div class="footer-col">
                 <img src="/assets/logos/logo.png" alt="Logo Pouso" class="footer-logo">
                 <div class="footer-info">
-                    <p>CNPJ: 00.000.000/0001-00</p>
-                    <p>Certificado de Entidade Beneficente</p>
-                    <p>Registro CEBAS nº 123456</p>
+                    <p>CNPJ: 12.566.824/0001-02</p>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Transparência</h4>
+                <h4>Links Rápidos</h4>
                 <ul class="footer-links">
-                    <li><a href="#relatorios">Relatórios Anuais</a></li>
-                    <li><a href="#prestacao">Prestação de Contas</a></li>
-                    <li><a href="#estatuto">Estatuto Social</a></li>
-                    <li><a href="#politica">Política de Privacidade</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Como Ajudar</h4>
-                <ul class="footer-links">
-                    <li><a href="#doacoes">Doações Materiais</a></li>
-                    <li><a href="#voluntario">Voluntariado</a></li>
-                    <li><a href="#empresas">Parcerias Empresariais</a></li>
-                    <li><a href="#campanhas">Campanhas Ativas</a></li>
+                    <li><a href="/doacao">Doar Agora</a></li>
+                    <li><a href="/#sobre">Sobre</a></li>
+                    <li><a href="/user/cadastro">Receber Ajuda</a></li>
+                    <li><a href="/#contato">Contato</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Contato</h4>
                 <div class="footer-contato">
-                    <p><i class="fas fa-phone-alt"></i> (98) 9999-9999</p>
-                    <p><i class="fas fa-envelope"></i> contato@pouso.org.br</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Veja no mapa</p>
+                    <p><i class="fas fa-phone-alt"></i> (98) 98490-4799 (WhatsApp)</p>
+                    <p><i class="fas fa-envelope"></i> pousoobrassociais@gmail.com</p>
                 </div>
             </div>
         </div>
@@ -151,7 +146,27 @@
             <p>© 2025 Pouso: Obras Sociais. Todos direitos reservados.</p>
             <p>Code Track</p>
         </div>
+
     </div>
 </footer>
 <script src="/js/doacao/mensagem.js"></script>
 <script src="/js/doacao/qrcode.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuMobile = document.querySelector('.menu-mobile');
+        const navLinksWrapper = document.querySelector('.nav-links-wrapper');
+
+        menuMobile.addEventListener('click', function () {
+            navLinksWrapper.classList.toggle('active');
+            menuMobile.classList.toggle('is-active');
+        });
+    });
+
+    document.getElementById('valor').addEventListener('input', function (e) {
+        let value = e.target.value;
+        value = value.replace(/\D/g, '');
+        value = (parseInt(value) / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        e.target.value = value;
+    });
+
+</script>

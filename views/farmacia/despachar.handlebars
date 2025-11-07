@@ -1,0 +1,21 @@
+<head>
+    <link rel="stylesheet" href="/css/despachar.css">
+</head>
+<main>
+    <h1>Despachar Medicamento para {{paciente.nome}}</h1>
+    <form action="/admin/farmacia/pacientes/{{paciente.id}}/despachar" method="POST">
+        <div class="form-group">
+            <label for="medicamento">Medicamento:</label>
+            <select name="medicamentoId" id="medicamento">
+                {{#each medicamentos}}
+                <option value="{{id_remedio}}">{{nome}} - {{concentracao}} ({{quantidade}} em estoque)</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" name="quantidade" id="quantidade" min="1" required>
+        </div>
+        <button type="submit">Despachar</button>
+    </form>
+</main>

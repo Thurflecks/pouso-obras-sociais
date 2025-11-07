@@ -1,19 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', () => {
-  new Splide('.hero-carousel', {
-    type: 'fade',
-    autoplay: true,
-    pauseOnHover: false,
-    interval: 5000,
-    arrows: true,
-    pagination: true,
-    classes: {
-      arrows: 'splide__arrows your-class-arrows',
-      arrow: 'splide__arrow your-class-arrow icon-hero-left',
-      pagination: 'splide__pagination your-class-pagination',
-    }
-  }).mount();
-});
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,7 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     classes: {
       prev: 'splide__arrow--prev icon-passar icon-left',
       next: 'splide__arrow--next icon-passar icon-right',
-    }
+    },
+    breakpoints: {
+      768: {
+        perPage: 2,
+      },
+      576: {
+        perPage: 1,
+      },
+    },
   }).mount();
 
 
@@ -96,4 +90,3 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     });
   });
 }
-

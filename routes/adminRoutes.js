@@ -11,7 +11,8 @@ const PacienteController = require('../controllers/PacienteController');
 const verifyNivel = require('../middlewares/verifyNivel');
 const EpiController = require('../controllers/EpiController');
 const EquipamentosController = require('../controllers/EquipamentosController')
-const SiteController = require('../controllers/SiteController');
+const UsuarioController = require('../controllers/UsuarioController');
+const DoacaoController = require('../controllers/DoacaoController');
 const EventosController = require('../controllers/EventosController');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
@@ -55,6 +56,8 @@ router.post('/farmacia/medicamentos/search', authenticate, verifyNivel([3, 4]), 
 
 //pacientes
 router.get('/farmacia/pacientes', authenticate, verifyNivel([3, 4]), PacienteController.showPacientes);
+router.get('/farmacia/pacientes/:id/despachar', authenticate, verifyNivel([3, 4]), FarmaciaController.despacharMedicamento);
+router.post('/farmacia/pacientes/:id/despachar', authenticate, verifyNivel([3, 4]), FarmaciaController.despacharMedicamentoPost);
 
 
 //epi
@@ -65,14 +68,19 @@ router.get('/farmacia/equipamentos', authenticate, verifyNivel([3, 4]), Equipame
 router.get('/farmacia/equipamentos/edit', authenticate, verifyNivel([3, 4]), EquipamentosController.edit);
 
 
-//eventos
+//usuarios
+router.get('/usuarios', authenticate, verifyNivel([4]), UsuarioController.index);
+router.get('/usuarios/editar/:id', authenticate, verifyNivel([4]), UsuarioController.editar);
+router.post('/usuarios/editar/:id', authenticate, verifyNivel([4]), UsuarioController.editarPost);
 
 
 //relatorio 
 router.get('/relatorio', authenticate, AdminController.relatorio);
 router.get('/relatorio/login', authenticate, AdminLoginsController.relatorioLogin);
 router.get('/relatorio/mantimentos', authenticate, ControleMantiController.relatorioControle);
+router.get('/relatorio/farmacia', authenticate, FarmaciaController.relatorioFarmacia);
 router.get('/relatorio/doadores', authenticate, ControleMantiController.relatorioDoadoresMantimentos);
+router.get('/relatorio/doacoes', authenticate, DoacaoController.relatorioDoacao);
 
 //eventos
 router.get('/eventos', authenticate, EventosController.listar)
@@ -81,6 +89,11 @@ router.post('/eventos/criar', authenticate, upload.single('foto'), EventosContro
 router.get('/eventos/editar/:id', authenticate, EventosController.editar)
 router.post('/eventos/editar/:id', authenticate, upload.single('foto'), EventosController.editarPost)
 router.post('/eventos/deletar/:id', authenticate, EventosController.deletar)
+
+//scroller
+router.get('/scroller', authenticate, AdminController.scroller);
+router.post('/scroller', authenticate, upload.single('image'), AdminController.scrollerPost);
+router.post('/scroller/delete', authenticate, AdminController.scrollerDelete);
 
 //
 

@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/css/admin/scroller.css">
+<link rel="stylesheet" href="/css/relatorio.css">
+
+<nav class="navbar-admin">
+    <div class="nav-container">
+        <div class="logo-container">
+            <img src="/assets/logos/logo.svg" alt="Pouso Obras Sociais" class="nav-logo">
+        </div>
+        <div class="nav-direita">
+            <a href="/admin" class="nav-voltar-btn">
+                <i class="fas fa-arrow-left"></i>
+                Voltar ao Painel Administrativo
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-scroller">
+    <div class="scroller-box">
+        <h1 class="titulo-scroller">Gerenciar Imagens do Scroller</h1>
+
+        <h2>Adicionar Nova Imagem</h2>
+        <form action="/admin/scroller" method="POST" enctype="multipart/form-data" class="form-scroller">
+            <div>
+                <label for="image">Imagem:</label>
+                <input type="file" id="image" name="image" required>
+            </div>
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <hr>
+
+        <h2>Imagens Atuais</h2>
+        <div class="scroller-grid">
+            {{#each scrollers}}
+            <div class="scroller-item">
+                <img src="data:image/png;base64,{{image}}" alt="Imagem do scroller">
+                <form action="/admin/scroller/delete" method="POST">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <button type="submit">X</button>
+                </form>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

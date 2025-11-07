@@ -21,7 +21,7 @@ const DoacaoModel = sequelize.define("doacao", {
         defaultValue: Sequelize.NOW
     },
     valor: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
     }
 }, {

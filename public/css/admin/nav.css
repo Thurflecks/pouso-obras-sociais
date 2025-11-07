@@ -1,0 +1,80 @@
+
+:root {
+    --cor-primaria: #2793ff;
+    --cor-secundaria: #0773FF;
+    --cor-terciaria: #F3423F;
+    --fundo-claro: #f9f9f9;
+    --texto-escuro: #1A3A4D;
+    --borda: #ecf0f1;
+}
+
+/* Reset e Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: #C8E3FF;
+    color: var(--texto-escuro);
+    line-height: 1.6;
+}
+
+/* Navbar Admin */
+.navbar-admin {
+    background: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 1800px;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.logo-container .nav-logo {
+    width: 120px;
+    height: auto;
+}
+
+.nav-direita {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.nav-voltar-btn {
+    position: relative;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--texto-escuro);
+    text-decoration: none;
+    padding-bottom: .25rem;
+    margin-left: auto;
+}
+
+.nav-voltar-btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--cor-primaria);
+    transition: width 0.3s ease-out;
+}
+
+.nav-voltar-btn:hover::after {
+    width: 100%;
+}

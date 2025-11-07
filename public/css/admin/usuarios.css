@@ -1,0 +1,331 @@
+:root {
+    --azul-principal: #248cf4;
+    --azul-escuro: #357abd;
+    --vermelho-destaque: #dc3545;
+    --texto-escuro: #1A3A4D;
+    --cinza-claro: #f5f5f5;
+    --branco: #ffffff;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --transicao: all 0.3s ease;
+    --verde: #08b31f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #f0f4f8;
+}
+
+a {
+    text-decoration: none;
+}
+
+.search-container {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #eef2f5;
+}
+
+.search-bar-form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.search-bar-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-principal {
+    background-color: var(--branco);
+    width: 95%;
+    margin: 2rem auto;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--sombra);
+}
+
+.search-input {
+    border: 2px solid #dde6ed;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 16px;
+    flex-grow: 1;
+    outline: none;
+    transition: var(--transicao);
+}
+
+.search-input:focus {
+    border-color: var(--azul-principal);
+}
+
+.search-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.search-bar-form select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+}
+
+.search-button i {
+    font-size: 20px;
+    color: var(--azul-principal);
+}
+
+.limparPesquisa {
+    display: flex;
+    color: #fff;
+    background-color: var(--vermelho-destaque);
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    padding: 12px 25px;
+    white-space: nowrap;
+    justify-content: center;
+}
+
+.limparPesquisa:hover {
+    background-color: #c82333;
+}
+
+.order-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.order-span {
+    font-weight: 600;
+}
+
+.order-button {
+    background-color: var(--azul-principal);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+    background-color: #0557b3;
+}
+
+.cadastro-title-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.cadastro-title {
+    color: var(--texto-escuro);
+    font-size: 24px;
+}
+
+.button-novo {
+    background-color: var(--verde);
+    color: var(--branco);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 600;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.button-novo:hover {
+    background-color: #068d19;
+}
+
+.button-novo:active {
+    background-color: #357abd;
+}
+
+.table-farm-container {
+    background-color: #f8fafc;
+    border: 1px solid #eef2f5;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.table-farm {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.strong-table {
+    font-size: 14px;
+    color: #555;
+}
+
+.div-table {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--texto-escuro);
+}
+
+.aumentar a {
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: var(--transicao);
+}
+
+.aumentar a:hover {
+    background-color: var(--azul-escuro);
+    transform: translateY(-2px);
+}
+
+.container-eventos-editar {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.evento-editar-form {
+    background: #ffffff;
+    border: 1px solid #eef2f5;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+}
+
+.titulo-editar {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--texto-escuro);
+}
+
+.form-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.form-group {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.table-input {
+    border: 2px solid #dde6ed;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 16px;
+    outline: none;
+    transition: var(--transicao);
+}
+
+.table-input:focus {
+    border-color: var(--azul-principal);
+}
+
+.btn-salvar {
+    background-color: var(--verde);
+    color: var(--branco);
+    border-radius: 10px;
+    padding: 12px 25px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    display: block;
+    width: fit-content;
+    margin: 2rem auto 0;
+}
+
+.btn-salvar:hover {
+    background-color: #068d19;
+}
+
+.form-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #dde6ed;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+    transition: all 0.2s ease;
+}
+
+.form-group input[type="checkbox"]:checked {
+    background-color: var(--azul-principal);
+    border-color: var(--azul-principal);
+}
+
+.form-group input[type="checkbox"]:checked::after {
+    content: '\2713';
+    font-size: 18px;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.buttons-evento-editar {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.button-save {
+    background-color: var(--verde);
+    color: var(--branco);
+    border-radius: 10px;
+    padding: 12px 25px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.button-save:hover {
+    background-color: #068d19;
+}

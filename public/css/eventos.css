@@ -282,3 +282,104 @@ body {
 .info-curso {
   font-weight: bold;
 }
+
+/* =================== RESPONSIVIDADE =================== */
+
+@media (max-width: 992px) {
+    .evento-destaque .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .evento-destaque img {
+        width: 80%;
+        height: auto;
+        margin: 0 auto 20px;
+    }
+
+    .info {
+        width: 100%;
+    }
+
+    .carousel {
+        padding: 0 40px;
+    }
+
+    .card {
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    .evento-destaque {
+        height: auto;
+        padding: 15px;
+    }
+
+    .evento-destaque img {
+        width: 100%;
+    }
+
+    .carousel {
+        padding: 0 20px;
+    }
+
+    .carousel-track {
+        gap: 20px;
+    }
+
+    .card {
+        min-width: 300px;
+        height: auto;
+    }
+
+    .card-header {
+        height: 250px;
+    }
+
+    .footer-columns {
+        flex-direction: column;
+        text-align: center;
+        gap: 2em;
+    }
+
+    .footer-bottom {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .carousel {
+        padding: 0;
+    }
+
+    .carousel button {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .prev {
+        left: 5px;
+    }
+
+    .next {
+        right: 5px;
+    }
+
+    .card {
+        min-width: 100%;
+    }
+
+    .footer {
+        display: none;
+    }
+}

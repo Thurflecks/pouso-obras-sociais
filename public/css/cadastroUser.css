@@ -84,6 +84,95 @@ body {
     background-color: #1A6ED8;
 }
 
+/* =================== HEADER =================== */
+
+.header {
+  background-color: var(--clr-neutral-100);
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 20px;
+}
+
+.nav-links-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link {
+  color: var(--clr-primary-400);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--azul-principal);
+}
+
+.menu-mobile {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--clr-primary-400);
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-primary-400);
+  transition: transform 0.3s;
+}
+
+.hamburger::before {
+  transform: translateY(-8px);
+}
+
+.hamburger::after {
+  transform: translateY(8px);
+}
+
+.menu-mobile.is-active .hamburger {
+  background-color: transparent;
+}
+
+.menu-mobile.is-active .hamburger::before {
+  transform: rotate(45deg);
+}
+
+.menu-mobile.is-active .hamburger::after {
+  transform: rotate(-45deg);
+}
+
+
 #progresso-formulario {
     display: flex;
     justify-content: space-between;
@@ -163,7 +252,7 @@ body {
 form {
     max-width: 100rem;
     /* Mais largo */
-    width: 40%;
+    width: 100%;
     margin: 0 auto;
     padding: 2rem 3rem;
     /* Padding mais leve */
@@ -495,6 +584,37 @@ input[type="checkbox"] {
     /* Só aparece se for necessário */
 }
 
+@media (max-width: 999px) {
+    .nav-links-wrapper {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        z-index: 999;
+    }
+
+    .nav-links-wrapper.active {
+        display: flex;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
+    }
+
+    .menu-mobile {
+        display: block;
+    }
+
+}
+
 /* =================== VARIÁVEIS =================== */
 :root {
     /* Cores principais */
@@ -517,98 +637,56 @@ input[type="checkbox"] {
     --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* =================== FOOTER =================== */
 .footer {
-    background: var(--azul-principal);
-    color: var(--branco);
-    padding: 4rem 1.5rem 2rem;
-    /* menos padding horizontal para centralizar */
-    margin-top: auto;
-    border: var(--borda);
-    font-size: 0.8rem;
-    /* fonte menor */
+    background-color: var(--azul-principal);
+    display: flex;
+    color: var(--cinza-claro);
+    justify-content: center;
+    font-size: .7em;
+    padding: 4em 1em 1em 1em;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    /* um pouco menor para centralizar */
-    gap: 1.5rem;
-    /* menos espaçamento entre colunas */
+.footer-container {
+    min-width: 100%;
 }
 
-.footer-col {
-    margin-bottom: 1.5rem;
-    text-align: center;
-    /* centralizar texto nas colunas */
+.footer a {
+    color: #F5F5F5;
+    text-decoration: none;
+}
+
+.footer h4 {
+    font-weight: 800;
 }
 
 .footer-logo {
-    width: 10rem;
-    /* 160px para ficar menor e proporcional */
-    margin: 0 auto 1rem;
-    /* centralizar logo e espaço abaixo */
-    display: block;
+    width: 120px;
+    border-radius: .48em;
 }
 
-.footer-info {
-    opacity: 0.85;
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    /* centralizar lista */
-    max-width: 180px;
-    /* limitar largura para centralizar melhor */
-}
-
-.footer-links li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-links a {
-    color: var(--branco);
-    text-decoration: none;
-    transition: var(--transicao);
-}
-
-.footer-links a:hover {
-    color: var(--vermelho-destaque);
-    padding-left: 0.3rem;
-}
-
-.footer-contato p {
+.footer-columns {
     display: flex;
     justify-content: center;
-    /* centralizar conteúdo do contato */
-    align-items: center;
-    gap: 0.4rem;
-    margin-bottom: 0.5rem;
+    gap: 5em;
+
 }
 
 .footer-bottom {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    font-size: 0.8rem;
+    border-top: 1px solid #4190a3;
+    margin: 5em auto 1em auto;
+    padding: 1em;
+    width: 50%;
 }
 
-/* Responsividade (mantém oculto no mobile < 600px) */
-@media (max-width: 37.5rem) {
-
-    /* 600px */
-    .footer {
-        display: none;
-    }
-}
 
 /* Para garantir responsividade total */
-@media (max-width: 600px) {
-    .linha-campos .campo {
-        flex: 1 1 100%;
+@media (max-width: 992px) {
+    form {
+        width: 95%;
+        padding: 2rem;
     }
 }
 
@@ -616,10 +694,58 @@ input[type="checkbox"] {
     .navbar {
         display: none;
     }
+
+    form {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .linha-campos {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .linha-campos .campo {
+        width: 100%;
+    }
+
+    .opcoes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .botoes {
+        justify-content: center;
+    }
+
+    .footer-columns {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+
 }
 
 @media (max-width: 600px) {
     #progresso-formulario {
         display: none;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .opcoes label {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .botoes button {
+        width: 100%;
+        margin: 5px 0;
     }
 }
