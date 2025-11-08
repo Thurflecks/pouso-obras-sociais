@@ -21,6 +21,7 @@ inputBusca.addEventListener('input', async () => {
             const produtos = await resposta.json();
 
             listaResultados.innerHTML = '';
+            prodnotFound.innerHTML = '';
             if (produtos.length === 0) {
                 const anotfound = document.createElement('a');
                 anotfound.classList.add('anotfound');
